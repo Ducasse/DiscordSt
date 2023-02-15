@@ -1,3 +1,0 @@
-accessing
-type
-	^ DSChannelGuildVoiceType uniqueInstance

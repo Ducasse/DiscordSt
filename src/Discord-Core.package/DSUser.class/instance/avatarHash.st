@@ -1,3 +1,0 @@
-accessing
-avatarHash
-	^ avatarHash

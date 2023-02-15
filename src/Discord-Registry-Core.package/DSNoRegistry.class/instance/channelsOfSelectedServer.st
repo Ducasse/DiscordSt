@@ -1,3 +1,0 @@
-accessing
-channelsOfSelectedServer
-	^ DSChannels empty

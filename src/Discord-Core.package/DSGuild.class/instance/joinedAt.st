@@ -1,3 +1,0 @@
-accessing
-joinedAt
-	^ joinedAt

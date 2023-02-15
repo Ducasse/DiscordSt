@@ -1,1 +1,0 @@
-I am an abstract object for all Discord objects. My subclasses has to know what values should be included in JSON request, see includeInstanceVariables message.

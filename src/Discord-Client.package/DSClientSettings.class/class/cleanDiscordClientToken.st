@@ -1,3 +1,0 @@
-accessing
-cleanDiscordClientToken
-	^ self discordClientToken

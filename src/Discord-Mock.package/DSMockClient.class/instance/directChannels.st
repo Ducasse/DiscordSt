@@ -1,3 +1,0 @@
-accessing
-directChannels
-	^ directChannels

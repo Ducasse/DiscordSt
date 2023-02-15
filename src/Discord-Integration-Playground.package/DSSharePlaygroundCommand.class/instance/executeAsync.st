@@ -1,3 +1,0 @@
-execute
-executeAsync
-	^ self execute

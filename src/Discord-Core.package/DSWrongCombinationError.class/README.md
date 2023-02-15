@@ -1,1 +1,0 @@
-Informs that you mix an object fields that are not permitted to put together, e.g., embeds and file for Discord Webhook Post.

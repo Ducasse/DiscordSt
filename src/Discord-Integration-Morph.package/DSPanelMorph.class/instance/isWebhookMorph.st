@@ -1,3 +1,0 @@
-testing
-isWebhookMorph
-	^ false

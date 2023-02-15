@@ -1,4 +1,0 @@
-accessing
-discordClientToken: tokenOrEmptyString 
-	self ensureVolatileDiscordClientToken.
-	DSClientToken value: tokenOrEmptyString

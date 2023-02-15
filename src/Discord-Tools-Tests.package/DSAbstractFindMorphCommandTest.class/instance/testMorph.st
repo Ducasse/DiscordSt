@@ -1,3 +1,0 @@
-tests
-testMorph
-	self subclassResponsibility

@@ -1,3 +1,0 @@
-announcements-registration
-unsubscribeCancelAndSendActions: anObject 
-	self submorphs first unsubscribeCancelAndSendActions: anObject

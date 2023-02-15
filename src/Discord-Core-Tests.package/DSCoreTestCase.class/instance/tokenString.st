@@ -1,3 +1,0 @@
-defaults
-tokenString
-	^ 'secret-token'

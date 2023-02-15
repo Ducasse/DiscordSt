@@ -1,3 +1,0 @@
-initialization
-initializeMessageBuilder
-	self subclassResponsibility

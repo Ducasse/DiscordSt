@@ -1,3 +1,0 @@
-accessing
-client
-	^ self bot

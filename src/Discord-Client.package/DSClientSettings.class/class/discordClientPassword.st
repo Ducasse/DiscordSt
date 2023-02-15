@@ -1,4 +1,0 @@
-accessing
-discordClientPassword
-	self ensureVolatileDiscordClientPassword.
-	^ DSClientPassword value

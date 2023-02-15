@@ -1,3 +1,0 @@
-visiting
-isEmpty 
-	^ self explicitRequirement

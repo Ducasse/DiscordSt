@@ -1,3 +1,0 @@
-private
-basicChildren
-	^ self attachments

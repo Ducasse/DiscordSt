@@ -1,1 +1,0 @@
-I keep Neo JSON mappings between Discord Gateway objects and their JSON representations.

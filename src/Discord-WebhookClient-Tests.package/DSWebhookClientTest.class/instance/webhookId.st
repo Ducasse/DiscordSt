@@ -1,3 +1,0 @@
-defaults
-webhookId
-	^ 'webhook-id'

@@ -1,3 +1,0 @@
-accessing
-messageClass
-	^ DSMessage

@@ -1,3 +1,0 @@
-visiting
-visitDSSendUserTextMessageItem: aDSSendUserTextMessageItem 
-	messageBuilder content: aDSSendUserTextMessageItem text

@@ -1,3 +1,0 @@
-tests
-testAsDataPost
-	self subclassResponsibility

@@ -1,3 +1,0 @@
-accessing
-exceedTextColor
-	^ Color red

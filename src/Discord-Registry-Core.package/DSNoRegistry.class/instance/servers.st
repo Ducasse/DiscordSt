@@ -1,3 +1,0 @@
-accessing
-servers
-	^ DSGuilds new

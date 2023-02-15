@@ -1,3 +1,0 @@
-enumerating
-allChannelTypes
-	^ self allSubclasses

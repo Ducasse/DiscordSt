@@ -1,3 +1,0 @@
-accessing
-existingFileNames
-	^ existingFileNames

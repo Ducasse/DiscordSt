@@ -1,3 +1,0 @@
-defaults
-passwordString
-	^ 'secret password'

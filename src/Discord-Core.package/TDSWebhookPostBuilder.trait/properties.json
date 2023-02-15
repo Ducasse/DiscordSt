@@ -1,9 +1,0 @@
-{
-	"commentStamp" : "JurajKubelka 11/27/2017 13:37",
-	"traitcomposition" : "TDSPostBuilder",
-	"classtraitcomposition" : "TDSPostBuilder classTrait",
-	"category" : "Discord-Core-Trait",
-	"classinstvars" : [ ],
-	"name" : "TDSWebhookPostBuilder",
-	"instvars" : [ ]
-}

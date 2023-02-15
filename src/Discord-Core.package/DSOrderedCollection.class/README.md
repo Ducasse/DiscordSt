@@ -1,1 +1,0 @@
-I represent an specialized ordered collection used by the Discord library.

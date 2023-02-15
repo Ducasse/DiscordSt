@@ -1,1 +1,0 @@
-A DSRegistriesTest is a test class for testing the behavior of DSRegistries

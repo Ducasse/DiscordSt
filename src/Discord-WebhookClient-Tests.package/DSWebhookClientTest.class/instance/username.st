@@ -1,3 +1,0 @@
-defaults
-username
-	^ 'user one'

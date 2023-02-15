@@ -1,3 +1,0 @@
-mapping - basic
-connectionStatusMappingFor: aNeoJSONMapper
-	DSModelJsonMapping connectionStatusMappingFor: aNeoJSONMapper

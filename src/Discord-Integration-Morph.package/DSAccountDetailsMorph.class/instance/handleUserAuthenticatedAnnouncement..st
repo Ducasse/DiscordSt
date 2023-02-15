@@ -1,3 +1,0 @@
-announcement handling
-handleUserAuthenticatedAnnouncement: aDSAuthenticatedAnnouncement 
-	self updateView

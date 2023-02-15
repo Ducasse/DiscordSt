@@ -1,4 +1,0 @@
-examples
-textScreenshotsPackagesAndRegistriesInWindow
-	<example>
-	^ self textScreenshotsPackagesAndRegistries openInWindow

@@ -1,1 +1,0 @@
-A DSChannelTest is a test class for testing the behavior of DSChannel.

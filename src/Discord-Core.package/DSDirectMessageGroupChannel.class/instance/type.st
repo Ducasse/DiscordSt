@@ -1,3 +1,0 @@
-accessing
-type
-	^ DSChannelDirectMessageGroupType uniqueInstance

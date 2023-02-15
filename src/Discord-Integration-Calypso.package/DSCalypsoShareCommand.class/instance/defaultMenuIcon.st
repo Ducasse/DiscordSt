@@ -1,3 +1,0 @@
-accessing
-defaultMenuIcon
-	^ DSIcons discord 

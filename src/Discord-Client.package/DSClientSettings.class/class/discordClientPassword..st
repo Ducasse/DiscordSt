@@ -1,4 +1,0 @@
-accessing
-discordClientPassword: passwordOrEmptyString
-	self ensureVolatileDiscordClientPassword.
-	DSClientPassword value: passwordOrEmptyString

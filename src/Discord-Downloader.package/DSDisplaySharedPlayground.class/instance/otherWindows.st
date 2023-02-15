@@ -1,3 +1,0 @@
-accessing
-otherWindows
-	^ otherWindows

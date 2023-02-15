@@ -1,3 +1,0 @@
-defaults
-color
-	^ Color green

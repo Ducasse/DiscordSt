@@ -1,3 +1,0 @@
-defaults
-contentString
-	^ 'message one'

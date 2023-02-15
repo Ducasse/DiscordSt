@@ -1,1 +1,0 @@
-I represent direct message channel type.

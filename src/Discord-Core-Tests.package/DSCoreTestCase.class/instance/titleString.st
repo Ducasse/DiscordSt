@@ -1,3 +1,0 @@
-defaults
-titleString
-	^ 'title message'
