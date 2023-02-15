@@ -2,28 +2,20 @@
 
 **Discord API.** DiscordSt is a client for [Discord](https://discordapp.com) written in [Pharo](http://pharo.org). It includes subset of the [public API](https://discordapp.com/developers/docs/intro) that constantly grows. If you miss any API, please, tell us, open an issue, or make a contribution :-)
 
-**Pharo Integration.** Smalltalk developers know very well that live programming frees developers from the “edit-compile-run” loop and allows people to interact with running programs very easily. The DiscordSt's purpose is to bring Pharo's live experience to developer communications, such as online chat discussions. DiscordSt thus includes a *Pharo integration* that allows you to share Playground code snippets, related source code, screenshots, animated GIFs (screen recording), and system information. All this from Pharo itself as smooth as possible. For more information, check [Pharo integration](doc/PharoIntegration.md).
+**Pharo Integration.** Pharo developers know very well that live programming frees developers from the “edit-compile-run” loop and allows people to interact with running programs very easily. The DiscordSt's purpose is to bring Pharo's live experience to developer communications, such as online chat discussions. DiscordSt thus includes a *Pharo integration* that allows you to share Playground code snippets, related source code, screenshots, animated GIFs (screen recording), and system information. All this from Pharo itself as smooth as possible. For more information, check [Pharo integration](doc/PharoIntegration.md).
 
 DiscordSt version 0.2.0 supports Pharo 6.0, 6.1, and 7.0.
 
-[![Build Status](https://travis-ci.org/JurajKubelka/DiscordSt.svg?branch=master)](https://travis-ci.org/JurajKubelka/DiscordSt)
 [![Build status](https://ci.appveyor.com/api/projects/status/enr9dgwos8ke340m/branch/master?svg=true)](https://ci.appveyor.com/project/JurajKubelka/discordst/branch/master)
 [![Test Status](https://api.bob-bench.org/v1/badgeByUrl?branch=master&hosting=github&ci=travis-ci&repo=JurajKubelka%2FDiscordSt)](https://bob-bench.org/r/gh/JurajKubelka/DiscordSt)
 [![Coverage Status](https://coveralls.io/repos/github/JurajKubelka/DiscordSt/badge.svg?branch=master)](https://coveralls.io/github/JurajKubelka/DiscordSt?branch=master)
 
 ## Installation
 
-You can install DiscordSt from Catalog Browser:
-
-![World menu -> Catalog Browser](assets/img/world-menu-catalog.png)
-![Catalog Browser](assets/img/catalog-browser.png)
-
-or by executing the following script:
-
 ```Smalltalk
 Metacello new
     baseline: #DiscordSt;
-    repository: 'github://JurajKubelka/DiscordSt/src';
+    repository: 'github://Ducasse/DiscordSt/src';
     load.
 ```
 
