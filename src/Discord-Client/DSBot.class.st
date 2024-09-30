@@ -22,7 +22,7 @@ Class {
 
 { #category : 'examples' }
 DSBot class >> joinedServers [
-	<gtExample>
+
 	^ self new
 		token: 'BOT-TOKEN'";
 		servers"
@@ -31,7 +31,7 @@ DSBot class >> joinedServers [
 
 { #category : 'examples' }
 DSBot class >> sendMessage [
-	<gtExample>
+
 	^ self new 
 		token: 'BOT-TOKEN';
 		with: [ :bot | bot message

@@ -15,7 +15,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayDispatchReadyPayload class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonReadyPayload.
 ]

@@ -24,7 +24,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayUnspecifiedPayload class >> identityPayload [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		read: self
 		withMapping: #unspecifiedPayloadMappingFor: 
@@ -33,7 +33,7 @@ DSGatewayUnspecifiedPayload class >> identityPayload [
 
 { #category : 'examples' }
 DSGatewayUnspecifiedPayload class >> readyPayload [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		read: self
 		withMapping: #unspecifiedPayloadMappingFor: 

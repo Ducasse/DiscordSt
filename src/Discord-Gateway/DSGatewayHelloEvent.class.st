@@ -23,7 +23,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayHelloEvent class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		read: self 
 		withMapping: #helloEventMappingFor: 

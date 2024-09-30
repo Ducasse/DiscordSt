@@ -17,7 +17,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayIdentityPayload class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonIdentityPayload.
 ]

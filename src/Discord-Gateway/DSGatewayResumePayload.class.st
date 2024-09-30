@@ -18,7 +18,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayResumePayload class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonResumePayload.
 ]

@@ -24,7 +24,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayResumeEvent class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		read: self 
 		withMapping: #resumeEventMappingFor: 

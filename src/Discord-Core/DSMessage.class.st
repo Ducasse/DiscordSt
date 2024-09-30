@@ -89,7 +89,7 @@ DSMessage class >> embedAll [
 
 { #category : 'examples' }
 DSMessage class >> embedDescription [
-	<gtExample>
+	
 	^ self empty
 		embeds: (Array with: DSEmbed description);
 		yourself

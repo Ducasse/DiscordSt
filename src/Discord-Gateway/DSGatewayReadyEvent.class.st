@@ -31,7 +31,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayReadyEvent class >> basic [
-	<gtExample>
+
 	^ DSGatewayModelJsonMapping 
 		read: self 
 		withMapping: #readyEventMappingFor: 

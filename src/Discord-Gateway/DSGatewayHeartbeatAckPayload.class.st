@@ -16,7 +16,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayHeartbeatAckPayload class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonHeartbeatAckPayload.
 ]

@@ -26,8 +26,7 @@ Class {
 
 { #category : 'examples' }
 DSClient class >> constructEmbedDescriptionUsingMarkdownBuilder [
-	<gtExample>
-	<label: 'Send an embed object. Its description is build using a Markdown builder'>
+	"Send an embed object. Its description is build using a Markdown builder"
 	
 	^ DSClient new
 		email: 'email@example.com' password: 'secret-password';
@@ -94,8 +93,7 @@ DSClient class >> resetToken [
 
 { #category : 'examples' }
 DSClient class >> sendEmbed [
-	<gtExample>
-	<label: 'Send an embed object.'>
+	"Send an embed object."
 	
 	^ DSClient new
 		email: 'email@example.com' password: 'secret-password';
@@ -120,8 +118,7 @@ DSClient class >> sendEmbed [
 
 { #category : 'examples' }
 DSClient class >> sendFormAsScreenshot [
-	<gtExample>
-	<label: 'Post a Form object as an attached screenshot'>
+	"Post a Form object as an attached screenshot"
 	
 	^ DSClient new 
 		email: 'email@example.com' password: 'secret-password';
@@ -136,8 +133,7 @@ DSClient class >> sendFormAsScreenshot [
 
 { #category : 'examples' }
 DSClient class >> sendImage [
-	<gtExample>
-	<label: 'Send an image or any other file'>
+	"Send an image or any other file"
 	
 	^ DSClient new 
 		email: 'email@example.com' password: 'secret-password';
@@ -153,8 +149,7 @@ DSClient class >> sendImage [
 
 { #category : 'examples' }
 DSClient class >> sendMorphAsScreenshot [
-	<gtExample>
-	<label: 'Post a Morph object as an attached screenshot'>
+	"Post a Morph object as an attached screenshot"
 	
 	^ DSClient new 
 		email: 'email@example.com' password: 'secret-password';
@@ -169,8 +164,7 @@ DSClient class >> sendMorphAsScreenshot [
 
 { #category : 'examples' }
 DSClient class >> sendObjectSerializedWithFuel [
-	<gtExample>
-	<label: 'Send an object (serialized with FUEL) as an attachment'>
+	"Send an object (serialized with FUEL) as an attachment"
 	
 	^ DSClient new 
 		email: 'email@example.com' password: 'secret-password';
@@ -186,9 +180,7 @@ DSClient class >> sendObjectSerializedWithFuel [
 
 { #category : 'examples' }
 DSClient class >> sendSimpleMessage [
-	<gtExample>
-	<label: 'Send a text message to the general channel'>
-	
+	"Send a text message to the general channel"	
 	^ DSClient new 
 		email: 'email@example.com' password: 'secret-password';
 		"login;"

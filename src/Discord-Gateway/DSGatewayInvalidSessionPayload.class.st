@@ -16,7 +16,7 @@ Class {
 
 { #category : 'examples' }
 DSGatewayInvalidSessionPayload class >> basic [
-	<gtExample>
+	
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonInvalidSessionPayload.
 ]
