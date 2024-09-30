@@ -2,24 +2,26 @@
 A DSModelJsonMappingTest is a test class for testing the behavior of DSModelJsonMapping
 "
 Class {
-	#name : #DSModelJsonMappingTest,
-	#superclass : #TestCase,
-	#category : 'Discord-Core-Tests-Utility'
+	#name : 'DSModelJsonMappingTest',
+	#superclass : 'TestCase',
+	#category : 'Discord-Core-Tests-Utility',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Utility'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSModelJsonMappingTest >> classToTest [
 	^ DSModelJsonMapping
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSModelJsonMappingTest >> read: jsonString as: schema mappedTo: mappingMessage [
 	"Return an object that is represented by the JSON string."
 	<return: #DSObject>
 	^ self classToTest read: schema withMapping: mappingMessage on: jsonString readStream
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testAttachmentMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonAttachment.
@@ -36,7 +38,7 @@ DSModelJsonMappingTest >> testAttachmentMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testChannelTypeMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '0'.
@@ -46,7 +48,7 @@ DSModelJsonMappingTest >> testChannelTypeMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfAttachmentsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfAttachmentsOne.
@@ -58,7 +60,7 @@ DSModelJsonMappingTest >> testCollectionOfAttachmentsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfEmbedsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfEmbedsOne.
@@ -70,7 +72,7 @@ DSModelJsonMappingTest >> testCollectionOfEmbedsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfEmojisMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfEmojisOne.
@@ -82,7 +84,7 @@ DSModelJsonMappingTest >> testCollectionOfEmojisMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testCollectionOfFieldsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedFieldsOne.
@@ -94,7 +96,7 @@ DSModelJsonMappingTest >> testCollectionOfFieldsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testCollectionOfFieldsMappingForTwo [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedFieldsTwo.
@@ -107,7 +109,7 @@ DSModelJsonMappingTest >> testCollectionOfFieldsMappingForTwo [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfGuildMembersMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfGuildMembersOne.
@@ -119,7 +121,7 @@ DSModelJsonMappingTest >> testCollectionOfGuildMembersMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testCollectionOfGuildsMappingFor [
 	| result jsonString jsonResult |
 	jsonString := self classToTest jsonCollectionOfGuildsOne.
@@ -131,7 +133,7 @@ DSModelJsonMappingTest >> testCollectionOfGuildsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfMessagesMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfMessagesOne.
@@ -143,7 +145,7 @@ DSModelJsonMappingTest >> testCollectionOfMessagesMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testCollectionOfOverwritesMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfOverwritesOne.
@@ -155,7 +157,7 @@ DSModelJsonMappingTest >> testCollectionOfOverwritesMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfPresenceUpdatesMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfPresenceUpdatesOne.
@@ -167,7 +169,7 @@ DSModelJsonMappingTest >> testCollectionOfPresenceUpdatesMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfReactionsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfReactionsOne.
@@ -179,7 +181,7 @@ DSModelJsonMappingTest >> testCollectionOfReactionsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfRolesMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfRolesOne.
@@ -191,7 +193,7 @@ DSModelJsonMappingTest >> testCollectionOfRolesMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testCollectionOfSortedChannelsMappingFor [
 	| result jsonString jsonResult |
 	jsonString := self classToTest jsonCollectionOfChannelsThree.
@@ -206,7 +208,7 @@ DSModelJsonMappingTest >> testCollectionOfSortedChannelsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testCollectionOfSortedChannelsMappingFor2 [
 	| result jsonString jsonResult |
 	jsonString := self classToTest jsonCollectionOfChannelsThree.
@@ -224,7 +226,7 @@ DSModelJsonMappingTest >> testCollectionOfSortedChannelsMappingFor2 [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testCollectionOfSpecifiedChannelsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfChannelsTwo.
@@ -237,7 +239,7 @@ DSModelJsonMappingTest >> testCollectionOfSpecifiedChannelsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testCollectionOfUnspecifiedChannelsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfChannelsOne.
@@ -249,7 +251,7 @@ DSModelJsonMappingTest >> testCollectionOfUnspecifiedChannelsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfUsersMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfUsersOne.
@@ -261,7 +263,7 @@ DSModelJsonMappingTest >> testCollectionOfUsersMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testCollectionOfVoiceStatesMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonCollectionOfVoiceStatesOne.
@@ -273,7 +275,7 @@ DSModelJsonMappingTest >> testCollectionOfVoiceStatesMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testColorMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '16711680'.
@@ -284,7 +286,7 @@ DSModelJsonMappingTest >> testColorMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testColorMappingForBlue [
 	| result jsonResult jsonString |
 	jsonString := '255'.
@@ -295,7 +297,7 @@ DSModelJsonMappingTest >> testColorMappingForBlue [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testColorMappingForGreen [
 	| result jsonResult jsonString |
 	jsonString := '65280'.
@@ -306,7 +308,7 @@ DSModelJsonMappingTest >> testColorMappingForGreen [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testConnectionStatusMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '"idle"'.
@@ -316,7 +318,7 @@ DSModelJsonMappingTest >> testConnectionStatusMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testConnectionStatusMappingForDnd [
 	| result jsonResult jsonString |
 	jsonString := '"dnd"'.
@@ -326,7 +328,7 @@ DSModelJsonMappingTest >> testConnectionStatusMappingForDnd [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testConnectionStatusMappingForOffline [
 	| result jsonResult jsonString |
 	jsonString := '"offline"'.
@@ -336,7 +338,7 @@ DSModelJsonMappingTest >> testConnectionStatusMappingForOffline [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testConnectionStatusMappingForOnline [
 	| result jsonResult jsonString |
 	jsonString := '"online"'.
@@ -346,7 +348,7 @@ DSModelJsonMappingTest >> testConnectionStatusMappingForOnline [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testDateAndTimeMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '"2017-11-03T15:21:38.579+00:00"'.
@@ -359,7 +361,7 @@ DSModelJsonMappingTest >> testDateAndTimeMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testDateAndTimeMappingForNil [
 	| result jsonResult jsonString |
 	jsonString := 'null'.
@@ -369,7 +371,7 @@ DSModelJsonMappingTest >> testDateAndTimeMappingForNil [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testDateAndTimeMappingForStandard [
 	"This JSON is the one returned by Discord."
 	| result jsonResult jsonString |
@@ -383,7 +385,7 @@ DSModelJsonMappingTest >> testDateAndTimeMappingForStandard [
 	self assert: jsonResult equals: '"2017-11-03T15:21:38.579+00:00"'.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testDurationInSecondsMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '300234'.
@@ -394,7 +396,7 @@ DSModelJsonMappingTest >> testDurationInSecondsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testEditMessagePayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEditMessagePayload.
@@ -406,7 +408,7 @@ DSModelJsonMappingTest >> testEditMessagePayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedAuthorMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedAuthor.
@@ -420,7 +422,7 @@ DSModelJsonMappingTest >> testEmbedAuthorMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedFieldMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedField.
@@ -433,7 +435,7 @@ DSModelJsonMappingTest >> testEmbedFieldMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedFieldMappingForFalse [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedFieldFalse.
@@ -446,7 +448,7 @@ DSModelJsonMappingTest >> testEmbedFieldMappingForFalse [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedFooterMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedFooter.
@@ -459,12 +461,12 @@ DSModelJsonMappingTest >> testEmbedFooterMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedImageMappingFor [
 	self testImage: DSEmbedImage mappedTo: #embedImageMappingFor:.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedOneField.
@@ -487,7 +489,7 @@ DSModelJsonMappingTest >> testEmbedMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedProviderMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedProvider.
@@ -499,12 +501,12 @@ DSModelJsonMappingTest >> testEmbedProviderMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedThumbnailMappingFor [
 	self testImage: DSEmbedThumbnail mappedTo: #embedThumbnailMappingFor:.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSModelJsonMappingTest >> testEmbedVideoMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedVideo.
@@ -517,7 +519,7 @@ DSModelJsonMappingTest >> testEmbedVideoMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testEmojiMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmoji.
@@ -533,7 +535,7 @@ DSModelJsonMappingTest >> testEmojiMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testGameMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonGame.
@@ -546,7 +548,7 @@ DSModelJsonMappingTest >> testGameMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testGuildMappingFor [
 	| result jsonString jsonResult |
 	jsonString := self classToTest jsonGuild.
@@ -590,7 +592,7 @@ DSModelJsonMappingTest >> testGuildMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testGuildMemberMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonGuildMember.
@@ -608,7 +610,7 @@ DSModelJsonMappingTest >> testGuildMemberMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testGuildTextChannelMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonChannelGuildText.
@@ -628,7 +630,7 @@ DSModelJsonMappingTest >> testGuildTextChannelMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testImage: aDiscordClass mappedTo: mappingSymbol [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonEmbedImage.
@@ -642,7 +644,7 @@ DSModelJsonMappingTest >> testImage: aDiscordClass mappedTo: mappingSymbol [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testMessageMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonMessage.
@@ -652,7 +654,7 @@ DSModelJsonMappingTest >> testMessageMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testOverwriteMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonOverwriteMember.
@@ -666,7 +668,7 @@ DSModelJsonMappingTest >> testOverwriteMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testOverwriteMappingForRole [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonOverwriteRole.
@@ -680,7 +682,7 @@ DSModelJsonMappingTest >> testOverwriteMappingForRole [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testPresenceUpdateMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonPresenceUpdate.
@@ -696,7 +698,7 @@ DSModelJsonMappingTest >> testPresenceUpdateMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testPresenceUpdateMappingForWithGameNull [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonPresenceUpdateWithGameNull.
@@ -711,7 +713,7 @@ DSModelJsonMappingTest >> testPresenceUpdateMappingForWithGameNull [
 	self assert: jsonResult equals: '{"user":{"id":"286153065164308480","bot":false,"verified":false},"status":"idle"}'.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testReactionMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonReaction.
@@ -724,7 +726,7 @@ DSModelJsonMappingTest >> testReactionMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testRecipientMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonRecipient.
@@ -735,7 +737,7 @@ DSModelJsonMappingTest >> testRecipientMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testRoleMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonRole.
@@ -753,7 +755,7 @@ DSModelJsonMappingTest >> testRoleMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testSpecifiedChannelMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonChannelGuildText.
@@ -773,7 +775,7 @@ DSModelJsonMappingTest >> testSpecifiedChannelMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testSpecifiedChannelMappingForCategory [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonChannelCategory.
@@ -789,7 +791,7 @@ DSModelJsonMappingTest >> testSpecifiedChannelMappingForCategory [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testSpecifiedChannelMappingForDM [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonChannelDirectMessage.
@@ -804,7 +806,7 @@ DSModelJsonMappingTest >> testSpecifiedChannelMappingForDM [
 		equals: '{"id":"319674150115610528","type":1,"last_message_id":"3343820033257021450","recipients":[{"id":"82198898841029460","username":"test","discriminator":"9999","avatar":"33ecab261d4681afa4d85a04691c4a01","bot":false,"verified":false}]}'.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testSpecifiedChannelMappingForDMGroup [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonChannelDirectMessageGroup.
@@ -822,7 +824,7 @@ DSModelJsonMappingTest >> testSpecifiedChannelMappingForDMGroup [
 		equals: '{"id":"319674150115710528","type":3,"name":"Some test channel","last_message_id":"3343820033257021450","recipients":[{"id":"82198898841029460","username":"test","discriminator":"9999","avatar":"33ecab261d4681afa4d85a04691c4a01","bot":false,"verified":false},{"id":"82198810841029460","username":"test2","discriminator":"9999","avatar":"33ecab261d4681afa4d85a10691c4a01","bot":false,"verified":false}],"icon":"an icon hash","owner_id":"82198810841029460"}'.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testSpecifiedChannelMappingForVoice [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonChannelGuildVoice.
@@ -839,7 +841,7 @@ DSModelJsonMappingTest >> testSpecifiedChannelMappingForVoice [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - channel' }
+{ #category : 'tests - channel' }
 DSModelJsonMappingTest >> testUnspecifiedChannelMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonAllPropertiesChannel.
@@ -865,7 +867,7 @@ DSModelJsonMappingTest >> testUnspecifiedChannelMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSModelJsonMappingTest >> testUrlMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '"https://www.twitch.tv/123"'.
@@ -876,7 +878,7 @@ DSModelJsonMappingTest >> testUrlMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - message' }
+{ #category : 'tests - message' }
 DSModelJsonMappingTest >> testUserMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonUser.
@@ -894,7 +896,7 @@ DSModelJsonMappingTest >> testUserMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - guild' }
+{ #category : 'tests - guild' }
 DSModelJsonMappingTest >> testVoiceStateMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonVoiceState.
@@ -913,14 +915,14 @@ DSModelJsonMappingTest >> testVoiceStateMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSModelJsonMappingTest >> write: aDSObject as: schema mappedTo: mappingSymbol [ 
 	"Return a JSON string representation of the Discord object."
 	<return: #String>
 	^ self classToTest write: aDSObject as: schema mappedTo: mappingSymbol
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSModelJsonMappingTest >> write: aDSObject mappedTo: mappingSymbol [ 
 	"Return a JSON string representation of the Discord object."
 	<return: #String>

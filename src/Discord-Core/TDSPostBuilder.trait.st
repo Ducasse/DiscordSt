@@ -4,11 +4,13 @@ I provide an API to build Discord objects to send them to the Discord server.
 I provide an unified API that is used by Webhooks, Bots, and User Clients.
 "
 Trait {
-	#name : #TDSPostBuilder,
-	#category : 'Discord-Core-Trait'
+	#name : 'TDSPostBuilder',
+	#category : 'Discord-Core-Trait',
+	#package : 'Discord-Core',
+	#tag : 'Trait'
 }
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> attachForm: aForm [
 	"Add aFrom as a PNG image attachment."
 	self 
@@ -16,7 +18,7 @@ TDSPostBuilder >> attachForm: aForm [
 		form: aForm
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> attachGifBytes: bytes [
 	"Add the bytes as a GIF image attachment."
 	self 
@@ -24,39 +26,39 @@ TDSPostBuilder >> attachGifBytes: bytes [
 		gifBytes: bytes
 ]
 
-{ #category : #'protocol - basic' }
+{ #category : 'protocol - basic' }
 TDSPostBuilder >> content: aString [
 	"Set the message contents (up to 2000 characters)."
 	self post content: aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TDSPostBuilder >> dataPost [
 	"Return a data post object."
 	self post: self post asDataPost.
 	^ self post
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embed [
 	"Return an embed object"
 	<return: #DSEmbed>
 	^ self explicitRequirement
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedColor: aColor [ 
 	"Set embed color."
 	self embed color: aColor
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedDescription: aString [ 
 	"Set embed description. Markdown can be used."
 	self embed description: aString
 ]
 
-{ #category : #'protocol - markdown' }
+{ #category : 'protocol - markdown' }
 TDSPostBuilder >> embedDescriptionMarkdown: oneArgBlock [
 	"Build Embed Description using a dedicated Markdown builder.
 	Receives a block with one argument. 
@@ -64,20 +66,20 @@ TDSPostBuilder >> embedDescriptionMarkdown: oneArgBlock [
 	self embedDescription: (oneArgBlock cull: self markdown) asString.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedFieldName: nameString value: valueString [
 	"Set embed field name and value"
 	self embed fieldName: nameString value: valueString
 ]
 
-{ #category : #'protocol - markdown' }
+{ #category : 'protocol - markdown' }
 TDSPostBuilder >> embedFieldName: nameString valueMarkdown: oneArgBlock [
 	"Build Embed Field value using a dedicated Markdown builder.
 	Receives a block with one argument that receives the Markdown builder"
 	self embedFieldName: nameString value: (oneArgBlock cull: self markdown) asString.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedFooterIconForm: aForm [
 	"Set embed footer icon"
 	"Set a Form object as an image.
@@ -89,25 +91,25 @@ TDSPostBuilder >> embedFooterIconForm: aForm [
 	self embedFooterIconUrl: 'attachment://', fileName.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedFooterIconMorph: aMorph [
 	"Set embed footer icon"
 	self embedFooterIconForm: aMorph imageForm.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedFooterIconUrl: aString [ 
 	"Set embed footer icon URL"
 	self embed footerIconUrl: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedFooterText: aString [ 
 	"Set embed footer text. It can be in Markdown format."
 	self embed footerText: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedImageForm: aForm [
 	"Set a Form object as an image.
 	It adds an attachment and an embed image."
@@ -118,7 +120,7 @@ TDSPostBuilder >> embedImageForm: aForm [
 	self embedImageUrl: 'attachment://', fileName.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedImageGIfBytes: bytes [
 	"Adds bytes as an attachment and an embed image."
 	| fileName |
@@ -128,56 +130,56 @@ TDSPostBuilder >> embedImageGIfBytes: bytes [
 	self embedImageUrl: 'attachment://', fileName.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedImageHeight: integer [ 
 	"Set embed image height"
 	self embed imageHeight: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedImageMorph: aMorph [
 	"Set a Morph object as an embed image."
 	self embedImageForm: aMorph imageForm
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedImageUrl: integer [ 
 	"Set embed image URL"
 	self embed imageUrl: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedImageWidth: integer [ 
 	"Set embed image width"
 	self embed imageWidth: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedInlineFieldName: nameString value: valueString [
 	"Set inlined embed field name and value"
 	self embed inlineFieldName: nameString value: valueString
 ]
 
-{ #category : #'protocol - markdown' }
+{ #category : 'protocol - markdown' }
 TDSPostBuilder >> embedInlineFieldName: nameString valueMarkdown: oneArgBlock [
 	"Build inlined Embed Field value using a dedicated Markdown builder.
 	Receives a block with one argument that receives the Markdown builder"
 	self embedInlineFieldName: nameString value: (oneArgBlock cull: self markdown) asString.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedProviderName: aString [ 
 	"Set embed provider name."
 	self embed providerName: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedProviderUrl: aString [ 
 	"Set embed provider URL."
 	self embed providerUrl: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedThumbnailForm: aForm [
 	"Set embed thumbnail icon"
 	"Set a Form object as a thumbnail icon.
@@ -189,69 +191,69 @@ TDSPostBuilder >> embedThumbnailForm: aForm [
 	self embedThumbnailUrl: 'attachment://', fileName.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedThumbnailHeight: integer [ 
 	"Set embed thumbnail height"
 	self embed thumbnailHeight: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedThumbnailMorph: aMorph [
 	"Set embed footer icon"
 	self embedThumbnailForm: aMorph imageForm.
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedThumbnailUrl: integer [ 
 	"Set embed thumbnail URL"
 	self embed thumbnailUrl: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedThumbnailWidth: integer [ 
 	"Set embed thumbnail width"
 	self embed thumbnailWidth: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedTitle: aString [ 
 	"Set embed title."
 	self embed title: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedUrl: aString [ 
 	"Set embed URL. 
 	The URL is opened by clicking on Embed Title or Image."
 	self embed url: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedVideoHeight: integer [ 
 	"Set embed video height"
 	self embed videoHeight: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedVideoUrl: aString [ 
 	"Set embed video URL."
 	self embed videoUrl: aString
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embedVideoWidth: integer [ 
 	"Set embed video width"
 	self embed videoWidth: integer
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 TDSPostBuilder >> embeds [
 	"Return a collection of embed objects"
 	<return: #Array of: #DSEmbed>
 	^ self explicitRequirement
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: aString bytes: aByteArray [ 
 	"Add a byte array as an attachment."
 	self 
@@ -259,7 +261,7 @@ TDSPostBuilder >> fileName: aString bytes: aByteArray [
 		entity: (ZnEntity bytes: aByteArray)
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: aString entity: aZnEntity [ 
 	"Add a byte array as an attachment."
 	self dataPost addMimePart: (ZnMimePart 
@@ -268,7 +270,7 @@ TDSPostBuilder >> fileName: aString entity: aZnEntity [
 			entity: aZnEntity)
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: aString fileReference: aFileReference [ 
 	"Add a file contents as an attachment."
 	| mimeType size fileStream entity mimePart |
@@ -282,7 +284,7 @@ TDSPostBuilder >> fileName: aString fileReference: aFileReference [
 	self dataPost addMimePart: mimePart.
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: aString form: aForm [ 
 	"Add a form as a PNG image (screenshot) attachment."
 	| encoded |
@@ -295,7 +297,7 @@ TDSPostBuilder >> fileName: aString form: aForm [
 				yourself).
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: aString fuelObject: anObject [ 
 	"Add a serialized object, using FUEL serialization library"
 	self 
@@ -303,7 +305,7 @@ TDSPostBuilder >> fileName: aString fuelObject: anObject [
 		bytes: (DSUtility serializeToByteArray: anObject)
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: fileNameString gifBytes: bytes [
 	"Add the bytes as a GIF image attachment."
 	self 
@@ -313,13 +315,13 @@ TDSPostBuilder >> fileName: fileNameString gifBytes: bytes [
 				yourself).
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: aString  morph: aMorph [ 
 	"Add a Morph as a PNG image (screenshot) attachment."
 	self fileName: aString form: aMorph imageForm.
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileName: fileNameString string: aString [ 
 	"Add a string as an attachment with charset UTF-8."
 	self 
@@ -327,7 +329,7 @@ TDSPostBuilder >> fileName: fileNameString string: aString [
 		entity: (ZnEntity text: aString)
 ]
 
-{ #category : #'protocol - attachment' }
+{ #category : 'protocol - attachment' }
 TDSPostBuilder >> fileReference: aFileReference [ 
 	"Add a file contents as an attachment."
 	| baseName |
@@ -335,7 +337,7 @@ TDSPostBuilder >> fileReference: aFileReference [
 	self fileName: baseName fileReference: aFileReference
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TDSPostBuilder >> generateFileNameWithExtension: extensionString [
 	"Return a unique file name with an extention, e.g., '.png'."
 	<return: #String>
@@ -346,46 +348,46 @@ TDSPostBuilder >> generateFileNameWithExtension: extensionString [
 		fileName.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TDSPostBuilder >> generateGifFileName [
 	"Return a unique file name with GIF extention."
 	<return: #String>
 	^ self generateFileNameWithExtension: '.gif'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TDSPostBuilder >> generatePngFileName [
 	"Return a unique file name with PNG extention."
 	<return: #String>
 	^ self generateFileNameWithExtension: '.png'
 ]
 
-{ #category : #'protocol - testing' }
+{ #category : 'protocol - testing' }
 TDSPostBuilder >> hasEmbedImages [
 	"Return true if any embed object has an image."
 	^ self embeds anySatisfy: #hasImage
 ]
 
-{ #category : #'protocol - testing' }
+{ #category : 'protocol - testing' }
 TDSPostBuilder >> hasEmbeds [
 	"Return true if a post includes embed objects"
 	^ self post hasEmbeds
 ]
 
-{ #category : #'protocol - testing' }
+{ #category : 'protocol - testing' }
 TDSPostBuilder >> isPostValid [
 	"Return true if the existing post is not empty,
 	and thus can be sent."
 	^ self post isEmpty not
 ]
 
-{ #category : #'protocol - markdown' }
+{ #category : 'protocol - markdown' }
 TDSPostBuilder >> markdown [ 
 	"Return a new Markdown builder"
 	^ DSMarkdownBuilder new
 ]
 
-{ #category : #'protocol - markdown' }
+{ #category : 'protocol - markdown' }
 TDSPostBuilder >> markdown: twoArgBlock [ 
 	"Build a Markdown string using a dedicated Markdown builder.
 	Receives a block with two arguments. 
@@ -394,30 +396,30 @@ TDSPostBuilder >> markdown: twoArgBlock [
 	twoArgBlock cull: self markdown cull: self.
 ]
 
-{ #category : #'protocol - basic' }
+{ #category : 'protocol - basic' }
 TDSPostBuilder >> message: aString [
 	"Set the message contents (up to 2000 characters)."
 	self content: aString
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TDSPostBuilder >> newEmbed [
 	^ DSEmbed new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TDSPostBuilder >> post [
 	"Return a post object."
 	^ self explicitRequirement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TDSPostBuilder >> post: aPost [
 	"Set a post object."
 	self explicitRequirement
 ]
 
-{ #category : #scripting }
+{ #category : 'scripting' }
 TDSPostBuilder >> with: aBlockClosure [ 
 	^ aBlockClosure cull: self
 ]

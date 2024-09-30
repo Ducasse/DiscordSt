@@ -2,17 +2,19 @@
 A DSFlattenChannelsKeepOrderCommandTest is a test class for testing the behavior of DSFlattenChannelsKeepOrderCommand
 "
 Class {
-	#name : #DSFlattenChannelsKeepOrderCommandTest,
-	#superclass : #DSChannelsCommandTest,
-	#category : 'Discord-Core-Tests-Commands'
+	#name : 'DSFlattenChannelsKeepOrderCommandTest',
+	#superclass : 'DSChannelsCommandTest',
+	#category : 'Discord-Core-Tests-Commands',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Commands'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSFlattenChannelsKeepOrderCommandTest >> classToTest [
 	^ DSFlattenChannelsKeepOrderCommand
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSFlattenChannelsKeepOrderCommandTest >> testFlattenedChannels [
 	command := self classToTest new.
 	command 

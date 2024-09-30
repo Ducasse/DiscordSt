@@ -2,12 +2,14 @@
 A DSUtilityTest is a test class for testing the behavior of DSUtility
 "
 Class {
-	#name : #DSUtilityTest,
-	#superclass : #TestCase,
-	#category : 'Discord-Core-Tests-Utility'
+	#name : 'DSUtilityTest',
+	#superclass : 'TestCase',
+	#category : 'Discord-Core-Tests-Utility',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Utility'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testDisplayHTTPProgressDuring [
 	| result |
 	result := DSUtility 
@@ -20,7 +22,7 @@ DSUtilityTest >> testDisplayHTTPProgressDuring [
 	self assert: result isSuccess.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testMaterializeFromByteArray [
 	| bytes result |
 	bytes := DSUtility serializeToByteArray: self.
@@ -29,7 +31,7 @@ DSUtilityTest >> testMaterializeFromByteArray [
 	self assert: result class equals: self class.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testPrintHumanReadableBytes [
 	self assert: (DSUtility printHumanReadableBytes: 0) equals: '0 bytes'.
 	self assert: (DSUtility printHumanReadableBytes: 1) equals: '1 bytes'.
@@ -50,7 +52,7 @@ DSUtilityTest >> testPrintHumanReadableBytes [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testSafeFileName [
 	| safeString |
 	safeString := DSUtility safeFileName: 'a .(DDDSClient): user.name.secondname@gggmaillll.com (detail) (more info) (and more info)'.
@@ -58,7 +60,7 @@ DSUtilityTest >> testSafeFileName [
 	self assert: safeString equals: 'a-DDDSClient-us'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testSafeFileName2 [
 	| safeString |
 	safeString := DSUtility safeFileName: '   a DSClient: user.name.secondname@gggmaillll.com (detail) (d...etc...   '.
@@ -66,7 +68,7 @@ DSUtilityTest >> testSafeFileName2 [
 	self assert: safeString equals: 'a-DSClient-user'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testSafeFileName3 [
 	| safeString |
 	safeString := DSUtility
@@ -75,7 +77,7 @@ DSUtilityTest >> testSafeFileName3 [
 	self assert: safeString equals: 'a-Text-for-a-DSC'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSUtilityTest >> testSerializeToByteArray [
 	| bytes |
 	bytes := DSUtility serializeToByteArray: self.

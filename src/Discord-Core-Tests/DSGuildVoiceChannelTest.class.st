@@ -2,41 +2,43 @@
 A DSVoiceChannelTest is a test class for testing the behavior of DSVoiceChannel.
 "
 Class {
-	#name : #DSGuildVoiceChannelTest,
-	#superclass : #DSGuildChannelTest,
-	#category : 'Discord-Core-Tests-Model'
+	#name : 'DSGuildVoiceChannelTest',
+	#superclass : 'DSGuildChannelTest',
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuildVoiceChannelTest >> correctType [
 	^ 'voice'
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuildVoiceChannelTest >> incorrectType [
 	^ 'text'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGuildVoiceChannelTest >> newChannel [
 	^ DSGuildVoiceChannel new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildVoiceChannelTest >> testBitrate [
 	channel := self newChannel.
 	channel bitrate: 1234.
 	self assert: channel bitrate equals: 1234.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildVoiceChannelTest >> testUserLimit [
 	channel := self newChannel.
 	channel userLimit: 1234.
 	self assert: channel userLimit equals: 1234.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuildVoiceChannelTest >> typeNameString [
 	^ 'Voice'
 ]

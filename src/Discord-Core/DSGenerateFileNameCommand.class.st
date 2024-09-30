@@ -17,17 +17,19 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSGenerateFileNameCommand,
-	#superclass : #DSCommand,
+	#name : 'DSGenerateFileNameCommand',
+	#superclass : 'DSCommand',
 	#instVars : [
 		'extension',
 		'existingFileNames',
 		'fileName'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSGenerateFileNameCommand >> execute [
 	| index |
 	index := 0.
@@ -42,37 +44,37 @@ DSGenerateFileNameCommand >> execute [
 	] whileTrue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGenerateFileNameCommand >> existingFileNames [
 	^ existingFileNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGenerateFileNameCommand >> existingFileNames: anObject [
 	existingFileNames := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGenerateFileNameCommand >> extension [
 	^ extension
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGenerateFileNameCommand >> extension: anObject [
 	extension := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGenerateFileNameCommand >> fileName [
 	^ fileName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGenerateFileNameCommand >> fileName: anObject [
 	fileName := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGenerateFileNameCommand >> initialize [
 	super initialize.
 	extension := '.png'.

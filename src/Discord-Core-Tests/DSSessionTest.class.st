@@ -2,20 +2,22 @@
 A DSSessionTest is a test class for testing the behavior of DSSession
 "
 Class {
-	#name : #DSSessionTest,
-	#superclass : #DSCoreTestCase,
+	#name : 'DSSessionTest',
+	#superclass : 'DSCoreTestCase',
 	#instVars : [
 		'session'
 	],
-	#category : 'Discord-Core-Tests-Model'
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSSessionTest >> newObjectToTest [
 	^ self newSession 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testEmail [
 	session := self newSession.
 	session email: self emailString.
@@ -23,7 +25,7 @@ DSSessionTest >> testEmail [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testEmailPassword [
 	session := self newSession.
 	session email: self emailString password: self passwordString.
@@ -31,27 +33,27 @@ DSSessionTest >> testEmailPassword [
 	self assert: session password equals: self passwordString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testIsAuthenticated [
 	session := self newSession.
 	self deny: session isAuthenticated.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testPassword [
 	session := self newSession.
 	session password: self passwordString.
 	self assert: session password equals: self passwordString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testPrintString [
 	session := self newSession.
 	self assert: session printString equals: 'Session: unauthenticated'.
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testPrintString2 [
 	session := self newSession.
 	session token: self tokenString.
@@ -59,7 +61,7 @@ DSSessionTest >> testPrintString2 [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testPrintString3 [
 	session := self newSession.
 	session email: self emailString.
@@ -68,7 +70,7 @@ DSSessionTest >> testPrintString3 [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testPrintString4 [
 	session := self newSession.
 	session email: self emailString.
@@ -76,7 +78,7 @@ DSSessionTest >> testPrintString4 [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testResetToken [
 	session := self newSession.
 	session token: self tokenString.
@@ -84,7 +86,7 @@ DSSessionTest >> testResetToken [
 	self assert: session token isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSessionTest >> testToken [
 	session := self newSession.
 	session token: self tokenString.

@@ -4,22 +4,24 @@ I represent an object that is post to Discord using Webhook, Bot, or User connec
 
 "
 Trait {
-	#name : #TDSPost,
-	#category : 'Discord-Core-Trait'
+	#name : 'TDSPost',
+	#category : 'Discord-Core-Trait',
+	#package : 'Discord-Core',
+	#tag : 'Trait'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TDSPost >> accept: aVisitor [ 
 	^ self explicitRequirement
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TDSPost >> hasEmbeds [
 	"Return true if a post includes embed objects"
 	^ self explicitRequirement
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TDSPost >> isEmpty [ 
 	^ self explicitRequirement
 ]

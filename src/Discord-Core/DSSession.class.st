@@ -17,30 +17,32 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSSession,
-	#superclass : #Object,
+	#name : 'DSSession',
+	#superclass : 'Object',
 	#instVars : [
 		'email',
 		'password',
 		'token',
 		'isBot'
 	],
-	#category : 'Discord-Core-REST-Api'
+	#category : 'Discord-Core-REST-Api',
+	#package : 'Discord-Core',
+	#tag : 'REST-Api'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSession >> email [
 	"Get email or nil used to login into a Discord server."
 	^ email
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSession >> email: aString [
 	"Set email used to login into a Discord server."
 	email := aString
 ]
 
-{ #category : #convenient }
+{ #category : 'convenient' }
 DSSession >> email: emailString password: passwordString [ 
 	"Set email and password used to login into a Discord server."
 	self 
@@ -48,7 +50,7 @@ DSSession >> email: emailString password: passwordString [
 		password: passwordString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSSession >> ensureVolatilePassword [
 	| passwordValue |
 	passwordValue := ''.
@@ -60,7 +62,7 @@ DSSession >> ensureVolatilePassword [
 	password string: passwordValue.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSSession >> ensureVolatileToken [
 	| tokenValue |
 	tokenValue := ''.
@@ -72,27 +74,27 @@ DSSession >> ensureVolatileToken [
 	token string: tokenValue.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSSession >> isAuthenticated [
 	"Return true if token is not nil. It means that the client was previously authenticated successfully."
 	^ self token isEmptyOrNil not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSession >> password [
 	"Get password used to login into a Discord server."
 	self ensureVolatilePassword.
 	^ password value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSession >> password: aString [
 	"Set password used to login into a Discord server."
 	self ensureVolatilePassword.
 	password string: aString
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSSession >> printOn: aStream [
 	self isAuthenticated 
 		ifFalse: [ aStream << 'Session: unauthenticated'.
@@ -103,20 +105,20 @@ DSSession >> printOn: aStream [
 				aStream << ' as ' << string ] ].
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSSession >> resetToken [
 	"Reset token (logout from Discord)."
 	self token: ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSession >> token [
 	"Get token used to authorize Discord opperations."
 	self ensureVolatileToken.
 	^ token value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSession >> token: aString [
 	"Set token used to authorize Discord opperations."
 	self ensureVolatileToken.

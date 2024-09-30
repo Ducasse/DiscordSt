@@ -2,17 +2,19 @@
 A DSEmbedImageTest is a test class for testing the behavior of DSEmbedImage
 "
 Class {
-	#name : #DSEmbedImageTest,
-	#superclass : #DSObjectTest,
-	#category : 'Discord-Core-Tests-Model'
+	#name : 'DSEmbedImageTest',
+	#superclass : 'DSObjectTest',
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbedImageTest >> newObjectToTest [
 	^ DSEmbedImage new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedImageTest >> testExtent [
 	object := self newObjectToTest.
 	object width: 41.
@@ -21,14 +23,14 @@ DSEmbedImageTest >> testExtent [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedImageTest >> testHeight [
 	object := self newObjectToTest.
 	object height: 42.
 	self assert: object height equals: 42.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedImageTest >> testProxyUrl [
 	object := self newObjectToTest.
 	object proxyUrl: self anyString.
@@ -36,13 +38,13 @@ DSEmbedImageTest >> testProxyUrl [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedImageTest >> testUrl [
 	object := self newObjectToTest url: self anyString; yourself.
 	self assert: object url equals: self anyString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedImageTest >> testWidth [
 	object := self newObjectToTest.
 	object width: 42.

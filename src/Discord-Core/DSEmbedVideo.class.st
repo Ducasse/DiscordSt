@@ -23,42 +23,44 @@ DSEmbed new
 
 "
 Class {
-	#name : #DSEmbedVideo,
-	#superclass : #DSObject,
+	#name : 'DSEmbedVideo',
+	#superclass : 'DSObject',
 	#instVars : [
 		'url',
 		'height',
 		'width'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedVideo >> height [
 	^ height
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedVideo >> height: anObject [
 	height := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedVideo >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedVideo >> url: anObject [
 	url := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedVideo >> width [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedVideo >> width: anObject [
 	width := anObject
 ]

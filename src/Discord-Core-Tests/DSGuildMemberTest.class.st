@@ -2,17 +2,19 @@
 A DSGuildMemberTest is a test class for testing the behavior of DSGuildMember
 "
 Class {
-	#name : #DSGuildMemberTest,
-	#superclass : #DSObjectTest,
-	#category : 'Discord-Core-Tests-Model'
+	#name : 'DSGuildMemberTest',
+	#superclass : 'DSObjectTest',
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #coverage }
+{ #category : 'coverage' }
 DSGuildMemberTest >> classToTest [
 	^ DSGuildMember
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildMemberTest >> testNickOrUsername [
 	object := self classToTest new.
 	object user: DSUser alice.
@@ -21,7 +23,7 @@ DSGuildMemberTest >> testNickOrUsername [
 		equals: 'Alice'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildMemberTest >> testNickOrUsername2 [
 	object := self classToTest new.
 	object nick: 'My Nick'.
@@ -31,7 +33,7 @@ DSGuildMemberTest >> testNickOrUsername2 [
 		equals: 'My Nick'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildMemberTest >> testNickOrUsernameDefault [
 	object := self classToTest new.
 	self 
@@ -39,7 +41,7 @@ DSGuildMemberTest >> testNickOrUsernameDefault [
 		equals: '<unknown>'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildMemberTest >> testPrinString [
 	object := self classToTest basic.
 	self 
@@ -50,7 +52,7 @@ DSGuildMemberTest >> testPrinString [
 		description: 'Should display nick'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildMemberTest >> testPrinStringDefault [
 	self assert: self classToTest new printString isString.
 ]

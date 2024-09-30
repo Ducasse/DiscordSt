@@ -15,8 +15,8 @@ self_mute	bool	whether this user is locally muted
 suppress	bool	whether this user is muted by the current user
 "
 Class {
-	#name : #DSVoiceState,
-	#superclass : #DSObject,
+	#name : 'DSVoiceState',
+	#superclass : 'DSObject',
 	#instVars : [
 		'guildId',
 		'channelId',
@@ -28,95 +28,97 @@ Class {
 		'selfMute',
 		'suppress'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> channelId [
 	^ channelId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> channelId: anObject [
 	channelId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> deaf [
 	^ deaf
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> deaf: anObject [
 	deaf := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> guildId [
 	^ guildId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> guildId: anObject [
 	guildId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> mute [
 	^ mute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> mute: anObject [
 	mute := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> selfDeaf [
 	^ selfDeaf
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> selfDeaf: anObject [
 	selfDeaf := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> selfMute [
 	^ selfMute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> selfMute: anObject [
 	selfMute := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> sessionId [
 	^ sessionId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> sessionId: anObject [
 	sessionId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> suppress [
 	^ suppress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> suppress: anObject [
 	suppress := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> userId [
 	^ userId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSVoiceState >> userId: anObject [
 	userId := anObject
 ]

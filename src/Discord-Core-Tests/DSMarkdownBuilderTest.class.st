@@ -2,20 +2,22 @@
 A DSMarkdownBuilderTest is a test class for testing the behavior of DSMarkdownBuilder
 "
 Class {
-	#name : #DSMarkdownBuilderTest,
-	#superclass : #TestCase,
+	#name : 'DSMarkdownBuilderTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'builder'
 	],
-	#category : 'Discord-Core-Tests-Utility'
+	#category : 'Discord-Core-Tests-Utility',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Utility'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSMarkdownBuilderTest >> classToTest [
 	^ DSMarkdownBuilder
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testAsString [
 	| result |
 	builder := self classToTest new.
@@ -24,7 +26,7 @@ DSMarkdownBuilderTest >> testAsString [
 	self assert: result equals: 'a text'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testBold [
 	| result |
 	builder := self classToTest new.
@@ -33,7 +35,7 @@ DSMarkdownBuilderTest >> testBold [
 	self assert: result equals: '**bold**'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testBoldItalic [
 	| result |
 	builder := self classToTest new.
@@ -42,7 +44,7 @@ DSMarkdownBuilderTest >> testBoldItalic [
 	self assert: result equals: '**_bold and italic_**'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testBuild [
 	| result |
 	builder := self classToTest new.
@@ -50,7 +52,7 @@ DSMarkdownBuilderTest >> testBuild [
 	self assert: result equals: ''.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testBuildTwice [
 	| result |
 	builder := self classToTest new.
@@ -60,7 +62,7 @@ DSMarkdownBuilderTest >> testBuildTwice [
 	self assert: result equals: ''.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testCr [
 	| result |
 	builder := self classToTest new.
@@ -69,7 +71,7 @@ DSMarkdownBuilderTest >> testCr [
 	self assert: result equals: String cr.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testInlineScript [
 	| result |
 	builder := self classToTest new.
@@ -78,7 +80,7 @@ DSMarkdownBuilderTest >> testInlineScript [
 	self assert: result equals: '`Behavior new`'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testItalic [
 	| result |
 	builder := self classToTest new.
@@ -87,7 +89,7 @@ DSMarkdownBuilderTest >> testItalic [
 	self assert: result equals: '*italic*'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testLinkUrl [
 	| result |
 	builder := self classToTest new.
@@ -96,7 +98,7 @@ DSMarkdownBuilderTest >> testLinkUrl [
 	self assert: result equals: '[Pharo](http://pharo.org)'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testPharoScript [
 	| result |
 	builder := self classToTest new.
@@ -107,7 +109,7 @@ DSMarkdownBuilderTest >> testPharoScript [
 		equals: (String cr join: #( '```Smalltalk' 'Smalltalk os version.' '```' '')).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testScriptLanguage [
 	| result |
 	builder := self classToTest new.
@@ -118,7 +120,7 @@ DSMarkdownBuilderTest >> testScriptLanguage [
 		equals: (String cr join: #( '```JavaScript' 'document open;' '```' '')).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testSpace [
 	| result |
 	builder := self classToTest new.
@@ -127,7 +129,7 @@ DSMarkdownBuilderTest >> testSpace [
 	self assert: result equals: String space.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testStrikethrough [
 	| result |
 	builder := self classToTest new.
@@ -136,7 +138,7 @@ DSMarkdownBuilderTest >> testStrikethrough [
 	self assert: result equals: '~~strikethrough~~'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSMarkdownBuilderTest >> testText [
 	| result |
 	builder := self classToTest new.

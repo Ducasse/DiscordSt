@@ -1,23 +1,25 @@
 Class {
-	#name : #DSGetImageCommand,
-	#superclass : #DSCommand,
+	#name : 'DSGetImageCommand',
+	#superclass : 'DSCommand',
 	#instVars : [
 		'image'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSGetImageCommand >> execute [
 	self image data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGetImageCommand >> image [
 	^ image
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGetImageCommand >> image: anObject [
 	image := anObject
 ]

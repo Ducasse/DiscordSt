@@ -13,53 +13,55 @@ DSEmbedAuthor new
 
 "
 Class {
-	#name : #DSEmbedAuthor,
-	#superclass : #DSObject,
+	#name : 'DSEmbedAuthor',
+	#superclass : 'DSObject',
 	#instVars : [
 		'name',
 		'url',
 		'iconUrl',
 		'proxyIconUrl'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> iconUrl [
 	^ iconUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> iconUrl: anObject [
 	iconUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> proxyIconUrl [
 	^ proxyIconUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> proxyIconUrl: anObject [
 	proxyIconUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedAuthor >> url: anObject [
 	url := anObject
 ]

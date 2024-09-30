@@ -23,8 +23,8 @@ DSEmbed new
 
 "
 Class {
-	#name : #DSEmbedImage,
-	#superclass : #DSObject,
+	#name : 'DSEmbedImage',
+	#superclass : 'DSObject',
 	#instVars : [
 		'url',
 		'proxyUrl',
@@ -32,10 +32,12 @@ Class {
 		'width',
 		'data'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSEmbedImage class >> screenshot [
 	<gtExample>
 	^ self new
@@ -46,7 +48,7 @@ DSEmbedImage class >> screenshot [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSEmbedImage >> asForm [
 	"Download data if necessary and convert to Form object."
 	| aStream |
@@ -54,7 +56,7 @@ DSEmbedImage >> asForm [
 	^ ImageReadWriter formFromStream: aStream 
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSEmbedImage >> data [
 	"Get the downloaded data"
 	^ data
@@ -64,13 +66,13 @@ DSEmbedImage >> data [
 				contents ]
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSEmbedImage >> extent [
 	<return: #Point>
 	^ self width @ self height
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSEmbedImage >> gtInspectorActionDownloadData [
 	<gtInspectorAction>
 	^ GLMGenericAction new
@@ -80,7 +82,7 @@ DSEmbedImage >> gtInspectorActionDownloadData [
 		title: 'Download data'
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSEmbedImage >> gtInspectorImage: composite [
 	<gtInspectorPresentationOrder: 2>
 	^ composite morph
@@ -95,55 +97,55 @@ DSEmbedImage >> gtInspectorImage: composite [
 		yourself	
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSEmbedImage >> hasData [
 	"Return true if the data are downloaded."
 	^ data notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSEmbedImage >> hasKnownScheme [
 	<return: #Boolean>
 	^ [ self url asZnUrl enforceKnownScheme. true ]
 		on: ZnUnknownScheme do: [ :exception | false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> height [
 	^ height
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> height: anObject [
 	height := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> proxyUrl [
 	^ proxyUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> proxyUrl: anObject [
 	proxyUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> url: anObject [
 	url := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> width [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedImage >> width: anObject [
 	width := anObject
 ]

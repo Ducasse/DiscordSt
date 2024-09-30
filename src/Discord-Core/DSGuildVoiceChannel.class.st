@@ -5,8 +5,8 @@ See documentation at https://discordapp.com/developers/docs/resources/channel#gu
 
 "
 Class {
-	#name : #DSGuildVoiceChannel,
-	#superclass : #DSChannel,
+	#name : 'DSGuildVoiceChannel',
+	#superclass : 'DSChannel',
 	#instVars : [
 		'id',
 		'guildId',
@@ -17,85 +17,87 @@ Class {
 		'userLimit',
 		'parentId'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> bitrate [
 	^ bitrate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> bitrate: anObject [
 	bitrate := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> guildId [
 	^ guildId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> guildId: anObject [
 	guildId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGuildVoiceChannel >> isGuildVoiceChannel [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> parentId [
 	^ parentId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> parentId: anObject [
 	parentId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> permissionOverwrites [
 	^ permissionOverwrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> permissionOverwrites: anObject [
 	permissionOverwrites := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSGuildVoiceChannel >> printOn: aStream [
 	"Print channel name if available"
 	aStream << 'Voice Channel: '.
@@ -105,17 +107,17 @@ DSGuildVoiceChannel >> printOn: aStream [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> type [
 	^ DSChannelGuildVoiceType uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> userLimit [
 	^ userLimit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildVoiceChannel >> userLimit: anObject [
 	userLimit := anObject
 ]

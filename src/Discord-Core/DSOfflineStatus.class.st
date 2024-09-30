@@ -2,17 +2,19 @@
 I represent offline status.
 "
 Class {
-	#name : #DSOfflineStatus,
-	#superclass : #DSConnectionStatus,
-	#category : 'Discord-Core-Model'
+	#name : 'DSOfflineStatus',
+	#superclass : 'DSConnectionStatus',
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOfflineStatus class >> description [
 	^ 'Offline'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOfflineStatus class >> statusString [
 	^ 'offline'
 ]

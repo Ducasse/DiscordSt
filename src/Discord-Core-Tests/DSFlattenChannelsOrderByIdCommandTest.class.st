@@ -2,17 +2,19 @@
 A DSFlattenChannelsCommandTest is a test class for testing the behavior of DSFlattenChannelsCommand
 "
 Class {
-	#name : #DSFlattenChannelsOrderByIdCommandTest,
-	#superclass : #DSChannelsCommandTest,
-	#category : 'Discord-Core-Tests-Commands'
+	#name : 'DSFlattenChannelsOrderByIdCommandTest',
+	#superclass : 'DSChannelsCommandTest',
+	#category : 'Discord-Core-Tests-Commands',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Commands'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSFlattenChannelsOrderByIdCommandTest >> classToTest [
 	^ DSFlattenChannelsOrderByIdCommand
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSFlattenChannelsOrderByIdCommandTest >> testFlattenedChannels [
 	command := self classToTest new.
 	command 

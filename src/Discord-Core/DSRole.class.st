@@ -18,8 +18,8 @@ Roles without colors (color == 0) do not count towards the final computed color 
 
 "
 Class {
-	#name : #DSRole,
-	#superclass : #DSObject,
+	#name : 'DSRole',
+	#superclass : 'DSObject',
 	#instVars : [
 		'id',
 		'name',
@@ -30,85 +30,87 @@ Class {
 		'managed',
 		'mentionable'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> color [
 	^ color
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> color: anObject [
 	color := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> hoist [
 	^ hoist
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> hoist: anObject [
 	hoist := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> managed [
 	^ managed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> managed: anObject [
 	managed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> mentionable [
 	^ mentionable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> mentionable: anObject [
 	mentionable := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> permissions [
 	^ permissions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> permissions: anObject [
 	permissions := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRole >> position: anObject [
 	position := anObject
 ]

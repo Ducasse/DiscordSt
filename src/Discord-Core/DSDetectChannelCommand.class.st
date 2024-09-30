@@ -17,18 +17,20 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSDetectChannelCommand,
-	#superclass : #DSChannelsCommand,
+	#name : 'DSDetectChannelCommand',
+	#superclass : 'DSChannelsCommand',
 	#instVars : [
 		'satisfiedBy',
 		'satisfyingChannel'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSDetectChannelCommand class >> searchForName [
-	<gtExample>
+
 	^ self new
 		channels: DSCategoryChannel withTwoChannels;
 		satisfiedBy: [ :aChannel | aChannel name = 'ROCKET CHEESE' ];
@@ -36,31 +38,31 @@ DSDetectChannelCommand class >> searchForName [
 		satisfyingChannel
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSDetectChannelCommand >> execute [
 	self channels do: [ :eachChannel |
 		self satisfyingChannel: (eachChannel detectChannel: self satisfiedBy).
 		self satisfyingChannel ifNotNil: [ ^ self ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDetectChannelCommand >> satisfiedBy [
 	^ satisfiedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDetectChannelCommand >> satisfiedBy: oneArgBlock [
 	"Set an one-argument block that return true if a channel, given as the argument, is the wanted.
 	The block returns false otherwise."
 	satisfiedBy := oneArgBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDetectChannelCommand >> satisfyingChannel [
 	^ satisfyingChannel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDetectChannelCommand >> satisfyingChannel: anObject [
 	satisfyingChannel := anObject
 ]

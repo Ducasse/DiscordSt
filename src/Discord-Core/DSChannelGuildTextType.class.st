@@ -2,19 +2,22 @@
 I am a text based channel type.
 "
 Class {
-	#name : #DSChannelGuildTextType,
-	#superclass : #DSChannelType,
-	#category : 'Discord-Core-Model'
+	#name : 'DSChannelGuildTextType',
+	#superclass : 'DSChannelType',
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelGuildTextType class >> typeNumber [
 	^ 0
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSChannelGuildTextType >> asSpecifiedChannel: aDSUnspecifiedChannel [ 
-	<return: #DSGuildTextChannel>
+	"Return a DSGuildTextChannel"
+	
 	^ DSGuildTextChannel new
 		id: aDSUnspecifiedChannel id;
 		guildId: aDSUnspecifiedChannel guildId;
@@ -29,7 +32,7 @@ DSChannelGuildTextType >> asSpecifiedChannel: aDSUnspecifiedChannel [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelGuildTextType >> name [
 	^ 'Text Channel'
 ]

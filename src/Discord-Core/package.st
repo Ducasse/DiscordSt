@@ -1,1 +1,1 @@
-Package { #name : #'Discord-Core' }
+Package { #name : 'Discord-Core' }

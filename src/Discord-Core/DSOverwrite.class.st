@@ -11,53 +11,55 @@ deny	integer	permission bit set
 
 "
 Class {
-	#name : #DSOverwrite,
-	#superclass : #DSObject,
+	#name : 'DSOverwrite',
+	#superclass : 'DSObject',
 	#instVars : [
 		'id',
 		'type',
 		'allow',
 		'deny'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> allow [
 	^ allow
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> allow: anObject [
 	allow := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> deny [
 	^ deny
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> deny: anObject [
 	deny := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSOverwrite >> type: anObject [
 	type := anObject
 ]

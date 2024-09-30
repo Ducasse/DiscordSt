@@ -11,20 +11,22 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSMarkdownBuilder,
-	#superclass : #Object,
+	#name : 'DSMarkdownBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'stream'
 	],
-	#category : 'Discord-Core-Utility'
+	#category : 'Discord-Core-Utility',
+	#package : 'Discord-Core',
+	#tag : 'Utility'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSMarkdownBuilder >> asString [
 	^ self build
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> bold: aString [ 
 	"Add a bold script"
 	stream 
@@ -33,7 +35,7 @@ DSMarkdownBuilder >> bold: aString [
 		nextPutAll: '**'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> boldItalic: aString [ 
 	"Add a bold script"
 	stream 
@@ -42,34 +44,34 @@ DSMarkdownBuilder >> boldItalic: aString [
 		nextPutAll: '_**'
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 DSMarkdownBuilder >> build [
 	"Close the stream and return contents"
-	<return: #String>
+
 	| contents |
 	contents := stream close; contents.
 	self initializeStream.
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> cr [
 	"Add a carriage return"
 	stream nextPut: Character cr
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSMarkdownBuilder >> initialize [
 	super initialize.
 	self initializeStream.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSMarkdownBuilder >> initializeStream [
 	stream := WriteStream on: String new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> inlineScript: aString [ 
 	"Add a inlined script"
 	stream 
@@ -78,7 +80,7 @@ DSMarkdownBuilder >> inlineScript: aString [
 		nextPut: $`
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> italic: aString [ 
 	"Add a italic script"
 	stream 
@@ -87,7 +89,7 @@ DSMarkdownBuilder >> italic: aString [
 		nextPut: $*
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> link: linkName url: linkUrl [
 	"Add a URL link"
 	stream 
@@ -98,13 +100,13 @@ DSMarkdownBuilder >> link: linkName url: linkUrl [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> pharoScript: scriptString [
 	"Add a Smalltalk script"
 	self script: scriptString language: 'Smalltalk'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> script: scriptString language: typeString [
 	"Add a script of a given language"
 	stream 
@@ -118,13 +120,13 @@ DSMarkdownBuilder >> script: scriptString language: typeString [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> space [
 	"Add a space"
 	stream nextPut: Character space
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> strikeThrough: aString [ 
 	"Add a bold script"
 	stream 
@@ -133,7 +135,7 @@ DSMarkdownBuilder >> strikeThrough: aString [
 		nextPutAll: '~~'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMarkdownBuilder >> text: aString [ 
 	"Add a text"
 	stream nextPutAll: aString asString

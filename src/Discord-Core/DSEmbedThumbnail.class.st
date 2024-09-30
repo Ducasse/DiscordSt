@@ -23,53 +23,55 @@ DSEmbed new
 
 "
 Class {
-	#name : #DSEmbedThumbnail,
-	#superclass : #DSObject,
+	#name : 'DSEmbedThumbnail',
+	#superclass : 'DSObject',
 	#instVars : [
 		'url',
 		'proxyUrl',
 		'height',
 		'width'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> height [
 	^ height
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> height: anObject [
 	height := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> proxyUrl [
 	^ proxyUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> proxyUrl: anObject [
 	proxyUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> url: anObject [
 	url := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> width [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedThumbnail >> width: anObject [
 	width := anObject
 ]

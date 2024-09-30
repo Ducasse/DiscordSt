@@ -4,8 +4,8 @@ See documentation at https://discordapp.com/developers/docs/resources/channel#gu
 
 "
 Class {
-	#name : #DSCategoryChannel,
-	#superclass : #DSChannel,
+	#name : 'DSCategoryChannel',
+	#superclass : 'DSChannel',
 	#instVars : [
 		'id',
 		'guildId',
@@ -15,10 +15,12 @@ Class {
 		'nsfw',
 		'subordinateChannels'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSCategoryChannel class >> withTwoChannels [
 	<gtExample>
 	^ DSModelJsonMapping 
@@ -27,7 +29,7 @@ DSCategoryChannel class >> withTwoChannels [
 		on: DSModelJsonMapping jsonCollectionOfChannelsThree readStream.
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSCategoryChannel >> children [
 	"Return empty collection because we do not want to expand messages in a tree view.
 	There could be too many.
@@ -35,7 +37,7 @@ DSCategoryChannel >> children [
 	^ self subordinateChannels
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSCategoryChannel >> detectChannel: conditionBlock [ 
 	"Return a channel (itself or any subordinate channel) that satisfy the condition.
 	Return nil, if there is no such channel.
@@ -50,82 +52,72 @@ DSCategoryChannel >> detectChannel: conditionBlock [
 				^ nil ]
 ]
 
-{ #category : #'gt-inspector-extension' }
-DSCategoryChannel >> gtInspectorSubordinateChannelsIn: composition [
-	<gtInspectorPresentationOrder: 1>
-	^ composition list
-		title: [ 'Channels' translated ];
-		display: [ self subordinateChannels ];
-		when: [ self subordinateChannels notNil ];
-		yourself
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> guildId [
 	^ guildId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> guildId: anObject [
 	guildId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSCategoryChannel >> isCategory [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> nsfw [
 	^ nsfw
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> nsfw: anObject [
 	nsfw := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> permissionOverwrites [
 	^ permissionOverwrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> permissionOverwrites: anObject [
 	permissionOverwrites := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSCategoryChannel >> printOn: aStream [
 	"Print channel name if available"
 	aStream << 'Category: '.
@@ -135,29 +127,29 @@ DSCategoryChannel >> printOn: aStream [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> restApi: aRestApi [
 	super restApi: aRestApi.
 	self updateRestApi
 ]
 
-{ #category : #'accessing - children' }
+{ #category : 'accessing - children' }
 DSCategoryChannel >> subordinateChannels [
 	^ subordinateChannels
 ]
 
-{ #category : #'accessing - children' }
+{ #category : 'accessing - children' }
 DSCategoryChannel >> subordinateChannels: aCollection [ 
 	subordinateChannels := aCollection.
 	self updateRestApi.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSCategoryChannel >> type [
 	^ DSChannelGuildCategoryType uniqueInstance
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSCategoryChannel >> updateRestApi [
 	self subordinateChannels ifNotNil: [ :aCollection | 
 		aCollection do: [ :eachChannel | eachChannel restApi: self restApi ] ]

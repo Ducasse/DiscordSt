@@ -2,7 +2,9 @@
 I indicate that email and/or password used for login are incorrect.
 "
 Class {
-	#name : #DSCannotLoginError,
-	#superclass : #DSDiscordResponseError,
-	#category : 'Discord-Core-Exceptions'
+	#name : 'DSCannotLoginError',
+	#superclass : 'DSDiscordResponseError',
+	#category : 'Discord-Core-Exceptions',
+	#package : 'Discord-Core',
+	#tag : 'Exceptions'
 }

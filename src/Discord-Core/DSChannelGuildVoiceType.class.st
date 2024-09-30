@@ -2,19 +2,21 @@
 I am a voice channel type.
 "
 Class {
-	#name : #DSChannelGuildVoiceType,
-	#superclass : #DSChannelType,
-	#category : 'Discord-Core-Model'
+	#name : 'DSChannelGuildVoiceType',
+	#superclass : 'DSChannelType',
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelGuildVoiceType class >> typeNumber [
 	^ 2
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSChannelGuildVoiceType >> asSpecifiedChannel: aDSUnspecifiedChannel [ 
-	<return: #DSGuildVoiceChannel>
+	
 	^ DSGuildVoiceChannel new
 		id: aDSUnspecifiedChannel id;
 		guildId: aDSUnspecifiedChannel guildId;
@@ -27,7 +29,7 @@ DSChannelGuildVoiceType >> asSpecifiedChannel: aDSUnspecifiedChannel [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelGuildVoiceType >> name [
 	^ 'Voice Channel'
 ]

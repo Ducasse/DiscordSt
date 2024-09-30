@@ -14,8 +14,8 @@ email?	string	the user's email	email
 
 "
 Class {
-	#name : #DSUser,
-	#superclass : #DSObject,
+	#name : 'DSUser',
+	#superclass : 'DSObject',
 	#instVars : [
 		'restApi',
 		'id',
@@ -27,10 +27,12 @@ Class {
 		'isVerified',
 		'email'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSUser class >> alice [
 	<gtExample>
 	^ self new
@@ -40,7 +42,7 @@ DSUser class >> alice [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSUser >> asAuthor [
 	"Return a copy with a basic information, necessary to identify a message author."
 	^ self class new
@@ -51,56 +53,56 @@ DSUser >> asAuthor [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> avatarHash [
 	^ avatarHash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> avatarHash: anObject [
 	avatarHash := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSUser >> avatarUrl [
 	"Return a user's avatar URL. 
 	Return nil if the user has no avatar."
 	^ self restApi userAvatarUrl: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> children [
 	^ #()
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSUser >> directChannels [
 	"Return collection of dirrect channels"
 	<return: #DSChannels of: #DSDirectMessageChannel>
 	^ self restApi directChannels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> discriminator [
 	^ discriminator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> discriminator: anObject [
 	discriminator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> email [
 	^ email
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> email: anObject [
 	email := anObject
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSUser >> gtInspectorDirectChannels: composite [
 	<gtInspectorPresentationOrder: -1>
 	^ composite fastTree
@@ -112,81 +114,81 @@ DSUser >> gtInspectorDirectChannels: composite [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSUser >> hasAvatar [
 	"Return true if user has avatar."
 	^ self avatarHash notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSUser >> initialize [
 	super initialize.
 	restApi := DSRestBasic uniqueInstance.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> isBot [
 	^ isBot ifNil: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> isBot: anObject [
 	isBot := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> isMfaEnabled [
 	"Multi-factor authentication (MFA) is a method of computer access control in which a user is granted access only after successfully presenting several separate pieces of evidence to an authentication mechanism"
 	^ isMfaEnabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> isMfaEnabled: anObject [
 	isMfaEnabled := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSUser >> isUser [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> isVerified [
 	^ isVerified ifNil: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> isVerified: anObject [
 	isVerified := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> members [
 	"Convenience method for tree views"
 	^ self children
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSUser >> message [
 	^ (self restApi directMessageWith: self) message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> name [
 	^ self username
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSUser >> printOn: aStream [
 	aStream << 'User: '.
 	self username 
@@ -197,22 +199,22 @@ DSUser >> printOn: aStream [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> restApi [
 	^ restApi
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> restApi: anObject [
 	restApi := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> username [
 	^ username
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUser >> username: anObject [
 	username := anObject
 ]

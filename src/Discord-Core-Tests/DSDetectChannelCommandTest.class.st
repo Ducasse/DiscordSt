@@ -2,17 +2,19 @@
 A DSDetectChannelCommandTest is a test class for testing the behavior of DSDetectChannelCommand
 "
 Class {
-	#name : #DSDetectChannelCommandTest,
-	#superclass : #DSChannelsCommandTest,
-	#category : 'Discord-Core-Tests-Commands'
+	#name : 'DSDetectChannelCommandTest',
+	#superclass : 'DSChannelsCommandTest',
+	#category : 'Discord-Core-Tests-Commands',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Commands'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSDetectChannelCommandTest >> classToTest [
 	^ DSDetectChannelCommand
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSDetectChannelCommandTest >> testChannel [
 	command := self classToTest new.
 	command satisfiedBy: [ :aChannel | aChannel name = 'ROCKET CHEESE' ].
@@ -23,7 +25,7 @@ DSDetectChannelCommandTest >> testChannel [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSDetectChannelCommandTest >> testChannel2 [
 	command := self classToTest new.
 	command satisfiedBy: [ :aChannel | aChannel name = 'Test' ].
@@ -34,7 +36,7 @@ DSDetectChannelCommandTest >> testChannel2 [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSDetectChannelCommandTest >> testChannel3 [
 	command := self classToTest new.
 	command satisfiedBy: [ :aChannel | aChannel name = 'general' ].
@@ -45,7 +47,7 @@ DSDetectChannelCommandTest >> testChannel3 [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSDetectChannelCommandTest >> testChannel5 [
 	command := self classToTest new.
 	command satisfiedBy: [ :aChannel | false ].

@@ -19,15 +19,17 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSFlattenChannelsKeepOrderCommand,
-	#superclass : #DSChannelsCommand,
+	#name : 'DSFlattenChannelsKeepOrderCommand',
+	#superclass : 'DSChannelsCommand',
 	#instVars : [
 		'flattenedChannels'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSFlattenChannelsKeepOrderCommand >> execute [
 	self flattenedChannels: (Array streamContents: [ :aStream |
 		self channels do: [ :eachChannel | 
@@ -35,12 +37,12 @@ DSFlattenChannelsKeepOrderCommand >> execute [
 			eachChannel isCategory ifTrue: [ aStream nextPutAll: eachChannel subordinateChannels ] ] ]).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSFlattenChannelsKeepOrderCommand >> flattenedChannels [
 	^ flattenedChannels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSFlattenChannelsKeepOrderCommand >> flattenedChannels: anObject [
 	flattenedChannels := anObject
 ]

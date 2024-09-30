@@ -9,45 +9,47 @@ emoji	partial emoji object	emoji information
 
 "
 Class {
-	#name : #DSReaction,
-	#superclass : #DSObject,
+	#name : 'DSReaction',
+	#superclass : 'DSObject',
 	#instVars : [
 		'count',
 		'me',
 		'emoji'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSReaction >> count [
 	"times this emoji has been used to react"
 	^ count
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSReaction >> count: anObject [
 	count := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSReaction >> emoji [
 	"emoji information"
 	^ emoji
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSReaction >> emoji: anObject [
 	emoji := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSReaction >> me [
 	"whether the current user reacted using this emoji"
 	^ me
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSReaction >> me: anObject [
 	me := anObject
 ]

@@ -2,24 +2,26 @@
 A DSEmbedThumbnailTest is a test class for testing the behavior of DSEmbedThumbnail
 "
 Class {
-	#name : #DSEmbedThumbnailTest,
-	#superclass : #DSObjectTest,
-	#category : 'Discord-Core-Tests-Model'
+	#name : 'DSEmbedThumbnailTest',
+	#superclass : 'DSObjectTest',
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbedThumbnailTest >> newObjectToTest [
 	^ DSEmbedThumbnail new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedThumbnailTest >> testHeight [
 	object := self newObjectToTest.
 	object height: 42.
 	self assert: object height equals: 42.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedThumbnailTest >> testProxyUrl [
 	object := self newObjectToTest.
 	object proxyUrl: self anyString.
@@ -27,13 +29,13 @@ DSEmbedThumbnailTest >> testProxyUrl [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedThumbnailTest >> testUrl [
 	object := self newObjectToTest url: self anyString; yourself.
 	self assert: object url equals: self anyString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSEmbedThumbnailTest >> testWidth [
 	object := self newObjectToTest.
 	object width: 42.

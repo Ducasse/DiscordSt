@@ -13,8 +13,8 @@ mute	bool	if the user is muted
 
 "
 Class {
-	#name : #DSGuildMember,
-	#superclass : #DSObject,
+	#name : 'DSGuildMember',
+	#superclass : 'DSObject',
 	#instVars : [
 		'user',
 		'nick',
@@ -23,10 +23,12 @@ Class {
 		'deaf',
 		'mute'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGuildMember class >> basic [
 	<gtExample>
 	<label: 'Guild Member'>
@@ -36,77 +38,77 @@ DSGuildMember class >> basic [
 		on: self jsonMappingClass jsonGuildMember readStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> children [
 	^ self user
 		ifNil: [ #() ] 
 		ifNotNil: [ :aUser | Array with: aUser ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> deaf [
 	^ deaf
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> deaf: anObject [
 	deaf := anObject
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 DSGuildMember >> defaultUsername [
 	^ '<unknown>'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> joinedAt [
 	^ joinedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> joinedAt: anObject [
 	joinedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> members [
 	"Convenience method for tree views"
 	^ self children
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSGuildMember >> message [
 	^ self user message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> mute [
 	^ mute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> mute: anObject [
 	mute := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> nick [
 	^ nick
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> nick: anObject [
 	nick := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSGuildMember >> nickOrUsername [
 	"Return a nick or username"
 	<return: #String>
 	^ self nick ifNil: [ self username ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSGuildMember >> printOn: aStream [
 	aStream nextPutAll: 'Member: '.
 	self user ifNotNil: [ :aUser | 
@@ -118,27 +120,27 @@ DSGuildMember >> printOn: aStream [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> roleIds [
 	^ roleIds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> roleIds: anObject [
 	roleIds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> user [
 	^ user
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuildMember >> user: anObject [
 	user := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSGuildMember >> username [
 	<return: #String>
 	^ self user ifNil: [ self defaultUsername ] ifNotNil: [ :aUser | aUser username ]

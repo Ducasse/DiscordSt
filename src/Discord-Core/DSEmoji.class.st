@@ -16,8 +16,8 @@ Routes for controlling emojis do not follow the normal rate limit conventions. T
 
 "
 Class {
-	#name : #DSEmoji,
-	#superclass : #DSObject,
+	#name : 'DSEmoji',
+	#superclass : 'DSObject',
 	#instVars : [
 		'id',
 		'name',
@@ -26,65 +26,67 @@ Class {
 		'managed',
 		'requireColons'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> managed [
 	^ managed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> managed: anObject [
 	managed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> requireColons [
 	^ requireColons
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> requireColons: anObject [
 	requireColons := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> roles [
 	^ roles
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> roles: anObject [
 	roles := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> user [
 	^ user
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmoji >> user: anObject [
 	user := anObject
 ]

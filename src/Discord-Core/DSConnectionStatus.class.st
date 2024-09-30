@@ -5,41 +5,43 @@ I represent user's and bot's connection status, that can be idle, dnd, online, o
 See https://discordapp.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
 "
 Class {
-	#name : #DSConnectionStatus,
-	#superclass : #Object,
+	#name : 'DSConnectionStatus',
+	#superclass : 'Object',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSConnectionStatus class >> allStatuses [
 	^ self allSubclasses
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 DSConnectionStatus class >> cleanUp [
 	self reset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSConnectionStatus class >> description [
 	<return: #String>
 	^ self subclassResponsibility
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSConnectionStatus class >> newFromString: aString [
 	^ (self allStatuses detect: [ :eachClass | eachClass statusString = aString ]) uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSConnectionStatus class >> reset [
 	uniqueInstance := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSConnectionStatus class >> statusString [
 	"Return a string that represents a particular status.
 	The string has to coincide with Discord statuses."
@@ -47,12 +49,12 @@ DSConnectionStatus class >> statusString [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSConnectionStatus class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSConnectionStatus >> statusString [
 	^ self class statusString
 ]

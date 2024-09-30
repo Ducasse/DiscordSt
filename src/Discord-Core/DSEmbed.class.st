@@ -14,8 +14,8 @@ DSEmbedObject new
 
 "
 Class {
-	#name : #DSEmbed,
-	#superclass : #DSObject,
+	#name : 'DSEmbed',
+	#superclass : 'DSObject',
 	#instVars : [
 		'title',
 		'type',
@@ -31,10 +31,12 @@ Class {
 		'author',
 		'fields'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSEmbed class >> all [
 	<gtExample>
 	^ self new
@@ -44,7 +46,7 @@ DSEmbed class >> all [
 		yourself
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSEmbed class >> description [
 	<gtExample>
 	^ self new
@@ -53,7 +55,7 @@ DSEmbed class >> description [
 		yourself
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSEmbed class >> screenshot [
 	<gtExample>
 	^ self new
@@ -62,37 +64,37 @@ DSEmbed class >> screenshot [
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 DSEmbed >> addField: aDSField [
 	^ self fields add: aDSField 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> author [
 	^ author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> author: anObject [
 	author := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> color [
 	^ color
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> color: anObject [
 	color := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> description [
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> description: aString [ 
 	aString size > DSConstants maxMessageLenght 
 		ifTrue: [ DSLongMessageError new
@@ -101,42 +103,42 @@ DSEmbed >> description: aString [
 	description := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSEmbed >> ensureFooter [
 	"Create a footer object if necessary and return it."
 	self footer ifNil: [ self footer: self newFooterObject ].
 	^ self footer
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSEmbed >> ensureImage [
 	"Create an image object if necessary and return it."
 	self image ifNil: [ self image: self newEmbedImage ].
 	^ self image
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSEmbed >> ensureProvider [
 	"Create an provider object if necessary and return it."
 	self provider ifNil: [ self provider: self newEmbedProvider ].
 	^ self provider
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSEmbed >> ensureThumbnail [
 	"Create a thumbnail object if necessary and return it."
 	self thumbnail ifNil: [ self thumbnail: self newEmbedThumbnail ].
 	^ self thumbnail
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSEmbed >> ensureVideo [
 	"Create a video object if necessary and return it."
 	self video ifNil: [ self video: self newEmbedVideo ].
 	^ self video
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> fieldName: fieldName value: fieldValue [
 	^ self addField: (DSEmbedField new 
 		name: fieldName; 
@@ -144,42 +146,42 @@ DSEmbed >> fieldName: fieldName value: fieldValue [
 		yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> fields [
 	^ fields ifNil: [ fields := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> fields: anObject [
 	fields := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> footer [
 	^ footer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> footer: anObject [
 	footer := anObject
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> footerIconUrl: aString [ 
 	^ self ensureFooter iconUrl: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> footerText: aString [ 
 	self ensureFooter text: aString
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSEmbed >> gtChildren [
 	^ { self image. self thumbnail. self footer } reject: [ :each | each isNil ]  
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSEmbed >> gtInspectorImage: composite [
 	<gtInspectorPresentationOrder: 2>
 	^ composite morph
@@ -189,44 +191,44 @@ DSEmbed >> gtInspectorImage: composite [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSEmbed >> hasDescription [
 	"Return true if a description exists."
 	^ self description isEmptyOrNil not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSEmbed >> hasImage [
 	"Return true if an image is attached."
 	^ self image notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> image [
 	^ image
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> image: anObject [
 	image := anObject
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> imageHeight: aString [ 
 	^ self ensureImage height: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> imageUrl: aString [ 
 	^ self ensureImage url: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> imageWidth: aString [ 
 	^ self ensureImage width: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> inlineFieldName: fieldName value: fieldValue [
 	^ self addField: (DSEmbedField new 
 		name: fieldName; 
@@ -235,37 +237,37 @@ DSEmbed >> inlineFieldName: fieldName value: fieldValue [
 		yourself)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSEmbed >> isEmbed [
 	^ true
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbed >> newEmbedImage [
 	^ DSEmbedImage new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbed >> newEmbedProvider [
 	^ DSEmbedProvider new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbed >> newEmbedThumbnail [
 	^ DSEmbedThumbnail new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbed >> newEmbedVideo [
 	^ DSEmbedVideo new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSEmbed >> newFooterObject [
 	^ DSEmbedFooter new
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSEmbed >> printFullMessageOn: aTextStream [ 
 	self title ifNotNil: [ :string | aTextStream << string << String crlf ].
 	self description ifNotNil: [ :string | aTextStream << string << String crlfcrlf ].
@@ -276,112 +278,112 @@ DSEmbed >> printFullMessageOn: aTextStream [
 		aFooter printFullMessageOn: aTextStream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> provider [
 	^ provider
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> provider: anObject [
 	provider := anObject
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> providerName: aString [ 
 	^ self ensureProvider name: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> providerUrl: aString [ 
 	^ self ensureProvider url: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> thumbnail [
 	^ thumbnail
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> thumbnail: anObject [
 	thumbnail := anObject
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> thumbnailHeight: aString [ 
 	^ self ensureThumbnail height: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> thumbnailUrl: aString [ 
 	^ self ensureThumbnail url: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> thumbnailWidth: aString [ 
 	^ self ensureThumbnail width: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> timestamp [
 	^ timestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> timestamp: anObject [
 	timestamp := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> title: anObject [
 	title := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> type: anObject [
 	type := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> url: anObject [
 	url := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> video [
 	^ video
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbed >> video: anObject [
 	video := anObject
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> videoHeight: aString [ 
 	^ self ensureVideo height: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> videoUrl: aString [ 
 	^ self ensureVideo url: aString
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSEmbed >> videoWidth: aString [ 
 	^ self ensureVideo width: aString
 ]

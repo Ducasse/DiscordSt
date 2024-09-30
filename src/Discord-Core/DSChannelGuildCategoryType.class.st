@@ -2,17 +2,19 @@
 I am a channel category type.
 "
 Class {
-	#name : #DSChannelGuildCategoryType,
-	#superclass : #DSChannelType,
-	#category : 'Discord-Core-Model'
+	#name : 'DSChannelGuildCategoryType',
+	#superclass : 'DSChannelType',
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelGuildCategoryType class >> typeNumber [
 	^ 4
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSChannelGuildCategoryType >> asSpecifiedChannel: aDSUnspecifiedChannel [ 
 	^ DSCategoryChannel new
 		id: aDSUnspecifiedChannel id;
@@ -24,7 +26,7 @@ DSChannelGuildCategoryType >> asSpecifiedChannel: aDSUnspecifiedChannel [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelGuildCategoryType >> name [
 	^ 'Category'
 ]

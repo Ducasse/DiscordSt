@@ -15,26 +15,28 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSDownloadCommand,
-	#superclass : #DSCommand,
+	#name : 'DSDownloadCommand',
+	#superclass : 'DSCommand',
 	#instVars : [
 		'url',
 		'contents'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDownloadCommand >> contents [
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDownloadCommand >> contents: anObject [
 	contents := anObject
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSDownloadCommand >> execute [
 	| response |
 	response := DSUtility newZnClientWithUserAgent
@@ -49,12 +51,12 @@ DSDownloadCommand >> execute [
 			signal: ((response contents) ifNil: [ String streamContents: [ :out | response statusLine writeOn: out ] ]) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDownloadCommand >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDownloadCommand >> url: anObject [
 	url := anObject
 ]

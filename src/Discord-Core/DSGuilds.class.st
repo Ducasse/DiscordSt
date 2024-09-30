@@ -2,22 +2,24 @@
 I represent collection of DSUserGuilds
 "
 Class {
-	#name : #DSGuilds,
-	#superclass : #DSOrderedCollection,
-	#category : 'Discord-Core-Collections'
+	#name : 'DSGuilds',
+	#superclass : 'DSOrderedCollection',
+	#category : 'Discord-Core-Collections',
+	#package : 'Discord-Core',
+	#tag : 'Collections'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGuilds class >> oneGuild [
-	<gtExample>
-	<label: 'One guild (server) with two channels'>
+	"One guild (server) with two channels"
+	
 	^ self jsonMappingClass 
 		read: #CollectionOfGuilds 
 		withMapping: #collectionOfGuildsMappingFor:
 		on: self jsonMappingClass jsonCollectionOfGuildsOne readStream
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSGuilds >> gtInspectorMembers: composite [
 	<gtInspectorPresentationOrder: -9>
 	^ composite fastTree
@@ -29,7 +31,7 @@ DSGuilds >> gtInspectorMembers: composite [
 		yourself
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSGuilds >> gtInspectorServers: composite [
 	<gtInspectorPresentationOrder: -10>
 	^ composite fastTree
@@ -41,12 +43,12 @@ DSGuilds >> gtInspectorServers: composite [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGuilds >> isAuthenticated [
 	^ self notEmpty and: [ self anyOne isAuthenticated ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuilds >> named: guildName [ 
 	"Return a DSGuildName object with the given name."
 	^ self detect: [ :guild | guild name = guildName ]

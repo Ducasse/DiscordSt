@@ -5,15 +5,17 @@ See documentation at https://discordapp.com/developers/docs/resources/channel#gu
 
 "
 Class {
-	#name : #DSChannel,
-	#superclass : #DSObject,
+	#name : 'DSChannel',
+	#superclass : 'DSObject',
 	#instVars : [
 		'restApi'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSChannel >> children [
 	"Return empty collection because we do not want to expand messages in a tree view.
 	There could be too many.
@@ -21,7 +23,7 @@ DSChannel >> children [
 	^ self class defaultCollection
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSChannel >> detectChannel: conditionBlock [ 
 	"Return a channel (itself) that satisfy the condition.
 	Return nil, if there is no such channel.
@@ -31,54 +33,54 @@ DSChannel >> detectChannel: conditionBlock [
 		ifFalse: [nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannel >> initialize [
 	super initialize.
 	restApi := DSRestBasic uniqueInstance.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSChannel >> isAuthenticated [
 	^ self restApi isAuthenticated
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSChannel >> isCategory [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSChannel >> isGeneral [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSChannel >> isGuildTextChannel [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSChannel >> isGuildVoiceChannel [
 	^ false
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSChannel >> parentId [
 	"Category cannot have a parent"
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannel >> restApi [
 	^ restApi
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannel >> restApi: anObject [
 	restApi := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannel >> type [
 	<return: #DSChannelType>
 	^ self subclassResponsibility

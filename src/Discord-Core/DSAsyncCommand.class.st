@@ -16,31 +16,33 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSAsyncCommand,
-	#superclass : #DSCommand,
+	#name : 'DSAsyncCommand',
+	#superclass : 'DSCommand',
 	#instVars : [
 		'command',
 		'onSuccess'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSAsyncCommand >> async [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAsyncCommand >> command [
 	^ command
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAsyncCommand >> command: anObject [
 	command := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAsyncCommand >> defaultProcessName [
 	"Return the process name used for the forked execution.
 	See #execute method."
@@ -48,14 +50,14 @@ DSAsyncCommand >> defaultProcessName [
 		aStream << self className << ' on ' << self command className << ' (a Discord command)' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAsyncCommand >> defaultProcessPriority [
 	"Return the process priority number used for the forked execution.
 	See #execute method."
 	^ Processor userBackgroundPriority 
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSAsyncCommand >> execute [
 	"Execute the command in a forked process.
 	It is recommended to use this method from UIs (buttons)."
@@ -66,7 +68,7 @@ DSAsyncCommand >> execute [
 		named: self defaultProcessName.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSAsyncCommand >> executeCommand [
 	[ 
 		self command execute.
@@ -74,24 +76,24 @@ DSAsyncCommand >> executeCommand [
 	] on: Error do: [ "ignore" ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSAsyncCommand >> image: aDSEmbed [ 
 	self command: (DSGetImageCommand new image: aDSEmbed; yourself)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSAsyncCommand >> initialize [
 	super initialize.
 	command := DSNoCommand uniqueInstance.
 	onSuccess := [ "do nothing" ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAsyncCommand >> onSuccess [
 	^ onSuccess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAsyncCommand >> onSuccess: aBlockClosure [ 
 	"Set an action that is executed after a successful command execution."
 	onSuccess := aBlockClosure 

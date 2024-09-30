@@ -4,8 +4,8 @@ See documentation at https://discordapp.com/developers/docs/resources/channel#gu
 
 "
 Class {
-	#name : #DSDirectMessageGroupChannel,
-	#superclass : #DSChannel,
+	#name : 'DSDirectMessageGroupChannel',
+	#superclass : 'DSChannel',
 	#instVars : [
 		'id',
 		'lastMessageId',
@@ -14,56 +14,58 @@ Class {
 		'ownerId',
 		'icon'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> icon [
 	^ icon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> icon: anObject [
 	icon := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> lastMessageId [
 	^ lastMessageId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> lastMessageId: anObject [
 	lastMessageId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> messages [
 	<return: #DSMessages of: #DSMessage>
 	^ self restApi messagesForChannel: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> name [
 	^ name ifNil: [ self nameBasedOnRecipients ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #'accessing - computed' }
+{ #category : 'accessing - computed' }
 DSDirectMessageGroupChannel >> nameBasedOnRecipients [
 	^ String streamContents: [ :aStream |
 		self recipients 
@@ -71,23 +73,23 @@ DSDirectMessageGroupChannel >> nameBasedOnRecipients [
 			separatedBy: [ aStream << ', ' ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> ownerId [
 	^ ownerId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> ownerId: anObject [
 	ownerId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> position [
 	"Complement protocol of other channels."
 	^ self lastMessageId asNumber negated
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSDirectMessageGroupChannel >> printOn: aStream [
 	"Print channel name if available"
 	aStream << 'DM Channel: '.
@@ -96,17 +98,17 @@ DSDirectMessageGroupChannel >> printOn: aStream [
 		separatedBy: [ aStream << ', ' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> recipients [
 	^ recipients
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> recipients: anObject [
 	recipients := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageGroupChannel >> type [
 	^ DSChannelDirectMessageGroupType uniqueInstance
 ]

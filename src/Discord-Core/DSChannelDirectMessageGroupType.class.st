@@ -3,17 +3,19 @@ I represent direct message group channel type.
 I am  a type of a private channel among  several users.
 "
 Class {
-	#name : #DSChannelDirectMessageGroupType,
-	#superclass : #DSChannelType,
-	#category : 'Discord-Core-Model'
+	#name : 'DSChannelDirectMessageGroupType',
+	#superclass : 'DSChannelType',
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelDirectMessageGroupType class >> typeNumber [
 	^ 3
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSChannelDirectMessageGroupType >> asSpecifiedChannel: aDSUnspecifiedChannel [ 
 	^ DSDirectMessageGroupChannel new
 		id: aDSUnspecifiedChannel id;
@@ -25,7 +27,7 @@ DSChannelDirectMessageGroupType >> asSpecifiedChannel: aDSUnspecifiedChannel [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelDirectMessageGroupType >> name [
 	^ 'Direct Message Group'
 ]

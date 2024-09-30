@@ -3,11 +3,13 @@ I am a Trait.
 I provide unified interface to send messages to Discord using Webhooks, Bots, and User Clients.
 "
 Trait {
-	#name : #TDSUnifiedPublishInterface,
-	#category : 'Discord-Core-Trait'
+	#name : 'TDSUnifiedPublishInterface',
+	#category : 'Discord-Core-Trait',
+	#package : 'Discord-Core',
+	#tag : 'Trait'
 }
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 TDSUnifiedPublishInterface >> asyncSend [
 	"Execute the post action in a forked process."
 	[ self send ] 
@@ -15,7 +17,7 @@ TDSUnifiedPublishInterface >> asyncSend [
 		named: 'Discord Message Send Process'
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 TDSUnifiedPublishInterface >> send [
 	"Send a message to a particular target.
 	In case of Webhooks it is a Webhook URL.
@@ -24,7 +26,7 @@ TDSUnifiedPublishInterface >> send [
 	^ self explicitRequirement
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 TDSUnifiedPublishInterface >> target: aChannelTarget [
 	"Set a target where a particular message should be sent.
 	In case of Webhooks it is a Webhook URL.

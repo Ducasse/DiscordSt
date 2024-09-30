@@ -16,42 +16,44 @@ ID	Name	Format	Example
 The streaming type currently only supports Twitch. Only https://twitch.tv/ urls will work.
 "
 Class {
-	#name : #DSGame,
-	#superclass : #DSObject,
+	#name : 'DSGame',
+	#superclass : 'DSObject',
 	#instVars : [
 		'name',
 		'type',
 		'url'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGame >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGame >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGame >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGame >> type: anObject [
 	type := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGame >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGame >> url: anObject [
 	url := anObject
 ]

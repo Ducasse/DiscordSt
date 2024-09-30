@@ -2,17 +2,19 @@
 A DSGuildTest is a test class for testing the behavior of DSGuild
 "
 Class {
-	#name : #DSGuildTest,
-	#superclass : #DSObjectTest,
-	#category : 'Discord-Core-Tests-Model'
+	#name : 'DSGuildTest',
+	#superclass : 'DSObjectTest',
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSGuildTest >> classToTest [
 	^ DSGuild
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 DSGuildTest >> testTextChannels [
 	| channels |
 	channels := self coreModelJsonMapping 

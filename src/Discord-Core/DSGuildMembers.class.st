@@ -2,22 +2,23 @@
 I represent collection of DSGuildMember.
 "
 Class {
-	#name : #DSGuildMembers,
-	#superclass : #DSOrderedCollection,
-	#category : 'Discord-Core-Collections'
+	#name : 'DSGuildMembers',
+	#superclass : 'DSOrderedCollection',
+	#category : 'Discord-Core-Collections',
+	#package : 'Discord-Core',
+	#tag : 'Collections'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGuildMembers class >> basic [
-	<gtExample>
-	<label: 'One Guild Member'>
+
 	^ self jsonMappingClass
 		read: #CollectionOfGuildMembers
 		withMapping: #collectionOfGuildMembersMappingFor:
 		on: self jsonMappingClass jsonCollectionOfGuildMembersOne readStream
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSGuildMembers >> gtInspectorMembers: composite [
 	<gtInspectorPresentationOrder: -1>
 	^ composite fastTree

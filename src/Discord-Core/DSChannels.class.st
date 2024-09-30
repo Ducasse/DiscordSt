@@ -2,29 +2,29 @@
 I represent collection of DSChannels
 "
 Class {
-	#name : #DSChannels,
-	#superclass : #DSOrderedCollection,
-	#category : 'Discord-Core-Collections'
+	#name : 'DSChannels',
+	#superclass : 'DSOrderedCollection',
+	#category : 'Discord-Core-Collections',
+	#package : 'Discord-Core',
+	#tag : 'Collections'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSChannels class >> oneDirectChannel [
-	<gtExample>
-	<label: 'One direct channel'>
+	
 	^ self with: DSDirectMessageChannel oneRecipient
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSChannels class >> twoChannels [
-	<gtExample>
-	<label: 'Two channels in one category'>
+
 	^ self jsonMappingClass 
 		read: #CollectionOfSortedChannels 
 		withMapping: #collectionOfSortedChannelsMappingFor:
 		on: self jsonMappingClass jsonCollectionOfChannelsThree readStream
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSChannels >> gtInspectorChannels: composite [
 	<gtInspectorPresentationOrder: -1>
 	^ composite fastTree
@@ -36,7 +36,7 @@ DSChannels >> gtInspectorChannels: composite [
 		yourself
 ]
 
-{ #category : #'neo-json' }
+{ #category : 'neo-json' }
 DSChannels >> neoJsonOn: neoJSONWriter [
 	| flattenedChannels |
 	flattenedChannels := DSFlattenChannelsOrderByIdCommand new

@@ -21,31 +21,33 @@ DSEmbed new
 
 "
 Class {
-	#name : #DSEmbedProvider,
-	#superclass : #DSObject,
+	#name : 'DSEmbedProvider',
+	#superclass : 'DSObject',
 	#instVars : [
 		'name',
 		'url'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedProvider >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedProvider >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedProvider >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedProvider >> url: anObject [
 	url := anObject
 ]

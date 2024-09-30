@@ -2,17 +2,19 @@
 I represent direct message channel type.
 "
 Class {
-	#name : #DSChannelDirectMessageType,
-	#superclass : #DSChannelType,
-	#category : 'Discord-Core-Model'
+	#name : 'DSChannelDirectMessageType',
+	#superclass : 'DSChannelType',
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelDirectMessageType class >> typeNumber [
 	^ 1
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSChannelDirectMessageType >> asSpecifiedChannel: aDSUnspecifiedChannel [ 
 	^ DSDirectMessageChannel new
 		id: aDSUnspecifiedChannel id;
@@ -21,7 +23,7 @@ DSChannelDirectMessageType >> asSpecifiedChannel: aDSUnspecifiedChannel [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelDirectMessageType >> name [
 	^ 'Direct Message'
 ]

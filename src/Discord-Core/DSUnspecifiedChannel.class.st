@@ -23,8 +23,8 @@ parent_id?	?snowflake	id of the parent category for a channel
 
 "
 Class {
-	#name : #DSUnspecifiedChannel,
-	#superclass : #DSObject,
+	#name : 'DSUnspecifiedChannel',
+	#superclass : 'DSObject',
 	#instVars : [
 		'id',
 		'type',
@@ -43,37 +43,39 @@ Class {
 		'applicationId',
 		'parentId'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> applicationId [
 	^ applicationId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> applicationId: anObject [
 	applicationId := anObject
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSUnspecifiedChannel >> asSpecifiedChannel [
 	^ self type 
 		ifNotNil: [ :aType | aType asSpecifiedChannel: self ]
 		ifNil: #yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> bitrate [
 	^ bitrate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> bitrate: anObject [
 	bitrate := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSUnspecifiedChannel >> children [
 	"Return empty collection because we do not want to expand messages in a tree view.
 	There could be too many.
@@ -81,112 +83,112 @@ DSUnspecifiedChannel >> children [
 	^ self class defaultCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> guildId [
 	^ guildId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> guildId: anObject [
 	guildId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> icon [
 	^ icon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> icon: anObject [
 	icon := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSUnspecifiedChannel >> isCategory [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> lastMessageId [
 	^ lastMessageId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> lastMessageId: anObject [
 	lastMessageId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> nsfw [
 	^ nsfw
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> nsfw: anObject [
 	nsfw := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> ownerId [
 	^ ownerId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> ownerId: anObject [
 	ownerId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> parentId [
 	^ parentId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> parentId: anObject [
 	parentId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> permissionOverwrites [
 	^ permissionOverwrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> permissionOverwrites: anObject [
 	permissionOverwrites := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSUnspecifiedChannel >> printOn: aStream [
 	aStream 
 		<< self typeName
@@ -194,49 +196,49 @@ DSUnspecifiedChannel >> printOn: aStream [
 		<< (self name ifNil: [ '<nameless>' ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> recipients [
 	^ recipients
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> recipients: anObject [
 	recipients := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> topic [
 	^ topic
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> topic: anObject [
 	topic := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> type: anObject [
 	type := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSUnspecifiedChannel >> typeName [
 	^ self type
 		ifNil: [ 'Unknown' ]
 		ifNotNil: #name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> userLimit [
 	^ userLimit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSUnspecifiedChannel >> userLimit: anObject [
 	userLimit := anObject
 ]

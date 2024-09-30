@@ -31,8 +31,8 @@ serverResponse.
 
 "
 Class {
-	#name : #DSMockServer,
-	#superclass : #Object,
+	#name : 'DSMockServer',
+	#superclass : 'Object',
 	#instVars : [
 		'port',
 		'server',
@@ -40,10 +40,12 @@ Class {
 		'serverRequests',
 		'semaphore'
 	],
-	#category : 'Discord-Core-Tests-Support'
+	#category : 'Discord-Core-Tests-Support',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSMockServer class >> basicUsage [
 	<gtExample>
 	<label: 'A commong usage example. The values of serverResponse and server collection can be then tested.'>
@@ -64,14 +66,14 @@ DSMockServer class >> basicUsage [
 
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 DSMockServer >> add: anObject [
 	"Add a value that is subject of a interest to the collection.
 	The collection can be than tested in a test case."
 	serverRequests add: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> apiUrl [
 	"Return URL object pointing to a Fake Discord test server."
 	self port isNil ifTrue: [ 
@@ -84,21 +86,21 @@ DSMockServer >> apiUrl [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> collection [
 	"Return an OrderedCollection that can be used for storing information about the server activities.
 	See start method."
 	^ serverRequests
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> delegate [
 	"Return delegate object that can be configured using to:map: message.
 	See start method."
 	^ delegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> delegate: aDelegate [
 	"Set delegate object that can be configured using to:map: message.
 	See start method."
@@ -107,7 +109,7 @@ DSMockServer >> delegate: aDelegate [
 	server delegate: aDelegate.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> gatewayUrl [
 	"Return URL object pointing to a Fake Gateway Discord test server."
 	self port isNil ifTrue: [ 
@@ -120,28 +122,28 @@ DSMockServer >> gatewayUrl [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> port [
 	"Return a current port of a ZnServer.
 	See start method."
 	^ port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> semaphore [
 	"Return a Semaphore object that can be used for process synchronization between a client and the server.
 	See start method."
 	^ semaphore
 ]
 
-{ #category : #options }
+{ #category : 'options' }
 DSMockServer >> setDebugMode [
 	self port isNil ifTrue: [ 
 		self error: 'This message should be sent after #start message' ].
 	server debugMode: true.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DSMockServer >> start [
 	"It starts ZnServer on a free port. 
 	The port is available at port instance variable.
@@ -157,13 +159,13 @@ DSMockServer >> start [
 	semaphore := Semaphore new.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 DSMockServer >> stop [
 	"Stop a running server."
 	server ifNotNil: #stop.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMockServer >> url [
 	"Return an URL object pointing to a Fake Discord test server."
 	self port isNil ifTrue: [ 

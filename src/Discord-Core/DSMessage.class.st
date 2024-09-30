@@ -39,8 +39,8 @@ GUILD_MEMBER_JOIN	7
 
 "
 Class {
-	#name : #DSMessage,
-	#superclass : #DSObject,
+	#name : 'DSMessage',
+	#superclass : 'DSObject',
 	#instVars : [
 		'restApi',
 		'id',
@@ -61,10 +61,12 @@ Class {
 		'mentionRoleIds',
 		'isPinnedInChannel'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSMessage class >> content [
 	<gtExample>
 	^ self empty 
@@ -72,12 +74,12 @@ DSMessage class >> content [
 		yourself
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSMessage class >> defaultCollection [
 	^ DSMessages new
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSMessage class >> embedAll [
 	<gtExample>
 	^ self empty
@@ -85,7 +87,7 @@ DSMessage class >> embedAll [
 		yourself
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSMessage class >> embedDescription [
 	<gtExample>
 	^ self empty
@@ -93,7 +95,7 @@ DSMessage class >> embedDescription [
 		yourself
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSMessage class >> embedScreenshot [
 	<gtExample>
 	^ self empty
@@ -101,7 +103,7 @@ DSMessage class >> embedScreenshot [
 		yourself
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSMessage class >> empty [
 	<gtExample>
 	^ self new
@@ -111,49 +113,49 @@ DSMessage class >> empty [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> attachments [
 	^ attachments ifNil: [ attachments := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> attachments: anObject [
 	attachments := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> author [
 	^ author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> author: anObject [
 	author := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSMessage >> authorName [
 	"Return author name"
 	<return: #String>
 	^ self author ifNotNil: #username ifNil: DSConstants emptyAuthorName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> channelId [
 	^ channelId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> channelId: anObject [
 	channelId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> content [
 	^ content
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> content: string [
 	"Set the contents of the message."
 	string size > DSConstants maxMessageLenght 
@@ -164,17 +166,17 @@ DSMessage >> content: string [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> editedTimestamp [
 	^ editedTimestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> editedTimestamp: anObject [
 	editedTimestamp := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSMessage >> embedImages [
 	"Return all embed images."
 	^ self embeds 
@@ -182,17 +184,17 @@ DSMessage >> embedImages [
 		thenCollect: [ :embed | embed image ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> embeds [
 	^ embeds ifNil: [ embeds := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> embeds: anObject [
 	embeds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> gtAttachmentsFor: aView [
 	<gtView>
 	self hasAttachments ifFalse: [ ^ aView empty ].
@@ -202,7 +204,7 @@ DSMessage >> gtAttachmentsFor: aView [
 		items: [ self attachments ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> gtContentFor: aView [
 	<gtView>
 	(self hasContent or: [ self hasEmbeds ]) ifFalse: [ ^ aView empty ].
@@ -212,7 +214,7 @@ DSMessage >> gtContentFor: aView [
 		text: [ self printFullMessage ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> gtImageFor: aView [
 	<gtView>
 	self hasImageAttachments ifFalse: [ ^ aView empty ].
@@ -222,105 +224,31 @@ DSMessage >> gtImageFor: aView [
 		stencil: [ self imageAttachments first asForm asElement ]
 ]
 
-{ #category : #'gt-inspector-extension' }
-DSMessage >> gtInspectorActionDownloadAllAttachments [
-	<gtInspectorAction>
-	^ GLMGenericAction new
-		action: [ :presentation | self attachments do: #data. presentation update ];
-		icon: (Smalltalk ui icons iconNamed: #bottom);
-		condition: [ self hasAttachments and: [ 
-				self attachments anySatisfy: [ :attachment | 
-					attachment hasData not ] ] ];
-		title: 'Download all attachments'
-]
-
-{ #category : #'gt-inspector-extension' }
-DSMessage >> gtInspectorAttachments: composite [
-	<gtInspectorPresentationOrder: 2>
-	^ composite fastList
-		title: 'Attachments';
-		display: [ self attachments ];
-		when: [ self hasAttachments ];
-		yourself
-]
-
-{ #category : #'gt-inspector-extension' }
-DSMessage >> gtInspectorContent: composite [
-	<gtInspectorPresentationOrder: 1>
-	^ composite text
-		title: 'Content';
-		display: [ self printFullMessage ];
-		when: [ self hasContent or: [ self hasEmbeds ] ];
-		yourself
-]
-
-{ #category : #'gt-inspector-extension' }
-DSMessage >> gtInspectorEmbedImage: composite [
-	<gtInspectorPresentationOrder: 1.2>
-	^ composite morph
-		title: 'Image';
-		display: [ self embedImages first asForm ];
-		when: [ self hasEmbedImages ];
-		yourself
-]
-
-{ #category : #'gt-inspector-extension' }
-DSMessage >> gtInspectorEmbeds: composite [
-	<gtInspectorPresentationOrder: 3>
-	^ composite fastList
-		title: 'Embeds';
-		display: [ self embeds ];
-		when: [ self hasEmbeds ];
-		yourself
-]
-
-{ #category : #'gt-inspector-extension' }
-DSMessage >> gtInspectorImage: composite [
-	<gtInspectorPresentationOrder: 1.1>
-	^ composite morph
-		title: 'Image';
-		display: [ self imageAttachments first asForm ];
-		when: [ self hasImageAttachments ];
-		yourself
-]
-
-{ #category : #accessing }
-DSMessage >> gtMentionsFor: aView [
-	<gtView>
-	self mentions ifEmpty: [ ^ aView empty ].
-	^ aView columnedList
-		title: 'Mentions';
-		priority: 10;
-		items: [ self mentions ];
-		column: 'Name' item: [ :aUser | aUser username ];
-		column: 'Id' item: [ :aUser | aUser id ]
-]
-
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> hasAttachments [
 	"Return true if the message includes attachments."
 	^ self attachments isEmptyOrNil not 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> hasContent [
 	"Return true if the message has a content."
 	^ self content notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> hasEmbedImages [
 	"Return true if any embed object has an image."
 	^ self embeds anySatisfy: #hasImage
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> hasEmbeds [
 	"Return true if the message includes embeds."
 	^ self embeds isEmptyOrNil not 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> hasFuelAttachments [
 	"Return true, if any attachment holds a FUEL data.
 	FUEL data are serialized Pharo objects. See FLSerializer."
@@ -328,117 +256,117 @@ DSMessage >> hasFuelAttachments [
 			eachAttachment isFuel ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> hasImageAttachments [
 	"Return true if any attachment is an image."
 	^ self attachments anySatisfy: #isImage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> hasMentionEveryone [
 	^ hasMentionEveryone
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> hasMentionEveryone: anObject [
 	hasMentionEveryone := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSMessage >> imageAttachments [
 	"Return attachments with images."
 	^ self attachments select: #isImage
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSMessage >> isMessage [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> isPinnedInChannel [
 	^ isPinnedInChannel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> isPinnedInChannel: anObject [
 	isPinnedInChannel := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> isTextToSpeech [
 	^ isTextToSpeech
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> isTextToSpeech: anObject [
 	isTextToSpeech := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSMessage >> materialize [
 	"Materialize the attachment data. 
 	It is supposed that #data return a ByteArray object."
 	^ (self attachments detect: #isFuel ifNone: nil) ifNotNil: #materialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> mentionRoleIds [
 	^ mentionRoleIds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> mentionRoleIds: anObject [
 	mentionRoleIds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> mentions [
 	^ mentions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> mentions: anObject [
 	mentions := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> nonce [
 	^ nonce
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> nonce: anObject [
 	nonce := anObject
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSMessage >> numberOfAttachments [
 	^ self attachments ifNotNil: #size ifNil: 0
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 DSMessage >> numberOfEmbeds [
 	^ self embeds ifNotNil: #size ifNil: 0
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSMessage >> printFullMessage [
 	^ Text streamContents: [ :aStream | 
 		self printFullMessageOn: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSMessage >> printFullMessageOn: aStream [
 	self content ifNotNil: [ :string | aStream << string << String crlfcrlf ].
 	self embeds do: [ :eachEmbed |
@@ -449,60 +377,60 @@ DSMessage >> printFullMessageOn: aStream [
 			separatedBy: [ aStream crlf. ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> reactions [
 	^ reactions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> reactions: anObject [
 	reactions := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> restApi [
 	^ restApi
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> restApi: aDSRestApi [
 	"Set object responsible for Discord REST API communication."
 	restApi := aDSRestApi.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> timestamp [
 	^ timestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> timestamp: anObject [
 	timestamp := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> type: anObject [
 	type := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSMessage >> username [
 	"Return author name"
 	<return: #String>
 	^ self authorName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> webhookId [
 	^ webhookId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSMessage >> webhookId: anObject [
 	webhookId := anObject
 ]

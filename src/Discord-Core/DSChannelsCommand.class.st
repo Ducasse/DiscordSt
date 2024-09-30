@@ -1,18 +1,20 @@
 Class {
-	#name : #DSChannelsCommand,
-	#superclass : #DSCommand,
+	#name : 'DSChannelsCommand',
+	#superclass : 'DSCommand',
 	#instVars : [
 		'channels'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelsCommand >> channels [
 	^ channels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSChannelsCommand >> channels: anObject [
 	channels := anObject
 ]

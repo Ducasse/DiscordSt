@@ -4,8 +4,8 @@ See https://discordapp.com/developers/docs/resources/user#user-guild-object
 
 "
 Class {
-	#name : #DSGuild,
-	#superclass : #DSObject,
+	#name : 'DSGuild',
+	#superclass : 'DSObject',
 	#instVars : [
 		'restApi',
 		'id',
@@ -37,52 +37,54 @@ Class {
 		'channels',
 		'presences'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuild class >> defaultCollection [
 	"A collection class used for creation of instances"
 	^ DSGuilds new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> afkChannelId [
 	^ afkChannelId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> afkChannelId: anObject [
 	afkChannelId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> afkTimeout [
 	^ afkTimeout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> afkTimeout: anObject [
 	afkTimeout := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> applicationId [
 	^ applicationId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> applicationId: anObject [
 	applicationId := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuild >> channelNamed: aString [ 
 	"Return channel of a particular name."
 	^ self channelSatisfying: [ :eachChannel | eachChannel name = aString ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuild >> channelSatisfying: conditionBlock [ 
 	"Return a channel that satisfy the condition."
 	<return: #DSChannel>
@@ -93,18 +95,18 @@ DSGuild >> channelSatisfying: conditionBlock [
 		satisfyingChannel.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> channels [
 	"Return channels registered to this server."
 	^ channels ifNil: [ channels := self restApi guildChannelsOf: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> channels: anObject [
 	channels := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuild >> children [
 	"Return channels if authenticated.
 	Useful for tree view representations."
@@ -116,67 +118,67 @@ DSGuild >> children [
 				ifFalse: [ self class defaultCollection ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> defaultMessageNotifications [
 	^ defaultMessageNotifications
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> defaultMessageNotifications: anObject [
 	defaultMessageNotifications := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> embedChannelId [
 	^ embedChannelId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> embedChannelId: anObject [
 	embedChannelId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> embedEnabled [
 	^ embedEnabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> embedEnabled: anObject [
 	embedEnabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> emojis [
 	^ emojis
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> emojis: anObject [
 	emojis := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> explicitContentFilter [
 	^ explicitContentFilter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> explicitContentFilter: anObject [
 	explicitContentFilter := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> features [
 	^ features
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> features: anObject [
 	features := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuild >> flattenedChannels [
 	^ DSFlattenChannelsKeepOrderCommand new
 			channels: self channels;
@@ -184,14 +186,14 @@ DSGuild >> flattenedChannels [
 			flattenedChannels.
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuild >> general [
 	"Return general channel.
 	General channel has the same id as the guild."
 	^ self channelSatisfying: #isGeneral
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSGuild >> gtInspectorChannels: composite [
 	<gtInspectorPresentationOrder: 1>
 	^ composite fastTree
@@ -203,7 +205,7 @@ DSGuild >> gtInspectorChannels: composite [
 		yourself
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSGuild >> gtInspectorMembers: composite [
 	<gtInspectorPresentationOrder: 2>
 	^ composite fastTree
@@ -214,137 +216,137 @@ DSGuild >> gtInspectorMembers: composite [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGuild >> hasChannels [
 	"Return true if the currently logged user is the server owner;
 	false otherwise."
 	^ channels isEmptyOrNil not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGuild >> hasMembers [
 	^ members notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> iconHash [
 	^ iconHash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> iconHash: anObject [
 	iconHash := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGuild >> initialize [
 	super initialize.
 	restApi := DSRestBasic uniqueInstance.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGuild >> isAuthenticated [
 	^ self restApi isAuthenticated
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGuild >> isOwner [
 	"Return true if the currently logged user is the server owner;
 	false otherwise."
 	^ self owner ifNil: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> joinedAt [
 	^ joinedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> joinedAt: anObject [
 	joinedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> large [
 	^ large
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> large: anObject [
 	large := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> memberCount [
 	^ memberCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> memberCount: anObject [
 	memberCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> members [
 	^ members ifNil: [ members := self restApi listGuildMembersOfGuildId: self id ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> members: anObject [
 	members := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> mfaLevel [
 	^ mfaLevel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> mfaLevel: anObject [
 	mfaLevel := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> ownerId [
 	^ ownerId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> ownerId: anObject [
 	ownerId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> presences [
 	^ presences
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> presences: anObject [
 	presences := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSGuild >> printOn: aStream [
 	"Print server name if available"
 	aStream << 'User Guild: '.
@@ -353,98 +355,98 @@ DSGuild >> printOn: aStream [
 		ifNil: [ aStream << '<nameless>' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> region [
 	^ region
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> region: anObject [
 	region := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> restApi [
 	^ restApi
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> restApi: anObject [
 	restApi := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> roles [
 	^ roles
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> roles: anObject [
 	roles := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> splashHash [
 	^ splashHash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> splashHash: anObject [
 	splashHash := anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGuild >> textChannels [
 	"Return text channels."
 	^ self flattenedChannels select: #isGuildTextChannel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> unavailable [
 	^ unavailable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> unavailable: anObject [
 	unavailable := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> verificationLevel [
 	^ verificationLevel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> verificationLevel: anObject [
 	verificationLevel := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> voiceStates [
 	^ voiceStates
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> voiceStates: anObject [
 	voiceStates := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> widgetChannelId [
 	^ widgetChannelId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> widgetChannelId: anObject [
 	widgetChannelId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> widgetEnabled [
 	^ widgetEnabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGuild >> widgetEnabled: anObject [
 	widgetEnabled := anObject
 ]

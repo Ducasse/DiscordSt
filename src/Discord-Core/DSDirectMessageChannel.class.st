@@ -4,18 +4,20 @@ See documentation at https://discordapp.com/developers/docs/resources/channel#gu
 
 "
 Class {
-	#name : #DSDirectMessageChannel,
-	#superclass : #DSChannel,
+	#name : 'DSDirectMessageChannel',
+	#superclass : 'DSChannel',
 	#instVars : [
 		'id',
 		'lastMessageId',
 		'recipients',
 		'messages'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSDirectMessageChannel class >> oneRecipient [
 	<gtExample>
 	<label: 'A direct message'>
@@ -25,57 +27,50 @@ DSDirectMessageChannel class >> oneRecipient [
 		on: self jsonMappingClass jsonChannelDirectMessage readStream
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 DSDirectMessageChannel >> = anObject [
 	^ self class = anObject class and: [ 
 		self id = anObject id ]
 ]
 
-{ #category : #'gt-inspector-extension' }
-DSDirectMessageChannel >> gtInspectorMessages: composite [
-	<gtInspectorPresentationOrder: 1>
-	^ composite with: [ :aComposite |
-			self messages gtInspectorMessages: composite ]
-]
-
-{ #category : #comparing }
+{ #category : 'comparing' }
 DSDirectMessageChannel >> hash [
 	^ self class hash bitXor: self id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSDirectMessageChannel >> initialize [
 	super initialize.
 	recipients := #().
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> lastMessageId [
 	^ lastMessageId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> lastMessageId: anObject [
 	lastMessageId := anObject
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSDirectMessageChannel >> messages [
 	<return: #DSMessages of: #DSMessage>
 	^ messages ifNil: [ self restApi messagesForChannel: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> name [
 	^ String streamContents: [ :aStream |
 		self recipients 
@@ -83,7 +78,7 @@ DSDirectMessageChannel >> name [
 			separatedBy: [ aStream << ', ' ] ]
 ]
 
-{ #category : #position }
+{ #category : 'position' }
 DSDirectMessageChannel >> position [
 	"Complement protocol of other channels."
 	^ self lastMessageId 
@@ -91,7 +86,7 @@ DSDirectMessageChannel >> position [
 		ifNotNil: [ :anId | anId asNumber negated ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSDirectMessageChannel >> printOn: aStream [
 	"Print channel name if available"
 	aStream << 'DM Channel: '.
@@ -100,17 +95,17 @@ DSDirectMessageChannel >> printOn: aStream [
 		separatedBy: [ aStream << ', ' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> recipients [
 	^ recipients
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> recipients: anObject [
 	recipients := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSDirectMessageChannel >> type [
 	^ DSChannelDirectMessageType uniqueInstance
 ]

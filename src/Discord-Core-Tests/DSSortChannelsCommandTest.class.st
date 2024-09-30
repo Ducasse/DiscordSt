@@ -2,17 +2,19 @@
 A DSSortChannelsCommandTest is a test class for testing the behavior of DSSortChannelsCommand
 "
 Class {
-	#name : #DSSortChannelsCommandTest,
-	#superclass : #DSChannelsCommandTest,
-	#category : 'Discord-Core-Tests-Commands'
+	#name : 'DSSortChannelsCommandTest',
+	#superclass : 'DSChannelsCommandTest',
+	#category : 'Discord-Core-Tests-Commands',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Commands'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSSortChannelsCommandTest >> classToTest [
 	^ DSSortChannelsCommand
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSSortChannelsCommandTest >> testSortedChannels [
 	command := self classToTest new.
 	command 

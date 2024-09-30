@@ -2,12 +2,14 @@
 I keep a useful methods that can be used by different objects (classes).
 "
 Class {
-	#name : #DSUtility,
-	#superclass : #Object,
-	#category : 'Discord-Core-Utility'
+	#name : 'DSUtility',
+	#superclass : 'Object',
+	#category : 'Discord-Core-Utility',
+	#package : 'Discord-Core',
+	#tag : 'Utility'
 }
 
-{ #category : #'ui - http progress' }
+{ #category : 'ui - http progress' }
 DSUtility class >> displayHTTPProgress: labelString during: aBlock [
 	"Display a progress bar with a label while executing a block.
 	It returns a result of the block."
@@ -29,7 +31,7 @@ DSUtility class >> displayHTTPProgress: labelString during: aBlock [
 	^ result
 ]
 
-{ #category : #markdown }
+{ #category : 'markdown' }
 DSUtility class >> markdownOf: aString [
 	"Return Markdown representation of a string."
 	<return: #String>
@@ -40,7 +42,7 @@ DSUtility class >> markdownOf: aString [
 				nextPutAll: '```'; cr ].
 ]
 
-{ #category : #fuel }
+{ #category : 'fuel' }
 DSUtility class >> materializeFromByteArray: byteArray [
 	"Materialize objects using Fuel."
 	^(FLMaterializer newDefault 
@@ -48,12 +50,12 @@ DSUtility class >> materializeFromByteArray: byteArray [
 		materializeFrom: byteArray readStream) root
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSUtility class >> newZnClient [
 	^ ZnClient new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSUtility class >> newZnClientWithUserAgent [
 	"Return new object with correct User Agent.
 	See https://discordapp.com/developers/docs/reference#user-agent"
@@ -62,14 +64,14 @@ DSUtility class >> newZnClientWithUserAgent [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSUtility class >> printHumanReadableBytes: aTotalNumber [
 	"Print in a readable form size, e.g., 1KB, 12MB, etc."
 	^ String streamContents: [ :aStream |
 		self printHumanReadableBytes: aTotalNumber on: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSUtility class >> printHumanReadableBytes: aTotalNumber on: aStream [ 
 	"Print in a readable form size, e.g., 1KB, 12MB, etc."
 	aTotalNumber < 1024 ifTrue: [ 
@@ -88,7 +90,7 @@ DSUtility class >> printHumanReadableBytes: aTotalNumber on: aStream [
 	aStream << ' TB'
 ]
 
-{ #category : #fuel }
+{ #category : 'fuel' }
 DSUtility class >> safeFileName: anObject [
 	"Return a safe string representation that can be used as a basename for a filename.
 	It returns a basename without an extension, e.g., .png."
@@ -116,7 +118,7 @@ DSUtility class >> safeFileName: anObject [
 					previousCharacter := nextCharacter ] ]
 ]
 
-{ #category : #fuel }
+{ #category : 'fuel' }
 DSUtility class >> serializeToByteArray: anObject [
 	"Serialize an object as a byte array using FUEL.
 	It returns bytes representing the serialized object."
@@ -130,7 +132,7 @@ DSUtility class >> serializeToByteArray: anObject [
 	^ stream contents.
 ]
 
-{ #category : #markdown }
+{ #category : 'markdown' }
 DSUtility class >> smalltalkInlinedMarkdownOf: aString [
 	"Return inlined Markdown representation of a string. 
 	The string is supposed to be a one-line Smalltalk code snippet."
@@ -142,7 +144,7 @@ DSUtility class >> smalltalkInlinedMarkdownOf: aString [
 				nextPutAll: '`' ].
 ]
 
-{ #category : #markdown }
+{ #category : 'markdown' }
 DSUtility class >> smalltalkMarkdownOf: aString [
 	"Return Markdown representation of a string. 
 	The string is supposed to be a Smalltalk code snippet."

@@ -5,8 +5,8 @@ Attachment is a part of a message (DSMessage).
 See https://discordapp.com/developers/docs/resources/channel#attachment-object
 "
 Class {
-	#name : #DSAttachment,
-	#superclass : #DSObject,
+	#name : 'DSAttachment',
+	#superclass : 'DSObject',
 	#instVars : [
 		'id',
 		'filename',
@@ -17,10 +17,12 @@ Class {
 		'data',
 		'proxyUrl'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSAttachment >> asForm [
 	"Download data if necessary and convert to Form object."
 	| aStream |
@@ -28,7 +30,7 @@ DSAttachment >> asForm [
 	^ ImageReadWriter formFromStream: aStream 
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSAttachment >> data [
 	"Get the downloaded data"
 	^ data
@@ -38,127 +40,63 @@ DSAttachment >> data [
 				contents ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> data: anObject [
 	data := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> fileSize [
 	^ fileSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> fileSize: anObject [
 	fileSize := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> filename [
 	^ filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> filename: anObject [
 	filename := anObject
 ]
 
-{ #category : #'gt-inspector-extension' }
-DSAttachment >> gtInspectorActionDownloadData [
-	<gtInspectorAction>
-	^ GLMGenericAction new
-		action: [ :presentation | self data. presentation update ];
-		icon: (self iconNamed: #bottom);
-		condition: [ self hasData not ];
-		title: 'Download data'
-]
-
-{ #category : #'gt-inspector-extension' }
-DSAttachment >> gtInspectorActionMaterializeData [
-	<gtInspectorAction>
-	^ GLMGenericAction new
-		action: [ :presentation | | result |
-				result := self materialize.
-				presentation update; selection: result ];
-		icon: (self iconNamed: #glamorousAdd);
-		condition: [ self isImage not ];
-		title: 'Materialize'
-]
-
-{ #category : #'gt-inspector-extension' }
-DSAttachment >> gtInspectorImage: composite [
-	<gtInspectorPresentationOrder: 2>
-	^ composite morph
-		title: 'Image';
-		display: [ | aStream |
-				aStream := self data readStream.
-				ImageReadWriter formFromStream: aStream ];
-		when: [ self hasData and: [ 
-					[ ImageReadWriter formFromStream: self data readStream.
-					true ]
-					on: Error do: [ :exception | exception return: false ] ] ];
-		yourself			
-]
-
-{ #category : #'gt-inspector-extension' }
-DSAttachment >> gtInspectorString: composite [
-	<gtInspectorPresentationOrder: 2>
-	^ composite text 
-		title: 'String';
-		display: [ self data truncateWithElipsisTo: 100000 ];
-		when: [ self hasData and: [ self data isString ] ];
-		yourself			
-]
-
-{ #category : #'gt-inspector-extension' }
-DSAttachment >> gtInspectorZipItemsIn: composite [
-	<gtInspectorPresentationOrder: 3>
-	^ composite fastList
-		title: 'ZIP';
-		display: [ ZipArchive new 
-						readFrom: self data readStream;
-						members ];
-		when: [ self isZipArchive ];
-		format: [ :zipFileMember | zipFileMember fileName ];
-		selectionPopulate: #selection 
-			entitled: 'Inspect the ZIP member'
-			with: [ :list | list rawSelection gtInspectorInterestingObject ];
-		send: [ :zipFileMemberOrNil | 
-			zipFileMemberOrNil ifNotNil: [ :member | member contents ] ]
-]
-
-{ #category : #testing }
+{ #category : 'testing' }
 DSAttachment >> hasData [
 	"Return true if the data are downloaded."
 	^ data notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> height [
 	^ height
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> height: anObject [
 	height := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSAttachment >> isAttachment [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSAttachment >> isFuel [
 	"Answer true, if the attachment includes FUEL data.
 	We recognize it by checking the url extension."
@@ -170,26 +108,26 @@ DSAttachment >> isFuel [
 		ifNil: false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSAttachment >> isImage [
 	"If width and height are defined, it is an image."
 	^ self width notNil and: [ self height notNil ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSAttachment >> isZipArchive [
 	"Return true if the data are downloaded and is a ZIP archive."
 	^ self hasData and: [ ZipArchive isZipArchive: self data readStream ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSAttachment >> materialize [
 	"Materialize the attachment data. 
 	It is supposed that #data return a ByteArray object."
 	^ DSUtility materializeFromByteArray: self data
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSAttachment >> printOn: aStream [
 	aStream << 'Attachment'.
 	self isImage ifTrue: [ aStream << ' (image)' ].
@@ -202,32 +140,32 @@ DSAttachment >> printOn: aStream [
 	self filename ifNotNil: [ :string | aStream << string ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> proxyUrl [
 	^ proxyUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> proxyUrl: anObject [
 	proxyUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> url: anObject [
 	url := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> width [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSAttachment >> width: anObject [
 	width := anObject
 ]

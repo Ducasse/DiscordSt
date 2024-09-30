@@ -22,57 +22,59 @@ DSEmbed new
 
 "
 Class {
-	#name : #DSEmbedField,
-	#superclass : #DSObject,
+	#name : 'DSEmbedField',
+	#superclass : 'DSObject',
 	#instVars : [
 		'name',
 		'value',
 		'isInline'
 	],
-	#category : 'Discord-Core-Model'
+	#category : 'Discord-Core-Model',
+	#package : 'Discord-Core',
+	#tag : 'Model'
 }
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DSEmbedField >> beInline [
 	^ self isInline: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedField >> isInline [
 	^ isInline ifNil: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedField >> isInline: anObject [
 	isInline := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedField >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedField >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSEmbedField >> printFullMessageOn: aTextStream [ 
 	aTextStream << self name << ': ' << self value
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSEmbedField >> printOn: aStream [ 
 	aStream << 'Field: ' << self name << ': ' << self value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedField >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSEmbedField >> value: anObject [
 	value := anObject
 ]

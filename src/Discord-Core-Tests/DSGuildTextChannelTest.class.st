@@ -3,49 +3,51 @@ A DSGuildTextChannelTest is a test class for testing the behavior of DSGuildText
 
 "
 Class {
-	#name : #DSGuildTextChannelTest,
-	#superclass : #DSGuildChannelTest,
-	#category : 'Discord-Core-Tests-Model'
+	#name : 'DSGuildTextChannelTest',
+	#superclass : 'DSGuildChannelTest',
+	#category : 'Discord-Core-Tests-Model',
+	#package : 'Discord-Core-Tests',
+	#tag : 'Model'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuildTextChannelTest >> correctType [
 	"Return correct channel type"
 	^ 'text'
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuildTextChannelTest >> incorrectType [
 	^ 'voice'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGuildTextChannelTest >> newChannel [
 	^ DSGuildTextChannel new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildTextChannelTest >> testIsGeneral [
 	channel := self newChannel.
 	channel id: self anyString; guildId: self anyString; yourself.
 	self assert: channel isGeneral
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildTextChannelTest >> testLastMessageId [
 	channel := self newChannel.
 	channel lastMessageId: self anyString.
 	self assert: channel lastMessageId equals: self anyString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGuildTextChannelTest >> testTopic [
 	channel := self newChannel.
 	channel topic: self anyString.
 	self assert: channel topic equals: self anyString.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSGuildTextChannelTest >> typeNameString [
 	^ 'Text'
 ]

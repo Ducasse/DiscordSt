@@ -1,22 +1,24 @@
 Class {
-	#name : #DSCommand,
-	#superclass : #Object,
-	#category : 'Discord-Core-Commands'
+	#name : 'DSCommand',
+	#superclass : 'Object',
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSCommand >> async [
 	^ DSAsyncCommand new
 		command: self;
 		yourself
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSCommand >> execute [
 	^ self subclassResponsibility
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSCommand >> executeAsync [
 	^ self async execute
 ]

@@ -17,15 +17,17 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSSortChannelsCommand,
-	#superclass : #DSChannelsCommand,
+	#name : 'DSSortChannelsCommand',
+	#superclass : 'DSChannelsCommand',
 	#instVars : [
 		'sortedChannels'
 	],
-	#category : 'Discord-Core-Commands'
+	#category : 'Discord-Core-Commands',
+	#package : 'Discord-Core',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSSortChannelsCommand >> execute [
 	self sortedChannels: self rootChannels.
 	self sortedChannels do: [ :eachRoot | 
@@ -34,14 +36,14 @@ DSSortChannelsCommand >> execute [
 			eachRoot subordinateChannels: children ] ].
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSSortChannelsCommand >> rootChannels [
 	^ (self channels 
 		select: [ :eachChannel | eachChannel parentId isNil ])
 			 sort: [ :a :b | a position < b position ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSSortChannelsCommand >> selectChildren: idChannelString [ 
 	^ (self channels 
 		select: [ :eachChannel | eachChannel parentId = idChannelString ])
@@ -49,12 +51,12 @@ DSSortChannelsCommand >> selectChildren: idChannelString [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSortChannelsCommand >> sortedChannels [
 	^ sortedChannels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSSortChannelsCommand >> sortedChannels: anObject [
 	sortedChannels := anObject
 ]
