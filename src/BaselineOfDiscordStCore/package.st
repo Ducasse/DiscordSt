@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDiscordStCore }
+Package { #name : 'BaselineOfDiscordStCore' }

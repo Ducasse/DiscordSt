@@ -1,13 +1,20 @@
 Class {
-	#name : #BaselineOfDiscordStCore,
-	#superclass : #BaselineOf,
-	#category : 'BaselineOfDiscordStCore'
+	#name : 'BaselineOfDiscordStCore',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfDiscordStCore',
+	#package : 'BaselineOfDiscordStCore'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfDiscordStCore >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
+		spec
+			baseline: 'ZincHTTPComponents'
+			with: [ spec
+				loads: #('WebSocket');
+				repository: 'github://svenvc/zinc:v5/repository' ].
+		
 		spec
 			baseline: 'ExternalVolatileStore' with: [ 
 				spec
