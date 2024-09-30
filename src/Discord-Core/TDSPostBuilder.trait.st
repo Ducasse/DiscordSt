@@ -339,8 +339,8 @@ TDSPostBuilder >> fileReference: aFileReference [
 
 { #category : 'private' }
 TDSPostBuilder >> generateFileNameWithExtension: extensionString [
-	"Return a unique file name with an extention, e.g., '.png'."
-	<return: #String>
+	"Return a unique file name with an extension, e.g., '.png'."
+	
 	^ DSGenerateFileNameCommand new
 		extension: extensionString;
 		existingFileNames: self dataPost fileNames;
@@ -350,15 +350,15 @@ TDSPostBuilder >> generateFileNameWithExtension: extensionString [
 
 { #category : 'private' }
 TDSPostBuilder >> generateGifFileName [
-	"Return a unique file name with GIF extention."
-	<return: #String>
+	"Return a unique file name with GIF extension."
+
 	^ self generateFileNameWithExtension: '.gif'
 ]
 
 { #category : 'private' }
 TDSPostBuilder >> generatePngFileName [
 	"Return a unique file name with PNG extention."
-	<return: #String>
+	
 	^ self generateFileNameWithExtension: '.png'
 ]
 

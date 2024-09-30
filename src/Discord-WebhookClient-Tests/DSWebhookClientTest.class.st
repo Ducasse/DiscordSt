@@ -52,25 +52,25 @@ DSWebhookClientTest >> messageString [
 { #category : 'test - sending' }
 DSWebhookClientTest >> testAsyncSend [
 	"Send JSON entity asynchronously"
+
 	| port serverRequests semaphore delegate timeout |
 	serverRequests := OrderedCollection new.
 	semaphore := Semaphore new.
 	server := ZnServer startOn: 0.
 	delegate := ZnDispatcherDelegate new.
-	delegate map: '/' to: [ :request :response | 
-		serverRequests add: request. 
+	delegate map: '/' to: [ :request :response |
+		serverRequests add: request.
 		semaphore signal.
 		response entity: self messageEntity ].
 	server delegate: delegate.
 	port := server serverSocket port.
-	client := self classToTest new 
-		url: 'http://localhost:', port asString;
-		message: self messageString.
+	client := self classToTest new
+		          url: 'http://localhost:' , port asString;
+		          message: self messageString.
 	client asyncSend.
-	timeout := semaphore waitTimeoutMSecs: 300.
+	timeout := semaphore waitTimeoutMilliseconds: 300.
 	self deny: timeout.
-	self assert: serverRequests size equals: 1.
-
+	self assert: serverRequests size equals: 1
 ]
 
 { #category : 'tests' }

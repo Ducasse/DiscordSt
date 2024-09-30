@@ -134,9 +134,16 @@ DSWebhookClient class >> postSimpleMessageWithUsernameAndAvatar [
 ]
 
 { #category : 'protocol - embed' }
+DSWebhookClient >> addNewEmbed [
+	"Add new embed object and return it."
+	
+	^ self post addEmbed: self newEmbed
+]
+
+{ #category : 'protocol - embed' }
 DSWebhookClient >> embeds [
 	"Return a collection of embed objects"
-	<return: #Array of: #DSEmbed>
+	
 	^ self post embeds
 ]
 
