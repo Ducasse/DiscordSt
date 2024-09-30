@@ -1,6 +1,6 @@
-Extension { #name : #DSPostToEntityCommand }
+Extension { #name : 'DSPostToEntityCommand' }
 
-{ #category : #'*Discord-Client' }
+{ #category : '*Discord-Client' }
 DSPostToEntityCommand >> visitDSClientDataPost: aDSClientDataPost [ 
 	| part payloadJson |
 	self entity: ZnMultiPartFormDataEntity new.
@@ -11,7 +11,7 @@ DSPostToEntityCommand >> visitDSClientDataPost: aDSClientDataPost [
 		entity addPart: eachPart ].
 ]
 
-{ #category : #'*Discord-Client' }
+{ #category : '*Discord-Client' }
 DSPostToEntityCommand >> visitDSClientJsonPost: aDSClientJsonPost [ 
 	self entity: (
 		ZnEntity text: (

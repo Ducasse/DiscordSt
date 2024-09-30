@@ -2,22 +2,24 @@
 I represent Discord API version 6.
 "
 Class {
-	#name : #DSRestApiSix,
-	#superclass : #DSRestApi,
+	#name : 'DSRestApiSix',
+	#superclass : 'DSRestApi',
 	#instVars : [
 		'apiUrl',
 		'authentication'
 	],
-	#category : 'Discord-Client-REST-Api'
+	#category : 'Discord-Client-REST-Api',
+	#package : 'Discord-Client',
+	#tag : 'REST-Api'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSRestApiSix class >> initialize [
 	self initializeHTTPStatusCodes.
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSRestApiSix class >> initializeHTTPStatusCodes [
 	<script>
 	"ZnStatusLine code: 200"
@@ -27,34 +29,34 @@ DSRestApiSix class >> initializeHTTPStatusCodes [
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRestApiSix class >> versionNumber [
 	^ 6
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRestApiSix >> apiUrl [
 	"Return root URL used for Discord communication."
 	^ apiUrl ifNil: [ apiUrl := DSConstants defaultRestApiSixUrl ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSRestApiSix >> apiUrl: anObject [
 	apiUrl := anObject
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> avatarsUrl [
 	"Return Discord's Avatars URL."
 	^ 'https://cdn.discordapp.com/avatars' asZnUrl
 ]
 
-{ #category : #'initialization-release' }
+{ #category : 'initialization-release' }
 DSRestApiSix >> beBot [
 	authentication := DSBotAuthentication new.
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> channelMessageUrlForId: messageId andChannelId: channelIdString [ 
 	"Get a URL to return a specific message in the channel. 
 	If operating on a guild channel, this endpoints requires the 'READ_MESSAGE_HISTORY' 
@@ -63,7 +65,7 @@ DSRestApiSix >> channelMessageUrlForId: messageId andChannelId: channelIdString 
 	^ (self channelMessagesUrlForId: channelIdString) / messageId asString
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> channelMessagesUrlForId: channelIdString [ 
 	"Get a URL to get messages of an existing channel, or
 	send a message to the particular text Guild or DM channel.
@@ -72,13 +74,13 @@ DSRestApiSix >> channelMessagesUrlForId: channelIdString [
 	^ self channelsUrl / channelIdString asString / 'messages'
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> channelsUrl [
 	"Get a channels URL"
 	^ self apiUrl / 'channels'
 ]
 
-{ #category : #'public - user' }
+{ #category : 'public - user' }
 DSRestApiSix >> directChannels [
 	"Return collection of dirrect channels.
 	See https://discordapp.com/developers/docs/resources/user#get-user-dms"
@@ -102,7 +104,7 @@ DSRestApiSix >> directChannels [
 	
 ]
 
-{ #category : #'public - user' }
+{ #category : 'public - user' }
 DSRestApiSix >> directMessageWith: aDSUser [ 
 	| response entity |
 	entity := ZnEntity text: (self class jsonMappingClass
@@ -127,7 +129,7 @@ DSRestApiSix >> directMessageWith: aDSUser [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSRestApiSix >> doTwoFactorAuthenticationRequest: aZnResponse ticket: ticketString [ 
 	| code response jsonObject token |
 	code := DSTwoFactorNotificationRequiered new
@@ -152,7 +154,7 @@ DSRestApiSix >> doTwoFactorAuthenticationRequest: aZnResponse ticket: ticketStri
 			 self raiseLoginErrorOn: response message: response contents asString ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> editMessage: aDSMessage content: aString embed: aDSEmbed [ 
 	"Edit a previously sent message. 
 	You can only edit messages that have been sent by the current user. 
@@ -165,7 +167,7 @@ DSRestApiSix >> editMessage: aDSMessage content: aString embed: aDSEmbed [
 		embed: aDSEmbed
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> editMessageId: messageId inChannelId: channelId content: contentString embed: embedObject [
 	"Edit a previously sent message. 
 	You can only edit messages that have been sent by the current user. 
@@ -186,7 +188,7 @@ DSRestApiSix >> editMessageId: messageId inChannelId: channelId content: content
 			signal: response contents ]
 ]
 
-{ #category : #'json - conversions' }
+{ #category : 'json - conversions' }
 DSRestApiSix >> editMessagePayloadForContent: contentString embed: aDSEmbed [ 
 	"Return a JSON string that represents Edit Message payload.
 	See https://discordapp.com/developers/docs/resources/channel#edit-message"
@@ -198,7 +200,7 @@ DSRestApiSix >> editMessagePayloadForContent: contentString embed: aDSEmbed [
 	^ DSModelJsonMapping write: dictionary mappedTo: #editMessagePayloadMappingFor:
 ]
 
-{ #category : #'json - conversions' }
+{ #category : 'json - conversions' }
 DSRestApiSix >> emailAndPasswordJson [
 	"Return JSON string with email and password.
 	It represents a JSON format used for login."
@@ -206,14 +208,14 @@ DSRestApiSix >> emailAndPasswordJson [
 		write: self session mappedTo: #clientSessionEmailAndPasswordMappingFor:
 ]
 
-{ #category : #'public accessing' }
+{ #category : 'public accessing' }
 DSRestApiSix >> guildChannelsOf: aDSUserGuild [
 	"Return Guild Channel objects.
 	See https://discordapp.com/developers/docs/resources/guild#get-guild-channels"
 	^ (self guildChannelsUsingId: aDSUserGuild id)
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> guildChannelsUrlForId: snowflake [ 
 	"Return Discord API URL to ask for guild channels.
 	snowflake is an Guild Id.
@@ -221,7 +223,7 @@ DSRestApiSix >> guildChannelsUrlForId: snowflake [
 	^ self guildsUrl / snowflake asString / 'channels'
 ]
 
-{ #category : #'public accessing' }
+{ #category : 'public accessing' }
 DSRestApiSix >> guildChannelsUsingId: guildId [
 	"Returns a list of guild channel objects.
 	See https://discordapp.com/developers/docs/resources/guild#get-guild-channels"
@@ -243,7 +245,7 @@ DSRestApiSix >> guildChannelsUsingId: guildId [
 			signal: response contents ]
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> guildMembersUrlForId: snowflake [
 	"Return Discord API URL to ask for list of guild members.
 	snowflake is a Guild Id.
@@ -251,20 +253,20 @@ DSRestApiSix >> guildMembersUrlForId: snowflake [
 	^ self guildsUrl / snowflake asString / 'members'
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> guildsUrl [
 	"Return a root Discord Guilds URL to perform opperation and questions about Guild(s),
 	e.g., ask for existing channels."
 	^ self apiUrl / 'guilds'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSRestApiSix >> initialize [
 	super initialize.
 	authentication := DSUserAuthentication new.
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> listGuildMembersOfGuildId: guildId [
 	"Returns a list of guild member objects that are members of the guild.
 	See https://discordapp.com/developers/docs/resources/guild#list-guild-members"
@@ -277,7 +279,7 @@ DSRestApiSix >> listGuildMembersOfGuildId: guildId [
 	^ self listGuildMembersOfGuildId: guildId queryParams: params
 ]
 
-{ #category : #'private - communication' }
+{ #category : 'private - communication' }
 DSRestApiSix >> listGuildMembersOfGuildId: guildId queryParams: associations [
 	"Returns a list of guild member objects that are members of the guild.
 	See https://discordapp.com/developers/docs/resources/guild#list-guild-members
@@ -301,7 +303,7 @@ DSRestApiSix >> listGuildMembersOfGuildId: guildId queryParams: associations [
 				signal: response contents ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> login [
 	| response |
 	self resetCache.
@@ -318,13 +320,13 @@ DSRestApiSix >> login [
 			signal: response contents ]
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> loginAuthUrl [
 	"Return authentication URL to login with email and password."
 	^ self apiUrl / 'auth' / 'login'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> logout [
 	| response |
 	response := self newZnClientAuthenticated
@@ -342,13 +344,13 @@ DSRestApiSix >> logout [
 
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> logoutAuthUrl [
 	"Return authentication URL to logout from Discord."
 	^ self apiUrl / 'auth' / 'logout'
 ]
 
-{ #category : #'public - user' }
+{ #category : 'public - user' }
 DSRestApiSix >> me [
 	"Return User object that identyfies the logged user.
 	See https://discordapp.com/developers/docs/resources/user#user-object"
@@ -357,7 +359,7 @@ DSRestApiSix >> me [
 		ifAbsentPut: [ self newMeUser ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> meGuilds [
 	"Returns a list of user guild objects the current user is a member of.
 	See https://discordapp.com/developers/docs/resources/user#get-current-user-guilds"
@@ -366,14 +368,14 @@ DSRestApiSix >> meGuilds [
 		ifAbsentPut: [ self newMeGuilds ]
 ]
 
-{ #category : #'public - channel' }
+{ #category : 'public - channel' }
 DSRestApiSix >> messageBuilder [
 	^ DSClientPostBuilder new
 		restApi: self;
 		yourself
 ]
 
-{ #category : #'public accessing' }
+{ #category : 'public accessing' }
 DSRestApiSix >> messageForId: messageId inChannelId: channelId [
 	"Return DSMessage object of a specific id in the specific channel id."
 
@@ -391,7 +393,7 @@ DSRestApiSix >> messageForId: messageId inChannelId: channelId [
 				signal: response contents ]
 ]
 
-{ #category : #'public - channel' }
+{ #category : 'public - channel' }
 DSRestApiSix >> messagesAfter: aDSMessage inChannel: aDSGuildTextChannel [ 
 	<return: #DSMessages of: #DSMessage>
 	| queryParams |
@@ -401,7 +403,7 @@ DSRestApiSix >> messagesAfter: aDSMessage inChannel: aDSGuildTextChannel [
 	^ self messagesForChannelId: aDSGuildTextChannel id queryParams: queryParams
 ]
 
-{ #category : #'public - channel' }
+{ #category : 'public - channel' }
 DSRestApiSix >> messagesBefore: aDSMessage inChannel: aDSGuildTextChannel [ 
 	<return: #DSMessages of: #DSMessage>
 	| queryParams |
@@ -411,7 +413,7 @@ DSRestApiSix >> messagesBefore: aDSMessage inChannel: aDSGuildTextChannel [
 	^ self messagesForChannelId: aDSGuildTextChannel id queryParams: queryParams
 ]
 
-{ #category : #'public - channel' }
+{ #category : 'public - channel' }
 DSRestApiSix >> messagesForChannel: aChannel [ 
 	"Returns the messages for a channel. If operating on a guild channel, 
 	this endpoint requires the 'READ_MESSAGES' permission to be present on the current user. 
@@ -420,7 +422,7 @@ DSRestApiSix >> messagesForChannel: aChannel [
 	^ self messagesForChannelId: aChannel id
 ]
 
-{ #category : #'private - communication' }
+{ #category : 'private - communication' }
 DSRestApiSix >> messagesForChannelId: channelId [ 
 	"Returns the messages for a channel. If operating on a guild channel, 
 	this endpoint requires the 'READ_MESSAGES' permission to be present on the current user. 
@@ -445,7 +447,7 @@ DSRestApiSix >> messagesForChannelId: channelId [
 			signal: response contents ]
 ]
 
-{ #category : #'private - communication' }
+{ #category : 'private - communication' }
 DSRestApiSix >> messagesForChannelId: channelId queryParams: associations [
 	<return: #DSMessages of: #DSMessage>
 	"Returns the messages for a channel. If operating on a guild channel, 
@@ -478,7 +480,7 @@ DSRestApiSix >> messagesForChannelId: channelId queryParams: associations [
 			signal: response contents ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSRestApiSix >> newMeGuilds [
 	"Returns a list of user guild objects the current user is a member of.
 	See https://discordapp.com/developers/docs/resources/user#get-current-user-guilds"
@@ -500,7 +502,7 @@ DSRestApiSix >> newMeGuilds [
 			signal: response contents ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSRestApiSix >> newMeUser [
 	"Return User object that represent the authenticated user"
 	| response |
@@ -521,21 +523,21 @@ DSRestApiSix >> newMeUser [
 			signal: response contents ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSRestApiSix >> newZnClientAuthenticated [
 	self session isAuthenticated ifFalse: [ 
 		DSTokenRequiredError signal: 'Cannot authorize the client.' ].
 	^ authentication accept: self
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSRestApiSix >> newZnClientWithUserAgent [
 	"Return new object with correct User Agent.
 	See https://discordapp.com/developers/docs/reference#user-agent"
 	^ DSUtility newZnClientWithUserAgent
 ]
 
-{ #category : #'private - parsing' }
+{ #category : 'private - parsing' }
 DSRestApiSix >> parseGuildMembers: response [
 	| members |
 	members := DSModelJsonMapping
@@ -546,7 +548,7 @@ DSRestApiSix >> parseGuildMembers: response [
 	^ members
 ]
 
-{ #category : #'private - parsing' }
+{ #category : 'private - parsing' }
 DSRestApiSix >> parseMessage: response [
 	| message |
 	message := DSModelJsonMapping
@@ -557,13 +559,13 @@ DSRestApiSix >> parseMessage: response [
 	^ message
 ]
 
-{ #category : #'defaults - json' }
+{ #category : 'defaults - json' }
 DSRestApiSix >> passwordKey [
 	"Return Dictionary key name that holds password message on unsuccessfull login."
 	^ 'password'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSRestApiSix >> processLoginResponse: aZnResponse [ 
 	"Login may require a Two-Factor-Authentication"
 	 | jsonObject token mfa ticket |
@@ -581,14 +583,14 @@ DSRestApiSix >> processLoginResponse: aZnResponse [
 		ifNotNil: [ self token: (jsonObject at: self tokenKey) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSRestApiSix >> raiseLoginErrorOn: aZnResponse message: aString [ 
 	DSCannotLoginError new 
 		response: aZnResponse;
 		signal: aString
 ]
 
-{ #category : #'public - channel' }
+{ #category : 'public - channel' }
 DSRestApiSix >> sendMessage: aDSClientPost answering: aDSMessage signalProgress: aBoolean [ 
 	"Send a message to the same text Guild or DM channel as given aDSMessage.
 	See https://discordapp.com/developers/docs/resources/channel#create-message"
@@ -596,12 +598,12 @@ DSRestApiSix >> sendMessage: aDSClientPost answering: aDSMessage signalProgress:
 	^ self sendMessage: aDSClientPost toGuildTextOrDMChannelId: aDSMessage channelId signalProgress: aBoolean
 ]
 
-{ #category : #'public - channel' }
+{ #category : 'public - channel' }
 DSRestApiSix >> sendMessage: aDSClientPost toChannel: aDSChannel signalProgress: aBoolean [ 
 	^ self sendMessage: aDSClientPost toGuildTextOrDMChannelId: aDSChannel id signalProgress: aBoolean
 ]
 
-{ #category : #'private - communication' }
+{ #category : 'private - communication' }
 DSRestApiSix >> sendMessage: aDSClientJsonPost toGuildTextOrDMChannelId: channelId signalProgress: aBoolean [
 	"Send a message to the particular text Guild or DM channel.
 	See https://discordapp.com/developers/docs/resources/channel#create-message"
@@ -625,14 +627,14 @@ DSRestApiSix >> sendMessage: aDSClientJsonPost toGuildTextOrDMChannelId: channel
 				signal: response contents ]
 ]
 
-{ #category : #'json - conversions' }
+{ #category : 'json - conversions' }
 DSRestApiSix >> toJsonObject: aString [ 
 	"Convert string to a JSON object."
 	<return: #NeoJSONObject>
 	^ NeoJSONObject fromString: aString
 ]
 
-{ #category : #'json - conversions' }
+{ #category : 'json - conversions' }
 DSRestApiSix >> tokenJson [
 	"Return JSON string with token.
 	It represents a JSON format used for logout."
@@ -640,13 +642,13 @@ DSRestApiSix >> tokenJson [
 		write: self session mappedTo: #clientSessionTokenMappingFor:	
 ]
 
-{ #category : #'defaults - json' }
+{ #category : 'defaults - json' }
 DSRestApiSix >> tokenKey [
 	"Return dictionary key name that holds token on successfull login."
 	^ 'token'
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> userAvatarFormat: aDSUser [ 
 	"Return avatar's format (GIF or Webp)"
 	^ (aDSUser avatarHash beginsWith: 'a_')
@@ -654,7 +656,7 @@ DSRestApiSix >> userAvatarFormat: aDSUser [
 			ifFalse: [ aDSUser avatarHash asString, '.webp' ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSRestApiSix >> userAvatarUrl: aDSUser [ 
 	"Return a user's avatar URL. 
 	Return nil if the user has no avatar."
@@ -663,32 +665,32 @@ DSRestApiSix >> userAvatarUrl: aDSUser [
 
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> usersMeChannelsUrl [
 	^ self usersMeUrl / 'channels'
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> usersMeGuildsUrl [
 	"Return Discord API URL to ask for user guilds objects the authenticated user is a member of.
 	See https://discordapp.com/developers/docs/resources/user#get-current-user-guilds"
 	^ self usersMeUrl / 'guilds'
 ]
 
-{ #category : #'defaults - url' }
+{ #category : 'defaults - url' }
 DSRestApiSix >> usersMeUrl [
 	"Return Discord API URL to ask for logged user's information."
 	^ self apiUrl / 'users'/ '@me'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSRestApiSix >> visitDSBotAuthentication: aDSBotAuthentication [ 
 	^ self newZnClientWithUserAgent 
 		headerAt: 'Authorization' put: 'Bot ', self session token asString;
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSRestApiSix >> visitDSUserAuthentication: aDSUserAuthentication [
 	^ self newZnClientWithUserAgent 
 		headerAt: 'Authorization' put: self session token;

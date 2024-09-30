@@ -14,12 +14,13 @@ Internal Representation and Key Implementation Points.
  
 "
 Class {
-	#name : #DSBot,
-	#superclass : #DSAbstractClient,
-	#category : 'Discord-Client'
+	#name : 'DSBot',
+	#superclass : 'DSAbstractClient',
+	#category : 'Discord-Client',
+	#package : 'Discord-Client'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSBot class >> joinedServers [
 	<gtExample>
 	^ self new
@@ -28,7 +29,7 @@ DSBot class >> joinedServers [
 		
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSBot class >> sendMessage [
 	<gtExample>
 	^ self new 
@@ -38,7 +39,7 @@ DSBot class >> sendMessage [
 			sendToServer: 'Pharo' channel: 'general'" ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSBot >> initialize [
 	super initialize.
 	restApi beBot.

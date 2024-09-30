@@ -26,8 +26,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSClientPostBuilder,
-	#superclass : #DSObject,
+	#name : 'DSClientPostBuilder',
+	#superclass : 'DSObject',
 	#traits : 'TDSClientPostBuilder + TDSUnifiedPublishInterface',
 	#classTraits : 'TDSClientPostBuilder classTrait + TDSUnifiedPublishInterface classTrait',
 	#instVars : [
@@ -36,20 +36,21 @@ Class {
 		'signalProgress',
 		'restApi'
 	],
-	#category : 'Discord-Client'
+	#category : 'Discord-Client',
+	#package : 'Discord-Client'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> channel [
 	^ channel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> channel: anObject [
 	channel := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> embed [
 	"Create an embed object if necessary and return it."
 	<return: #DSEmbed>
@@ -57,44 +58,39 @@ DSClientPostBuilder >> embed [
 		ifNil: [ self post embed: self newEmbed; embed ]
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 DSClientPostBuilder >> embeds [
 	"Return a collection of embed objects"
 	<return: #Array of: #DSEmbed>
 	^ self post embed ifNil: [ #() ] ifNotNil: [ :anEmbed | Array with: anEmbed ]
 ]
 
-{ #category : #'gt-inspector-extension' }
-DSClientPostBuilder >> gtChildren [
-	^ { self post. self channel } reject: #isNil
-]
-
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSClientPostBuilder >> initialize [
 	super initialize.
 	post := self newJSONPost.
 	signalProgress := false.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSClientPostBuilder >> newJSONPost [
 	^ DSClientJsonPost new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSClientPostBuilder >> post [
 	"Return a post object."
 	<return: #DSClientPost>
 	^ post
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSClientPostBuilder >> post: aPost [
 	"Set a post object."
 	post := aPost
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSClientPostBuilder >> respondTo: aDSMessage [ 
 	<return: #DSMessage or: nil>
 	self post isEmpty ifTrue: [ DSIncorrectValuesError signal: 'Cannot send an empty message' ].
@@ -105,17 +101,17 @@ DSClientPostBuilder >> respondTo: aDSMessage [
 		ensure: [ post := nil ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> restApi [
 	^ restApi
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> restApi: anObject [
 	restApi := anObject
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSClientPostBuilder >> send [
 	"Send a message to the particular text Guild or DM channel.
 	It returns the sent message.
@@ -129,7 +125,7 @@ DSClientPostBuilder >> send [
 		ensure: [ post := nil ].
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSClientPostBuilder >> sendTo: aDSGuildTextChannelOrOneArgBlock [
 	"Send a message to the particular text Guild or DM channel.
 	If the parameter is a block, then the block expects collection of servers.
@@ -143,7 +139,7 @@ DSClientPostBuilder >> sendTo: aDSGuildTextChannelOrOneArgBlock [
 	^ self send
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSClientPostBuilder >> sendToServer: serverName channel: channelName [ 
 	"Send a message to the particular text Guild or DM channel of the given channelName.
 	The channel is part of a server of the given name.
@@ -152,24 +148,24 @@ DSClientPostBuilder >> sendToServer: serverName channel: channelName [
 	^ self sendTo: [ :servers | (servers named: serverName) channelNamed: channelName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> servers [
 	"Return a collection of Guilds (servers)."
 	<return: #DSGuilds>
 	^ self restApi meGuilds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> signalProgress [
 	^ signalProgress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPostBuilder >> signalProgress: anObject [
 	signalProgress := anObject
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSClientPostBuilder >> target: aChannel [
 	"Set a target where a particular message should be sent.
 	In case of Webhooks it is a Webhook URL.

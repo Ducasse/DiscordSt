@@ -15,15 +15,16 @@ Internal Representation and Key Implementation Points.
  
 "
 Class {
-	#name : #DSClient,
-	#superclass : #DSAbstractClient,
+	#name : 'DSClient',
+	#superclass : 'DSAbstractClient',
 	#classInstVars : [
 		'default'
 	],
-	#category : 'Discord-Client'
+	#category : 'Discord-Client',
+	#package : 'Discord-Client'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> constructEmbedDescriptionUsingMarkdownBuilder [
 	<gtExample>
 	<label: 'Send an embed object. Its description is build using a Markdown builder'>
@@ -50,14 +51,14 @@ DSClient class >> constructEmbedDescriptionUsingMarkdownBuilder [
 		yourself
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSClient class >> default [
 	"Return the default instance that we manage.
 	Note that this is a class instance variable."
 	^ default ifNil: [ default := self newDefault ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSClient class >> newDefault [
 	DSClientSettings updateSettings.
 	^ self new
@@ -72,7 +73,7 @@ DSClient class >> newDefault [
 		yourself
 ]
 
-{ #category : #singleton }
+{ #category : 'singleton' }
 DSClient class >> resetDefault [
 	<script>
 	default 
@@ -82,7 +83,7 @@ DSClient class >> resetDefault [
 			aClient disconnect ].
 ]
 
-{ #category : #singleton }
+{ #category : 'singleton' }
 DSClient class >> resetToken [
 	<script>
 	default 
@@ -91,7 +92,7 @@ DSClient class >> resetToken [
 			aClient token: '' ].
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> sendEmbed [
 	<gtExample>
 	<label: 'Send an embed object.'>
@@ -117,7 +118,7 @@ DSClient class >> sendEmbed [
 		yourself
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> sendFormAsScreenshot [
 	<gtExample>
 	<label: 'Post a Form object as an attached screenshot'>
@@ -133,7 +134,7 @@ DSClient class >> sendFormAsScreenshot [
 
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> sendImage [
 	<gtExample>
 	<label: 'Send an image or any other file'>
@@ -150,7 +151,7 @@ DSClient class >> sendImage [
 		yourself.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> sendMorphAsScreenshot [
 	<gtExample>
 	<label: 'Post a Morph object as an attached screenshot'>
@@ -166,7 +167,7 @@ DSClient class >> sendMorphAsScreenshot [
 
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> sendObjectSerializedWithFuel [
 	<gtExample>
 	<label: 'Send an object (serialized with FUEL) as an attachment'>
@@ -183,7 +184,7 @@ DSClient class >> sendObjectSerializedWithFuel [
 
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSClient class >> sendSimpleMessage [
 	<gtExample>
 	<label: 'Send a text message to the general channel'>
@@ -198,27 +199,27 @@ DSClient class >> sendSimpleMessage [
 
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSClient >> email [
 	"Get email or nil used to login into a Discord server."
 
 	^ self restApi email
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSClient >> email: aString [
 	"Set email used to login into a Discord server."
 	self session email: aString
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSClient >> email: emailString password: passwordString [
 	"Set email and password used to login into a Discord server."
 
 	self restApi email: emailString password: passwordString
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DSClient >> login [
 	"Login to Discord. 
 	Raise DSCannotLogin on incorrect email or password.
@@ -228,7 +229,7 @@ DSClient >> login [
 	self announce: DSAuthenticatedAnnouncement.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DSClient >> logout [
 	"Logout from Discord.
 	Currently, it only deletes token."
@@ -237,20 +238,20 @@ DSClient >> logout [
 		ifTrue: [ self restApi logout ]
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSClient >> password [
 	"Get password or nil used to login into a Discord server."
 
 	^ self restApi password
 ]
 
-{ #category : #'accessing - convenience' }
+{ #category : 'accessing - convenience' }
 DSClient >> password: aString [
 	"Set password used to login into a Discord server."
 	self session password: aString
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSClient >> printOn: aStream [
 	super printOn: aStream.
 	self email notNil

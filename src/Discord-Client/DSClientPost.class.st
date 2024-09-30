@@ -7,23 +7,24 @@ I am used by DSClient in order to construct a message to be send to a Discord ch
 See documentation at https://discordapp.com/developers/docs/resources/channel#create-message
 "
 Class {
-	#name : #DSClientPost,
-	#superclass : #DSObject,
+	#name : 'DSClientPost',
+	#superclass : 'DSObject',
 	#instVars : [
 		'content',
 		'nonce',
 		'isTextToSpeech',
 		'embed'
 	],
-	#category : 'Discord-Client'
+	#category : 'Discord-Client',
+	#package : 'Discord-Client'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> content [
 	^ content
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> content: anObject [
 	"Set the message contents (up to 2000 characters)"
 	| newValue |
@@ -37,39 +38,32 @@ DSClientPost >> content: anObject [
 	content := newValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> embed [
 	^ embed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> embed: anObject [
 	embed := anObject
 ]
 
-{ #category : #'gt-inspector-extension' }
-DSClientPost >> gtChildren [
-	"Return children to display in a GT-Inspector tree view.
-	Subclasses are encouradged to override it."
-	^ self embed ifNil: [ #() ] ifNotNil: [ :anEmbed | Array with: anEmbed ]
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> isTextToSpeech [
 	^ isTextToSpeech
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> isTextToSpeech: anObject [
 	isTextToSpeech := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> nonce [
 	^ nonce
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientPost >> nonce: anObject [
 	nonce := anObject
 ]

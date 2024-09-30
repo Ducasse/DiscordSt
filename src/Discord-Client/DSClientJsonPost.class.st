@@ -4,19 +4,20 @@ I represent Discord Message post that can be send as JSON or multipart/form-data
 See documentation at https://discordapp.com/developers/docs/resources/channel#create-message
 "
 Class {
-	#name : #DSClientJsonPost,
-	#superclass : #DSClientPost,
+	#name : 'DSClientJsonPost',
+	#superclass : 'DSClientPost',
 	#traits : 'TDSJsonPost',
 	#classTraits : 'TDSJsonPost classTrait',
-	#category : 'Discord-Client'
+	#category : 'Discord-Client',
+	#package : 'Discord-Client'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSClientJsonPost >> accept: aVisitor [ 
 	^ aVisitor visitDSClientJsonPost: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSClientJsonPost >> asDataPost [
 	"Convert a post into DSClientDataPost"
 	| data |
@@ -29,7 +30,7 @@ DSClientJsonPost >> asDataPost [
 	^ data
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSClientJsonPost >> hasEmbeds [
 	"Return true if a post includes embed objects"
 	^ self embed notNil

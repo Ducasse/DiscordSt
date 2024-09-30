@@ -2,42 +2,44 @@
 I keep setting for DSClient.
 "
 Class {
-	#name : #DSClientSettings,
-	#superclass : #Object,
+	#name : 'DSClientSettings',
+	#superclass : 'Object',
 	#classVars : [
 		'DSClientEmail',
 		'DSClientPassword',
 		'DSClientToken'
 	],
-	#category : 'Discord-Client-Settings'
+	#category : 'Discord-Client-Settings',
+	#package : 'Discord-Client',
+	#tag : 'Settings'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> cleanDiscordClientEmail [
 	^ self discordClientEmail ifEmpty: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> cleanDiscordClientPassword [
 	^ self discordClientPassword
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> cleanDiscordClientToken [
 	^ self discordClientToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> discordClientEmail [
 	^ DSClientEmail ifNil: [ DSClientEmail := '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> discordClientEmail: anEmailOrEmptyString [ 
 	DSClientEmail := anEmailOrEmptyString
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 DSClientSettings class >> discordClientEmailOn: aBuilder [  
 	<systemsettings>  
 	(aBuilder setting: #discordClientEmail)
@@ -51,19 +53,19 @@ DSClientSettings class >> discordClientEmailOn: aBuilder [
 		default: ''.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> discordClientPassword [
 	self ensureVolatileDiscordClientPassword.
 	^ DSClientPassword value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> discordClientPassword: passwordOrEmptyString [
 	self ensureVolatileDiscordClientPassword.
 	DSClientPassword value: passwordOrEmptyString
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 DSClientSettings class >> discordClientPasswordOn: aBuilder [  
 	<systemsettings>  
 	(aBuilder setting: #discordClientPassword)
@@ -78,19 +80,19 @@ You do not need to store the password as the authentication token is used after 
 		order: 5.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> discordClientToken [
 	self ensureVolatileDiscordClientToken.
 	^ DSClientToken value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSClientSettings class >> discordClientToken: tokenOrEmptyString [ 
 	self ensureVolatileDiscordClientToken.
 	DSClientToken value: tokenOrEmptyString
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 DSClientSettings class >> discordClientTokenOn: aBuilder [  
 	<systemsettings>  
 	(aBuilder setting: #discordClientToken)
@@ -103,7 +105,7 @@ DSClientSettings class >> discordClientTokenOn: aBuilder [
 		default: ''.
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 DSClientSettings class >> discordGroupOn: aBuilder [  
 	<systemsettings>  
 	(aBuilder group: #discord)
@@ -114,7 +116,7 @@ See https://discordapp.com do learn about Discord.
 The Pharo community uses it for on-line discussion.'.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSClientSettings class >> ensureVolatileDiscordClientPassword [
 	DSClientPassword ifNil: [ 
 		DSClientPassword := AutoReloadableVolatileSettingValue new
@@ -123,7 +125,7 @@ DSClientSettings class >> ensureVolatileDiscordClientPassword [
 			yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSClientSettings class >> ensureVolatileDiscordClientToken [
 	DSClientToken ifNil: [ 
 		DSClientToken := AutoReloadableVolatileSettingValue new
@@ -132,21 +134,21 @@ DSClientSettings class >> ensureVolatileDiscordClientToken [
 			yourself ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSClientSettings class >> initialize [
 	"Reinitialize class on 2018-03-21."
 	self reset.
 	self updateSettings.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSClientSettings class >> reset [
 	DSClientPassword := nil.
 	DSClientToken := nil.
 
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 DSClientSettings class >> storeDiscordClientSession: aDSClient [ 
 	"Store all settings but password on a local disk."
 	| tree nodes |
@@ -160,7 +162,7 @@ DSClientSettings class >> storeDiscordClientSession: aDSClient [
 	SystemSettingsPersistence storeSettingNodes: nodes.
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 DSClientSettings class >> updateSettings [
 	"Load settings from the disk and update them in the image if they are not initialized."
 	| tree nodes |

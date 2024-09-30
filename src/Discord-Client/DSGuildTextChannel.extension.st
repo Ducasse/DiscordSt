@@ -1,6 +1,6 @@
-Extension { #name : #DSGuildTextChannel }
+Extension { #name : 'DSGuildTextChannel' }
 
-{ #category : #'*Discord-Client' }
+{ #category : '*Discord-Client' }
 DSGuildTextChannel >> message [
 	^ self restApi messageBuilder
 		channel: self;

@@ -12,12 +12,14 @@ Notice, that the new bot has to connect to Gateway at least once, before sending
 See DSBot class to connect as a bot.
 "
 Class {
-	#name : #DSBotAuthentication,
-	#superclass : #DSAuthentication,
-	#category : 'Discord-Client-REST-Api'
+	#name : 'DSBotAuthentication',
+	#superclass : 'DSAuthentication',
+	#category : 'Discord-Client-REST-Api',
+	#package : 'Discord-Client',
+	#tag : 'REST-Api'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSBotAuthentication >> accept: aVisitor [
 	^ aVisitor visitDSBotAuthentication: self
 ]

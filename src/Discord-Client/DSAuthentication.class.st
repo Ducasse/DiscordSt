@@ -5,12 +5,14 @@ Discord has several authentication options, see https://discordapp.com/developer
 
 "
 Class {
-	#name : #DSAuthentication,
-	#superclass : #Object,
-	#category : 'Discord-Client-REST-Api'
+	#name : 'DSAuthentication',
+	#superclass : 'Object',
+	#category : 'Discord-Client-REST-Api',
+	#package : 'Discord-Client',
+	#tag : 'REST-Api'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSAuthentication >> accept: aVisitor [
 	^ self subclassResponsibility
 ]

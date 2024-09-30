@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDiscordStClient }
+Package { #name : 'BaselineOfDiscordStClient' }

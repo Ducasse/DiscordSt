@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfDiscordStClient,
-	#superclass : #BaselineOf,
-	#category : 'BaselineOfDiscordStClient'
+	#name : 'BaselineOfDiscordStClient',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfDiscordStClient',
+	#package : 'BaselineOfDiscordStClient'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfDiscordStClient >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec			
 			baseline: 'DiscordStGateway' with: [
-				spec repository: 'github://JurajKubelka/DiscordSt/src' ];
+				spec repository: 'github://Ducasse/DiscordSt/src' ];
 			baseline: 'ExternalVolatileStore' with: [ 
 				spec
 					repository: 'github://feenkcom/external-volatile-store/src';
