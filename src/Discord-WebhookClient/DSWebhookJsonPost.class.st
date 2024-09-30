@@ -4,19 +4,20 @@ I represent Discord Webhook object that can be send as JSON to a Discord Webhook
 See documentation at https://discordapp.com/developers/docs/resources/webhook#jsonform-params.
 "
 Class {
-	#name : #DSWebhookJsonPost,
-	#superclass : #DSWebhookPost,
+	#name : 'DSWebhookJsonPost',
+	#superclass : 'DSWebhookPost',
 	#traits : 'TDSJsonPost',
 	#classTraits : 'TDSJsonPost classTrait',
-	#category : 'Discord-WebhookClient'
+	#category : 'Discord-WebhookClient',
+	#package : 'Discord-WebhookClient'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSWebhookJsonPost >> accept: aVisitor [ 
 	^ aVisitor visitDSJSONWebhookPost: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 DSWebhookJsonPost >> asDataPost [
 	"Convert JSON post to a data post."
 	<return: #TDSDataPost>
@@ -31,7 +32,7 @@ DSWebhookJsonPost >> asDataPost [
 	^ data
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSWebhookJsonPost >> hasEmbeds [
 	"Return true if a post includes embed objects"
 	^ self embeds notEmpty

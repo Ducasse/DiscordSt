@@ -2,17 +2,18 @@
 A DSJSONWebhookPostTest is a test class for testing the behavior of DSJSONWebhookPost
 "
 Class {
-	#name : #DSWebhookJsonPostTest,
-	#superclass : #DSWebhookPostTest,
-	#category : 'Discord-WebhookClient-Tests'
+	#name : 'DSWebhookJsonPostTest',
+	#superclass : 'DSWebhookPostTest',
+	#category : 'Discord-WebhookClient-Tests',
+	#package : 'Discord-WebhookClient-Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSWebhookJsonPostTest >> newPost [
 	^ DSWebhookJsonPost new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookJsonPostTest >> testAsDataPost [
 	| convertedPost |
 	object := self newPost.
@@ -22,7 +23,7 @@ DSWebhookJsonPostTest >> testAsDataPost [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookJsonPostTest >> testAsDataPost2 [
 	| convertedPost |
 	object := self newPost.

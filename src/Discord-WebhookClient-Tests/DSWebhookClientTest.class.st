@@ -2,35 +2,36 @@
 A DSWebhookClientTest is a test class for testing the behavior of DSWebhookClient
 "
 Class {
-	#name : #DSWebhookClientTest,
-	#superclass : #DSCoreTestCase,
+	#name : 'DSWebhookClientTest',
+	#superclass : 'DSCoreTestCase',
 	#instVars : [
 		'client'
 	],
-	#category : 'Discord-WebhookClient-Tests'
+	#category : 'Discord-WebhookClient-Tests',
+	#package : 'Discord-WebhookClient-Tests'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> anyString [
 	^ 'any string'
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> avatarUrl [
 	^ 'http://localhost/avatar.png'
 ]
 
-{ #category : #coverage }
+{ #category : 'coverage' }
 DSWebhookClientTest >> classToTest [
 	^ DSWebhookClient
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> color [
 	^ Color green
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClientTest >> externalWebhookTokenOrNil [
 	"Return Discord Webhook URL used for real post testing.
 	The value is secret, for that reason, we recomend you to set it in your environment.
@@ -38,17 +39,17 @@ DSWebhookClientTest >> externalWebhookTokenOrNil [
 	^ Smalltalk os environment at: 'DISCORD_ST_TEST_CASE_WEBHOOK' ifAbsent: nil.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> messageEntity [
 	^ (ZnEntity text: '{"id":1234,"content":"', self messageString, '"}')
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> messageString [
 	^ 'a message content'
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testAsyncSend [
 	"Send JSON entity asynchronously"
 	| port serverRequests semaphore delegate timeout |
@@ -72,7 +73,7 @@ DSWebhookClientTest >> testAsyncSend [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testAvatarUrl [
 	client := self classToTest new 
 		message: self messageString;
@@ -82,7 +83,7 @@ DSWebhookClientTest >> testAvatarUrl [
 	self assert: client post content equals: self messageString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testAvatarUrl2 [
 	client := self classToTest new 
 		avatarUrl: self avatarUrl;
@@ -92,7 +93,7 @@ DSWebhookClientTest >> testAvatarUrl2 [
 	self assert: client post content equals: self messageString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testDataPost [
 	client := self classToTest new.
 	self assert: client dataPost class equals: DSWebhookDataPost.
@@ -100,7 +101,7 @@ DSWebhookClientTest >> testDataPost [
 	self assert: client post == client post.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testDataPost2 [
 	client := self classToTest new.
 	client post: client newJSONPost.
@@ -108,7 +109,7 @@ DSWebhookClientTest >> testDataPost2 [
 	self assert: client post == client post.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testDataPost3 [
 	client := self classToTest new.
 	client
@@ -124,7 +125,7 @@ DSWebhookClientTest >> testDataPost3 [
 	
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbed [
 	client := self classToTest new
 		embedTitle: self anyString;
@@ -134,7 +135,7 @@ DSWebhookClientTest >> testEmbed [
 	self assert: client post embeds first title equals: self anyString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedColor [
 	client := self classToTest new
 		embedColor: self color;
@@ -144,7 +145,7 @@ DSWebhookClientTest >> testEmbedColor [
 	self assert: client post embeds first color equals: self color.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedDescription [
 	client := self classToTest new
 		embedDescription: self anyString;
@@ -154,7 +155,7 @@ DSWebhookClientTest >> testEmbedDescription [
 	self assert: client post embeds first description equals: self anyString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedFooterIconUrl [
 	client := self classToTest new
 		embedFooterIconUrl: self anyString;
@@ -164,7 +165,7 @@ DSWebhookClientTest >> testEmbedFooterIconUrl [
 	self assert: client post embeds first footer iconUrl equals: self anyString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedFooterText [
 	client := self classToTest new
 		embedFooterText: self anyString;
@@ -174,7 +175,7 @@ DSWebhookClientTest >> testEmbedFooterText [
 	self assert: client post embeds first footer text equals: self anyString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedImageUrl [
 	client := self classToTest new
 		embedImageUrl: self anyString;
@@ -184,7 +185,7 @@ DSWebhookClientTest >> testEmbedImageUrl [
 	self assert: client post embeds first image url equals: self anyString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedTitle [
 	client := self classToTest new
 		embedTitle: self anyString;
@@ -194,7 +195,7 @@ DSWebhookClientTest >> testEmbedTitle [
 	self assert: client post embeds first title equals: self anyString.
 ]
 
-{ #category : #'tests - embed' }
+{ #category : 'tests - embed' }
 DSWebhookClientTest >> testEmbedUrl [
 	client := self classToTest new
 		embedUrl: self anyString;
@@ -204,7 +205,7 @@ DSWebhookClientTest >> testEmbedUrl [
 	self assert: client post embeds first url equals: self anyString.
 ]
 
-{ #category : #'tests - files' }
+{ #category : 'tests - files' }
 DSWebhookClientTest >> testFileNameBytes [
 	client := self classToTest new 
 		fileName: self anyString bytes: self bytes.
@@ -214,7 +215,7 @@ DSWebhookClientTest >> testFileNameBytes [
 	self assert: client post mimeParts first contents equals: self bytes.
 ]
 
-{ #category : #'tests - files' }
+{ #category : 'tests - files' }
 DSWebhookClientTest >> testFileNameBytes2 [
 	client := self classToTest new 
 		fileName: self anyString bytes: self bytes;
@@ -228,7 +229,7 @@ DSWebhookClientTest >> testFileNameBytes2 [
 	self assert: client post mimeParts second contents equals: self bytes.
 ]
 
-{ #category : #'tests - files' }
+{ #category : 'tests - files' }
 DSWebhookClientTest >> testFileNameForm [
 	client := self classToTest new
 		fileName: self anyString
@@ -247,7 +248,7 @@ DSWebhookClientTest >> testFileNameForm [
 			#[137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 16 0 0 0 16 8 6 0 0 0 31 243 255 97 0 0 0 244 73 68 65 84 120 94 99 248 255 255 63 195 127 10 48 69 154 105 103 128 71 223 246 104 175 137 59 55 249 76 222 245 194 119 202 238 255 64 250 153 103 255 142 41 110 61 219 196 136 50 192 119 234 238 69 161 243 14 254 141 88 116 228 98 228 162 163 91 128 244 167 224 57 7 254 123 77 218 121 128 40 3 124 166 238 17 15 153 119 72 14 198 143 92 124 60 51 106 233 137 255 65 179 15 124 39 57 12 220 250 119 240 5 204 58 112 48 114 201 241 255 193 115 15 237 38 201 0 219 150 13 6 46 61 219 238 249 207 220 255 63 120 222 225 195 222 83 247 136 146 100 128 67 231 150 187 158 83 246 252 247 157 177 191 215 99 210 110 102 146 162 209 178 113 29 151 75 223 142 51 158 83 247 158 113 238 219 46 65 86 58 176 239 220 34 232 216 181 85 140 172 132 100 90 189 210 194 186 105 253 47 235 230 13 255 204 106 86 197 147 108 0 80 147 134 125 251 230 103 246 29 91 62 88 212 173 241 26 98 121 129 20 12 0 120 52 215 196 149 111 118 146 0 0 0 0 73 69 78 68 174 66 96 130]
 ]
 
-{ #category : #'tests - files' }
+{ #category : 'tests - files' }
 DSWebhookClientTest >> testFileNameMorph [
 	client := self classToTest new 
 		fileName: self anyString morph: World.
@@ -257,7 +258,7 @@ DSWebhookClientTest >> testFileNameMorph [
 	self assert: client post mimeParts first contents isCollection.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testIfFail [
 	| block |
 	client := self classToTest new.
@@ -266,26 +267,26 @@ DSWebhookClientTest >> testIfFail [
 	self assert: client ifFailBlock equals: block.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testIfFailBlock [
 	client := self classToTest new.
 	self assert: client ifFailBlock isBlock.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testMessage [
 	client := self classToTest new message: self messageString.
 	self assert: client post content equals: self messageString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testPost [
 	client := self classToTest new.
 	self assert: client post class equals: DSWebhookJsonPost.
 	self assert: client post == client post.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testPostNetworkError2 [
 	"Post JSON entity"
 	| port |
@@ -298,7 +299,7 @@ DSWebhookClientTest >> testPostNetworkError2 [
 	self should: [ client send ] raise: ConnectionTimedOut.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testPostNetworkError3 [
 	"Post multi-part data form entity"
 	| port |
@@ -312,7 +313,7 @@ DSWebhookClientTest >> testPostNetworkError3 [
 	self should: [ client send ] raise: ConnectionTimedOut.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testPostNetworkError4 [
 	"Post JSON entity"
 	| port response |
@@ -325,7 +326,7 @@ DSWebhookClientTest >> testPostNetworkError4 [
 	self assert: response isNil.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testPostNetworkError5 [
 	"Post multi-part data form entity"
 	| port response |
@@ -339,7 +340,7 @@ DSWebhookClientTest >> testPostNetworkError5 [
 	self assert: response isNil.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testPostNetworkError6 [
 	"Post multi-part data form entity"
 	client := self classToTest new 
@@ -349,7 +350,7 @@ DSWebhookClientTest >> testPostNetworkError6 [
 	self should: [ client send ] raise: NameLookupFailure.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testPostNetworkError7 [
 	"Post JSON entity"
 	client := self classToTest new 
@@ -358,7 +359,7 @@ DSWebhookClientTest >> testPostNetworkError7 [
 	self should: [ client send ] raise: NameLookupFailure.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSend [
 	"Send JSON entity"
 	| message |
@@ -372,7 +373,7 @@ DSWebhookClientTest >> testSend [
 	self assert: message class equals: DSMessage.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSend2 [
 	"Send multi-part data form entity"
 	| message |
@@ -387,7 +388,7 @@ DSWebhookClientTest >> testSend2 [
 	self assert: message class equals: DSMessage.
 ]
 
-{ #category : #'tests - discord server' }
+{ #category : 'tests - discord server' }
 DSWebhookClientTest >> testSendToDiscord [
 	"Post JSON entity"
 	| message url |
@@ -400,7 +401,7 @@ DSWebhookClientTest >> testSendToDiscord [
 	self assert: message class equals: DSMessage.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testSetWaitForResponse [
 	client := self classToTest new url: self url.
 	client setWaitForResponse.
@@ -408,7 +409,7 @@ DSWebhookClientTest >> testSetWaitForResponse [
 	self assert: (client url queryAt: #wait) equals: 'true'.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSupressNetworkErrors [
 	"Post JSON entity"
 	| response |
@@ -422,7 +423,7 @@ DSWebhookClientTest >> testSupressNetworkErrors [
 	self assert: response isNil
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSupressNetworkErrors2 [
 	"Post multi-part data form entity"
 	| response |
@@ -437,7 +438,7 @@ DSWebhookClientTest >> testSupressNetworkErrors2 [
 	self assert: response isNil
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSupressNetworkErrors3 [
 	"Post JSON entity"
 	| result |
@@ -452,7 +453,7 @@ DSWebhookClientTest >> testSupressNetworkErrors3 [
 	self assert: result class equals: DSResponseError.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSupressNetworkErrors4 [
 	"Post multi-part data form entity"
 	| result |
@@ -466,7 +467,7 @@ DSWebhookClientTest >> testSupressNetworkErrors4 [
 	self assert: result class equals: DSResponseError.
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSupressNetworkErrors5 [
 	"Post JSON entity"
 	| response |
@@ -478,7 +479,7 @@ DSWebhookClientTest >> testSupressNetworkErrors5 [
 	self assert: response isNil
 ]
 
-{ #category : #'test - sending' }
+{ #category : 'test - sending' }
 DSWebhookClientTest >> testSupressNetworkErrors6 [
 	"Post multi-part data form entity"
 	| response |
@@ -491,7 +492,7 @@ DSWebhookClientTest >> testSupressNetworkErrors6 [
 	self assert: response isNil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testUnSetWaitForResponse [
 	client := self classToTest new url: self url.
 	client unsetWaitForResponse.
@@ -499,13 +500,13 @@ DSWebhookClientTest >> testUnSetWaitForResponse [
 	self assert: (client url queryAt: #wait) equals: 'false'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testUrl [
 	client := self classToTest new url: self url.
 	self assert: client url equals: self url asZnUrl ? ('wait' -> false).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testUsername [
 	client := self classToTest new 
 		message: self messageString;
@@ -515,7 +516,7 @@ DSWebhookClientTest >> testUsername [
 	self assert: client post content equals: self messageString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testUsername2 [
 	client := self classToTest new 
 		username: self username;
@@ -525,29 +526,29 @@ DSWebhookClientTest >> testUsername2 [
 	self assert: client post content equals: self messageString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSWebhookClientTest >> testWaitForResponse [
 	client := self classToTest new url: self url.
 	self assert: client url hasQuery.
 	self assert: (client url queryAt: #wait) equals: 'false'.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> url [
 	^ 'https://discordapp.com/api/webhooks/webhook-id/webhook-token'
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> username [
 	^ 'user one'
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> webhookId [
 	^ 'webhook-id'
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSWebhookClientTest >> webhookToken [
 	^ 'webhook-token'
 ]

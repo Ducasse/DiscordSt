@@ -16,8 +16,8 @@ DSWebhookClient new
 You can obtain the URL link from Discord application.
 "
 Class {
-	#name : #DSWebhookClient,
-	#superclass : #Object,
+	#name : 'DSWebhookClient',
+	#superclass : 'Object',
 	#traits : 'TDSWebhookPostBuilder + TDSUnifiedPublishInterface',
 	#classTraits : 'TDSWebhookPostBuilder classTrait + TDSUnifiedPublishInterface classTrait',
 	#instVars : [
@@ -26,13 +26,13 @@ Class {
 		'waitForResponse',
 		'ifFailBlock'
 	],
-	#category : 'Discord-WebhookClient'
+	#category : 'Discord-WebhookClient',
+	#package : 'Discord-WebhookClient'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> handleNetworkError [
-	<gtExample>
-	<label: 'Handle any network error'>
+	"Handle any network error"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -42,10 +42,9 @@ DSWebhookClient class >> handleNetworkError [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> ignoreAnyNetworkError [
-	<gtExample>
-	<label: 'Ignore any network error'>
+	"Ignore any network error"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -55,10 +54,9 @@ DSWebhookClient class >> ignoreAnyNetworkError [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> postEmbedRichObject [
-	<gtExample>
-	<label: 'Post embed rich object with username and avatar icon'>
+	"Post embed rich object with username and avatar icon"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -72,10 +70,9 @@ DSWebhookClient class >> postEmbedRichObject [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> postFormAsScreenshot [
-	<gtExample>
-	<label: 'Post a Form object as an attached screenshot'>
+	"Post a Form object as an attached screenshot"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -85,10 +82,9 @@ DSWebhookClient class >> postFormAsScreenshot [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> postImage [
-	<gtExample>
-	<label: 'Post an image or any other file'>
+	"Post an image or any other file"
 
 	^ DSWebhookClient new
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -100,10 +96,9 @@ DSWebhookClient class >> postImage [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> postMorphAsScreenshot [
-	<gtExample>
-	<label: 'Post a Morph object as an attached screenshot'>
+	"Post a Morph object as an attached screenshot"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -114,10 +109,9 @@ DSWebhookClient class >> postMorphAsScreenshot [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> postSimpleMessage [
-	<gtExample>
-	<label: 'Post simple message'>
+	"Post simple message"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -126,10 +120,9 @@ DSWebhookClient class >> postSimpleMessage [
 		send"
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSWebhookClient class >> postSimpleMessageWithUsernameAndAvatar [
-	<gtExample>
-	<label: 'Post simple message with username and avatar icon'>
+	"Post simple message with username and avatar icon"
 
 	^ DSWebhookClient new 
 		url: 'https://discordapp.com/api/webhooks/WEBHOOK-ID/WEBHOOK-TOKEN';
@@ -140,29 +133,29 @@ DSWebhookClient class >> postSimpleMessageWithUsernameAndAvatar [
 		send"
 ]
 
-{ #category : #'protocol - embed' }
+{ #category : 'protocol - embed' }
 DSWebhookClient >> embeds [
 	"Return a collection of embed objects"
 	<return: #Array of: #DSEmbed>
 	^ self post embeds
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 DSWebhookClient >> ifFail: anObject [
 	self ifFailBlock: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClient >> ifFailBlock [
 	^ ifFailBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClient >> ifFailBlock: anObject [
 	ifFailBlock := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSWebhookClient >> initialize [
 	super initialize.
 	post := self newJSONPost.
@@ -170,12 +163,12 @@ DSWebhookClient >> initialize [
 	ifFailBlock := [ :exception | exception pass ].
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSWebhookClient >> newJSONPost [
 	^ DSWebhookJsonPost new
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 DSWebhookClient >> parseMessage: aZnStringEntity [ 
 	| message |
 	message := DSModelJsonMapping
@@ -185,19 +178,19 @@ DSWebhookClient >> parseMessage: aZnStringEntity [
 	^ message
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSWebhookClient >> post [
 	"Return a post object."
 	^ post
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSWebhookClient >> post: aPost [
 	"Set a post object."
 	post := aPost
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSWebhookClient >> send [
 	"Send a message to a particular target.
 	In case of Webhooks it is a Webhook URL.
@@ -227,46 +220,46 @@ DSWebhookClient >> send [
 				do: self ifFailBlock ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 DSWebhookClient >> setWaitForResponse [
 	waitForResponse := true
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 DSWebhookClient >> supressNetworkErrors [
 	"Ignore network errors during the requests."
 	self ifFail: [ :exception | exception ]
 ]
 
-{ #category : #'protocol - sending' }
+{ #category : 'protocol - sending' }
 DSWebhookClient >> target: aZnUrl [
 	"Set a target where a particular message should be sent.
 	In case of Webhooks it is a Webhook URL."
 	self url: aZnUrl
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 DSWebhookClient >> unsetWaitForResponse [
 	waitForResponse := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClient >> url [
 	^ url ifNotNil: [ :anUrl |
 		anUrl queryAt: #wait put: self waitForResponse ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClient >> url: anObject [
 	url := anObject asZnUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClient >> waitForResponse [
 	^ waitForResponse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookClient >> waitForResponse: anObject [
 	waitForResponse := anObject
 ]

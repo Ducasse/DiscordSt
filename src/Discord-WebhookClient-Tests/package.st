@@ -1,1 +1,1 @@
-Package { #name : #'Discord-WebhookClient-Tests' }
+Package { #name : 'Discord-WebhookClient-Tests' }

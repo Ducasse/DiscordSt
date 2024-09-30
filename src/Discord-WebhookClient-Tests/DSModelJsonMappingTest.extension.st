@@ -1,6 +1,6 @@
-Extension { #name : #DSModelJsonMappingTest }
+Extension { #name : 'DSModelJsonMappingTest' }
 
-{ #category : #'*Discord-WebhookClient-Tests' }
+{ #category : '*Discord-WebhookClient-Tests' }
 DSModelJsonMappingTest >> testWebhookPostMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonWebhookPost.
@@ -16,7 +16,7 @@ DSModelJsonMappingTest >> testWebhookPostMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'*Discord-WebhookClient-Tests' }
+{ #category : '*Discord-WebhookClient-Tests' }
 DSModelJsonMappingTest >> testWebhookPostMappingFor2 [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonWebhookPost.

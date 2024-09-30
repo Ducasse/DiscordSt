@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDiscordStWebhook }
+Package { #name : 'BaselineOfDiscordStWebhook' }

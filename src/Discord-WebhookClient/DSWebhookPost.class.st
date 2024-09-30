@@ -17,8 +17,8 @@ embeds	array of embed objects	embedded rich content	one of content, file, embeds
 For the webhook embed objects, you can set every field except type (it will be rich regardless of if you try to set it), provider, video, and any height, width, or proxy_url values for images.
 "
 Class {
-	#name : #DSWebhookPost,
-	#superclass : #DSObject,
+	#name : 'DSWebhookPost',
+	#superclass : 'DSObject',
 	#instVars : [
 		'content',
 		'username',
@@ -26,30 +26,31 @@ Class {
 		'isTextToSpeech',
 		'embeds'
 	],
-	#category : 'Discord-WebhookClient'
+	#category : 'Discord-WebhookClient',
+	#package : 'Discord-WebhookClient'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 DSWebhookPost >> addEmbed: aDSEmbed [ 
 	^ self embeds addLast: aDSEmbed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> avatarUrl [
 	^ avatarUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> avatarUrl: anObject [
 	avatarUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> content [
 	^ content
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> content: anObject [
 	"Set the message contents (up to 2000 characters)"
 	| newValue |
@@ -63,43 +64,43 @@ DSWebhookPost >> content: anObject [
 	content := newValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> embeds [
 	^ embeds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> embeds: anObject [
 	embeds := anObject
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 DSWebhookPost >> gtChildren [
 	^ self embeds
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSWebhookPost >> initialize [
 	super initialize.
 	embeds := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> isTextToSpeech [
 	^ isTextToSpeech
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> isTextToSpeech: anObject [
 	isTextToSpeech := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> username [
 	^ username
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSWebhookPost >> username: anObject [
 	username := anObject
 ]

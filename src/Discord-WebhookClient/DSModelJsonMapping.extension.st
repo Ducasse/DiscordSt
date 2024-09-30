@@ -1,13 +1,13 @@
-Extension { #name : #DSModelJsonMapping }
+Extension { #name : 'DSModelJsonMapping' }
 
-{ #category : #'*Discord-WebhookClient' }
-DSModelJsonMapping classSide >> jsonWebhookPost [
+{ #category : '*Discord-WebhookClient' }
+DSModelJsonMapping class >> jsonWebhookPost [
 	^ '{"content":"the message contents (up to 2000 characters)","username":"override the default username of the webhook","avatar_url":"http://example.com/avatar.png","tts":true,"embeds":', 
 	self jsonCollectionOfEmbedsOne, '}'
 ]
 
-{ #category : #'*Discord-WebhookClient' }
-DSModelJsonMapping classSide >> webhookPostMappingFor: aNeoJSONMapper [
+{ #category : '*Discord-WebhookClient' }
+DSModelJsonMapping class >> webhookPostMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSWebhookJsonPost do: [ :mapping |
 	      mapping mapAccessor: #content.

@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfDiscordStWebhook,
-	#superclass : #BaselineOf,
-	#category : 'BaselineOfDiscordStWebhook'
+	#name : 'BaselineOfDiscordStWebhook',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfDiscordStWebhook',
+	#package : 'BaselineOfDiscordStWebhook'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfDiscordStWebhook >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'DiscordStCore' with: [
-				spec repository: 'github://JurajKubelka/DiscordSt/src' ];
+				spec repository: 'github://Ducasse/DiscordSt/src' ];
 
 			package: #'Discord-WebhookClient' with: [
 				spec requires: #( #'DiscordStCore' ). ];

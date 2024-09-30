@@ -1,6 +1,6 @@
-Extension { #name : #DSPostToEntityCommand }
+Extension { #name : 'DSPostToEntityCommand' }
 
-{ #category : #'*Discord-WebhookClient' }
+{ #category : '*Discord-WebhookClient' }
 DSPostToEntityCommand >> visitDSDataWebhookPost: aDSWebhookDataPost [ 
 	| part payloadJson |
 	self entity: ZnMultiPartFormDataEntity new.
@@ -11,7 +11,7 @@ DSPostToEntityCommand >> visitDSDataWebhookPost: aDSWebhookDataPost [
 		entity addPart: eachPart ].
 ]
 
-{ #category : #'*Discord-WebhookClient' }
+{ #category : '*Discord-WebhookClient' }
 DSPostToEntityCommand >> visitDSJSONWebhookPost: aDSWebhookJsonPost [ 
 	self entity: (
 		ZnEntity text: (

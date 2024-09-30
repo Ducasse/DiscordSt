@@ -5,34 +5,35 @@ See documentation at https://discordapp.com/developers/docs/resources/webhook#js
 
 "
 Class {
-	#name : #DSWebhookDataPost,
-	#superclass : #DSWebhookPost,
+	#name : 'DSWebhookDataPost',
+	#superclass : 'DSWebhookPost',
 	#traits : 'TDSDataPost',
 	#classTraits : 'TDSDataPost classTrait',
 	#instVars : [
 		'mimeParts'
 	],
-	#category : 'Discord-WebhookClient'
+	#category : 'Discord-WebhookClient',
+	#package : 'Discord-WebhookClient'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSWebhookDataPost >> accept: aVisitor [ 
 	^ aVisitor visitDSDataWebhookPost: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSWebhookDataPost >> hasEmbeds [
 	"Return true if a post includes embed objects"
 	^ self embeds notEmpty
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSWebhookDataPost >> initialize [
 	super initialize.
 	mimeParts := OrderedCollection new.
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 DSWebhookDataPost >> mimeParts [
 	"Return a collection of attachments (ZnMimePart objects)."
 	<return: #OrderedCollection of: #ZnMimePart>
