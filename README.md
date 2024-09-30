@@ -1,10 +1,22 @@
 # DiscordSt
 
+This repository contains the migrated to Pharo 12 and upward version of DiscordSt as developed by Juraj Kubelka.
+We thank him for his original contribution to our community.
+
 **Discord API.** DiscordSt is a client for [Discord](https://discordapp.com) written in [Pharo](http://pharo.org). It includes subset of the [public API](https://discordapp.com/developers/docs/intro) that constantly grows. If you miss any API, please, tell us, open an issue, or make a contribution :-)
+
+**Warning** This version is working on Pharo 12. 
+The following baselines are loading corectly:
+
+- `BaselineOfDiscordStClient`
+- `BaselineOfDiscordStCore`
+- `BaselineOfDiscordStGateway`
+- `BaselineOfDiscordStWebHook`
+
+The baseline BaselineOfDiscordSt is not working yet since it offers a stronger integration to the IDE and this needs more works. Some old code has been packaged in XXX-GT packages.
 
 **Pharo Integration.** Pharo developers know very well that live programming frees developers from the “edit-compile-run” loop and allows people to interact with running programs very easily. The DiscordSt's purpose is to bring Pharo's live experience to developer communications, such as online chat discussions. DiscordSt thus includes a *Pharo integration* that allows you to share Playground code snippets, related source code, screenshots, animated GIFs (screen recording), and system information. All this from Pharo itself as smooth as possible. For more information, check [Pharo integration](doc/PharoIntegration.md).
 
-DiscordSt version 0.2.0 supports Pharo 6.0, 6.1, and 7.0.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/enr9dgwos8ke340m/branch/master?svg=true)](https://ci.appveyor.com/project/JurajKubelka/discordst/branch/master)
 [![Test Status](https://api.bob-bench.org/v1/badgeByUrl?branch=master&hosting=github&ci=travis-ci&repo=JurajKubelka%2FDiscordSt)](https://bob-bench.org/r/gh/JurajKubelka/DiscordSt)
@@ -14,12 +26,12 @@ DiscordSt version 0.2.0 supports Pharo 6.0, 6.1, and 7.0.
 
 ```Smalltalk
 Metacello new
-    baseline: #DiscordSt;
-    repository: 'github://Ducasse/DiscordSt/src';
+    baseline: #DiscordStClient;
+    repository: 'github://pharo-contributions/DiscordSt/src';
     load.
 ```
 
-The script above installs a standard Discord client (webhook, bot, user client, and the Pharo integration). To install a subset of the standard installation or extra packages, e.g., a Block extension, check [documentation](doc/Installation.md).
+The script above installs a standard Discord client (webhook, bot, and user client). To install a subset of the standard installation or extra packages check [documentation](doc/Installation.md).
 
 ## Update
 
