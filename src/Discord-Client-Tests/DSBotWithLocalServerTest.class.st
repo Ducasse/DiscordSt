@@ -1,15 +1,16 @@
 Class {
-	#name : #DSBotWithLocalServerTest,
-	#superclass : #DSClientWithLocalServerTest,
-	#category : 'Discord-Client-Tests'
+	#name : 'DSBotWithLocalServerTest',
+	#superclass : 'DSClientWithLocalServerTest',
+	#category : 'Discord-Client-Tests',
+	#package : 'Discord-Client-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSBotWithLocalServerTest >> classToTest [
 	^ DSBot
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSBotWithLocalServerTest >> testLogin [
 	"ignore for the bot"
 ]

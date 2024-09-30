@@ -2,17 +2,19 @@
 A DSApiSixTest is a test class for testing the behavior of DSApiSix
 "
 Class {
-	#name : #DSApiSixTest,
-	#superclass : #DSApiTest,
-	#category : 'Discord-Client-Tests-REST-Api'
+	#name : 'DSApiSixTest',
+	#superclass : 'DSApiTest',
+	#category : 'Discord-Client-Tests-REST-Api',
+	#package : 'Discord-Client-Tests',
+	#tag : 'REST-Api'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSApiSixTest >> newRestApi [
 	^ DSRestApiSix new
 ]
 
-{ #category : #'tests-public' }
+{ #category : 'tests-public' }
 DSApiSixTest >> testEditMessageContentEmbed [
 	self startZnServer.
 	api := self newRestApi.
@@ -30,7 +32,7 @@ DSApiSixTest >> testEditMessageContentEmbed [
 	
 ]
 
-{ #category : #'tests-public' }
+{ #category : 'tests-public' }
 DSApiSixTest >> testEditMessageIdInChannelIdContentEmbed [
 	self startZnServer.
 	api := self newRestApi.
@@ -48,7 +50,7 @@ DSApiSixTest >> testEditMessageIdInChannelIdContentEmbed [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testGuildChannelsUsingId [
 	"Return Guild Text Channel"
 	| channels |
@@ -72,7 +74,7 @@ DSApiSixTest >> testGuildChannelsUsingId [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testGuildChannelsUsingId2 [
 	"Receive guild voice channel"
 	| channels |
@@ -96,7 +98,7 @@ DSApiSixTest >> testGuildChannelsUsingId2 [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testGuildChannelsUsingId3 [
 	"Return Guild Text Channel using type = 0"
 	| channels |
@@ -120,7 +122,7 @@ DSApiSixTest >> testGuildChannelsUsingId3 [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testGuildChannelsUsingId4 [
 	"Receive guild voice channel using type = 2"
 	| channels |
@@ -144,7 +146,7 @@ DSApiSixTest >> testGuildChannelsUsingId4 [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testGuildChannelsUsingIdUnauthorized [
 	self startZnServer.
 	api := self newRestApi.
@@ -160,7 +162,7 @@ DSApiSixTest >> testGuildChannelsUsingIdUnauthorized [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testLogin [
 	self startZnServer.
 	api := self newRestApi.
@@ -177,7 +179,7 @@ DSApiSixTest >> testLogin [
 	self assert: self serverRequests first method equals: #POST.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testLoginEmailDoesNotExist [
 	self startZnServer.
 	api := self newRestApi.
@@ -203,7 +205,7 @@ DSApiSixTest >> testLoginEmailDoesNotExist [
 	self assert: self serverRequests first method equals: #POST.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testLoginNewLoginLocationDetected [
 	self startZnServer.
 	api := self newRestApi.
@@ -229,7 +231,7 @@ DSApiSixTest >> testLoginNewLoginLocationDetected [
 	self assert: self serverRequests first method equals: #POST.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testLoginPasswordDoesNotMatch [
 	self startZnServer.
 	api := self newRestApi.
@@ -255,7 +257,7 @@ DSApiSixTest >> testLoginPasswordDoesNotMatch [
 	self assert: self serverRequests first method equals: #POST.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testLogout [
 	self startZnServer.
 	api := self newRestApi.
@@ -272,7 +274,7 @@ DSApiSixTest >> testLogout [
 	self assert: self serverRequests first method equals: #POST.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testLogoutUnauthorized [
 	"Unauthorized logout"
 
@@ -294,7 +296,7 @@ DSApiSixTest >> testLogoutUnauthorized [
 	self assert: self serverRequests first method equals: #POST
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testMe [
 	| user |
 	self startZnServer.
@@ -313,7 +315,7 @@ DSApiSixTest >> testMe [
 	self assert: api me == user description: 'It should return the same object'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testMeGuilds [
 	| guilds |
 	self startZnServer.
@@ -334,7 +336,7 @@ DSApiSixTest >> testMeGuilds [
 	self assert: api meGuilds == guilds description: 'The same object should be returned.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testMeGuildsUnauthorized [
 	self startZnServer.
 	api := self newRestApi.
@@ -350,7 +352,7 @@ DSApiSixTest >> testMeGuildsUnauthorized [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testMeUnauthorized [
 	self startZnServer.
 	api := self newRestApi.
@@ -366,7 +368,7 @@ DSApiSixTest >> testMeUnauthorized [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testMessageForIdInChannelId [
 	| message |
 	self startZnServer.
@@ -386,7 +388,7 @@ DSApiSixTest >> testMessageForIdInChannelId [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testNewMeGuilds [
 	| guilds |
 	self startZnServer.
@@ -406,7 +408,7 @@ DSApiSixTest >> testNewMeGuilds [
 	self assert: self serverRequests first method equals: #GET.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testNewMeUser [
 	| user |
 	self startZnServer.
@@ -424,7 +426,7 @@ DSApiSixTest >> testNewMeUser [
 	self assert: self serverRequests first method equals: #GET.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSApiSixTest >> testNewMeUserUnauthorized [
 	self startZnServer.
 	api := self newRestApi.
@@ -436,7 +438,7 @@ DSApiSixTest >> testNewMeUserUnauthorized [
 	self assert: self serverRequests first method equals: #GET.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DSApiSixTest >> testSendMessageToGuildTextOrDMChannelId [
 	| message returnedMessage |
 	self startZnServer.
@@ -455,7 +457,7 @@ DSApiSixTest >> testSendMessageToGuildTextOrDMChannelId [
 	self assert: self serverRequests first method equals: #POST.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSApiSixTest >> unauthorizedExceptionAssetionBlock [
 	"Assertion block for unauthorized exception"
 	^ [ :exception | 
@@ -466,7 +468,7 @@ DSApiSixTest >> unauthorizedExceptionAssetionBlock [
 		equals: '{"code": 0, "message": "401: Unauthorized"}' ]
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DSApiSixTest >> unauthorizedResponseBlock [
 	"Znserver delegate handler that returns unauthorized response."
 	^ [ :request :response | 

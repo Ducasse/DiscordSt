@@ -3,15 +3,16 @@ A DSClientTest is a test class for testing the behavior of DSClient.
 I test behavior that not requiere connection with a real Discord server.
 "
 Class {
-	#name : #DSClientTest,
-	#superclass : #DSClientTestCase,
+	#name : 'DSClientTest',
+	#superclass : 'DSClientTestCase',
 	#instVars : [
 		'client'
 	],
-	#category : 'Discord-Client-Tests'
+	#category : 'Discord-Client-Tests',
+	#package : 'Discord-Client-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testGateway [
 	"Gateway should share the same session with REST API."
 
@@ -20,21 +21,21 @@ DSClientTest >> testGateway [
 	self assert: client gateway session == client restApi session
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testIsAuthenticated [
 	"Default user should not be authenticated"
 	client := self newClient.
 	self deny: client isAuthenticated
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testIsConnected [
 	"Default user should not be connected"
 	client := self newClient.
 	self deny: client isConnected
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testMessage [
 	| builder |
 	client := self newClient.
@@ -43,13 +44,13 @@ DSClientTest >> testMessage [
 	self assert: builder class equals: DSClientPostBuilder.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testPrintString [
 	client := self newClient.
 	self assert: client printString isString.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testToken [
 	"Set and get token"
 	client := self newClient.
@@ -58,14 +59,14 @@ DSClientTest >> testToken [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testTokenDefault [
 	"Default token should be nil."
 	client := self newClient.
 	self assert: client token isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientTest >> testWith [
 	| results returnValue |
 	results := OrderedCollection new.

@@ -2,49 +2,50 @@
 A DSClientWithResourceTest is a test class for testing the behavior of DSClient, sharing login for all test cases.
 "
 Class {
-	#name : #DSBotWithRealServerTest,
-	#superclass : #DSClientTestCase,
+	#name : 'DSBotWithRealServerTest',
+	#superclass : 'DSClientTestCase',
 	#instVars : [
 		'bot'
 	],
-	#category : 'Discord-Client-Tests'
+	#category : 'Discord-Client-Tests',
+	#package : 'Discord-Client-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest class >> delayBetweenTests [
 	"Return a duration object that says how much time de we want to wait between two test cases.
 	The reason is that the Discord server may answer 'You are being rate limited' for too intensive communication."
 	^ 600 milliSeconds
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSBotWithRealServerTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> bot [
 	^ bot ifNil: [ bot := self classToTest new
 		token: self externalBotToken;
 		yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> channelName [
 	^ 'test-cases'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DSBotWithRealServerTest >> classToTest [
 	^ DSBot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> client [
 	^ self bot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> externalBotToken [
 	"Return Discord email login used for real testing.
 	The value is secret, for that reason, we recomend you to set it in your environment.
@@ -52,25 +53,25 @@ DSBotWithRealServerTest >> externalBotToken [
 	^ Smalltalk os environment at: 'DISCORD_ST_TEST_CASE_BOT_TOKEN' ifAbsent: nil.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> osFieldValue [
 	^ '[', Smalltalk os name asString, ' - ', Smalltalk os version asString,
 		'](https://en.wikipedia.org/wiki/Operating_system)'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> pharoFieldValue [
 	^ SystemVersion current version asString, 
 		' [', Smalltalk lastUpdateString asString, 
 		' (', (Smalltalk wordSize = 4 ifTrue: [ '32' ] ifFalse: [ '64' ]), 'bits)]'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSBotWithRealServerTest >> serverName [
 	^ 'Cesta'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DSBotWithRealServerTest >> setUp [
 	super setUp.
 	"Let's wait a bit between two test cases, otherwise the Discord server may answer
@@ -79,12 +80,12 @@ DSBotWithRealServerTest >> setUp [
 	self class delayBetweenTests wait.
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 DSBotWithRealServerTest >> skipIfNotAuthenticated [
 	self client isAuthenticated ifFalse: [ self skip ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSBotWithRealServerTest >> testSendEmbedObject [
 	| response content |
 	content := self classAndTestSelectorMessageString.

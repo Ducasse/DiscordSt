@@ -1,10 +1,11 @@
 Class {
-	#name : #DSBotTest,
-	#superclass : #DSClientTest,
-	#category : 'Discord-Client-Tests'
+	#name : 'DSBotTest',
+	#superclass : 'DSClientTest',
+	#category : 'Discord-Client-Tests',
+	#package : 'Discord-Client-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSBotTest >> classToTest [
 	^ DSBot
 ]

@@ -2,17 +2,18 @@
 A DSClientJsonPostTest is a test class for testing the behavior of DSClientJsonPost
 "
 Class {
-	#name : #DSClientJsonPostTest,
-	#superclass : #DSClientPostTest,
-	#category : 'Discord-Client-Tests'
+	#name : 'DSClientJsonPostTest',
+	#superclass : 'DSClientPostTest',
+	#category : 'Discord-Client-Tests',
+	#package : 'Discord-Client-Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSClientJsonPostTest >> newPost [
 	^ DSClientJsonPost new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientJsonPostTest >> testAsDataPost [
 	| convertedPost |
 	post := self newPost.
@@ -22,7 +23,7 @@ DSClientJsonPostTest >> testAsDataPost [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientJsonPostTest >> testAsDataPost2 [
 	| convertedPost |
 	post := self newPost.

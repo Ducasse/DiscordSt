@@ -1,6 +1,6 @@
-Extension { #name : #DSModelJsonMappingTest }
+Extension { #name : 'DSModelJsonMappingTest' }
 
-{ #category : #'*Discord-Client-Tests' }
+{ #category : '*Discord-Client-Tests' }
 DSModelJsonMappingTest >> testClientPostMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonClientPost.
@@ -14,7 +14,7 @@ DSModelJsonMappingTest >> testClientPostMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'*Discord-Client-Tests' }
+{ #category : '*Discord-Client-Tests' }
 DSModelJsonMappingTest >> testClientPostMappingFor2 [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonClientPost.
@@ -28,7 +28,7 @@ DSModelJsonMappingTest >> testClientPostMappingFor2 [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'*Discord-Client-Tests' }
+{ #category : '*Discord-Client-Tests' }
 DSModelJsonMappingTest >> testClientSessionEmailAndPasswordMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonSessionEmailAndPassword.
@@ -40,7 +40,7 @@ DSModelJsonMappingTest >> testClientSessionEmailAndPasswordMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'*Discord-Client-Tests' }
+{ #category : '*Discord-Client-Tests' }
 DSModelJsonMappingTest >> testSessionTokenMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonSessionToken.

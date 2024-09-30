@@ -1,1 +1,1 @@
-Package { #name : #'Discord-Client-Tests' }
+Package { #name : 'Discord-Client-Tests' }

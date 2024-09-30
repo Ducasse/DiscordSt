@@ -5,16 +5,17 @@ I test behavior that requiere connection with a Mock Local ZnServer.
 
 "
 Class {
-	#name : #DSClientWithLocalServerTest,
-	#superclass : #DSClientTestCase,
+	#name : 'DSClientWithLocalServerTest',
+	#superclass : 'DSClientTestCase',
 	#instVars : [
 		'client',
 		'websocketDelegate'
 	],
-	#category : 'Discord-Client-Tests'
+	#category : 'Discord-Client-Tests',
+	#package : 'Discord-Client-Tests'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSClientWithLocalServerTest >> setUp [
 	super setUp.
 	self startZnServer.
@@ -33,66 +34,96 @@ DSClientWithLocalServerTest >> setUp [
 	client token: self token
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientWithLocalServerTest >> testLogin [
-	self serverDelegate map: '/api/auth/login' to: [ :request :response |
-		self serverRequests add: #login.
-		response entity: (ZnEntity text: '{"token":"secret-token"}') ].
-	client announcer 
-		when: DSAuthenticatedAnnouncement 
-		do: [ :announcement | self serverRequests add: announcement. self signalServerSemaphore ]. 
+
+	self serverDelegate
+		map: '/api/auth/login'
+		to: [ :request :response |
+			self serverRequests add: #login.
+			response entity: (ZnEntity text: '{"token":"secret-token"}') ].
+	client announcer
+		when: DSAuthenticatedAnnouncement
+		do: [ :announcement |
+			self serverRequests add: announcement.
+			self signalServerSemaphore ]
+		for: self.
 	client login.
 	self assertServerSemaphore.
 	self assert: self serverRequests size equals: 2.
 	self assert: self serverRequests first equals: #login.
-	self assert: self serverRequests second class equals: DSAuthenticatedAnnouncement.
+	self
+		assert: self serverRequests second class
+		equals: DSAuthenticatedAnnouncement
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientWithLocalServerTest >> testMessageCreateEvent [
+
 	websocketDelegate handler: [ :socket |
-		socket sendMessage: self gatewayModelJsonMapping jsonMessageCreatePayload ].
-	client announcer 
-		when: DSGatewayMessageCreateAnnouncement  
-		do: [ :announcement | self serverRequests add: announcement. self signalServerSemaphore ]. 
+		socket sendMessage:
+			self gatewayModelJsonMapping jsonMessageCreatePayload ].
+	client announcer
+		when: DSGatewayMessageCreateAnnouncement
+		do: [ :announcement |
+			self serverRequests add: announcement.
+			self signalServerSemaphore ]
+		for: self.
 	client connect.
 	self assertServerSemaphore.
 	self assert: self serverRequests size equals: 2.
 	self assert: self serverRequests first equals: #apiGateway.
-	self assert: self serverRequests second class equals: DSGatewayMessageCreateAnnouncement.
+	self
+		assert: self serverRequests second class
+		equals: DSGatewayMessageCreateAnnouncement
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientWithLocalServerTest >> testMessageUpdateEvent [
 	"I have received 
 	DSUnauthorizedOperationError: {""code"": 20002, ""message"": ""Only bots can use this endpoint""}
 	when asking for the message. So let's dicable it for now and suppose that Gateway returns 
 	whole message for real users."
+
 	websocketDelegate handler: [ :socket |
-		socket sendMessage: self gatewayModelJsonMapping jsonMessageUpdatePayload ].
-	self serverDelegate map: '/api/channels/5930/messages/36576' to: [ :request :response |
-		self serverRequests add: #message.
-		response entity: (ZnEntity text: self messageObjectString) ].
-	client announcer 
-		when: DSGatewayMessageUpdateAnnouncement  
-		do: [ :announcement | self serverRequests add: announcement. self signalServerSemaphore ]. 
+		socket sendMessage:
+			self gatewayModelJsonMapping jsonMessageUpdatePayload ].
+	self serverDelegate
+		map: '/api/channels/5930/messages/36576'
+		to: [ :request :response |
+			self serverRequests add: #message.
+			response entity: (ZnEntity text: self messageObjectString) ].
+	client announcer
+		when: DSGatewayMessageUpdateAnnouncement
+		do: [ :announcement |
+			self serverRequests add: announcement.
+			self signalServerSemaphore ]
+		for: self.
 	client connect.
 	self assertServerSemaphore.
 	self assert: self serverRequests size equals: 2.
 	self assert: self serverRequests first equals: #apiGateway.
-	self assert: self serverRequests second class equals: DSGatewayMessageUpdateAnnouncement.
+	self
+		assert: self serverRequests second class
+		equals: DSGatewayMessageUpdateAnnouncement
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSClientWithLocalServerTest >> testReadyEvent [
+
 	websocketDelegate handler: [ :socket |
 		socket sendMessage: self gatewayModelJsonMapping jsonReadyPayload ].
-	client announcer 
+	client announcer
 		when: DSGatewayReadyAnnouncement
-		do: [ :announcement | self serverRequests add: announcement. self signalServerSemaphore ]. 
+		do: [ :announcement |
+			self serverRequests add: announcement.
+			self signalServerSemaphore ]
+		for: self.
 	client connect.
 	self assertServerSemaphore.
 	self assert: self serverRequests size equals: 2.
 	self assert: self serverRequests first equals: #apiGateway.
-	self assert: self serverRequests second class equals: DSGatewayReadyAnnouncement.
+	self
+		assert: self serverRequests second class
+		equals: DSGatewayReadyAnnouncement
 ]
