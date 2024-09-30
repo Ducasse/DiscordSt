@@ -1,61 +1,63 @@
 Class {
-	#name : #DSGatewayProcess,
-	#superclass : #Object,
+	#name : 'DSGatewayProcess',
+	#superclass : 'Object',
 	#instVars : [
 		'mutex',
 		'process',
 		'canDoNextCycle',
 		'websocket'
 	],
-	#category : 'Discord-Gateway-API'
+	#category : 'Discord-Gateway-API',
+	#package : 'Discord-Gateway',
+	#tag : 'API'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayProcess >> canDoNextCycle [
 	"Heartbeat is allowed if there is a connected WebSocket
 	and it is explicitly allowed."
 	^ canDoNextCycle and: [ self isConnected ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewayProcess >> disableNextCycle [
 	"Explicitly disable sending heartbeat messages.
 	Useful, if you want to close the Discord Gateway connection."
 	canDoNextCycle := false.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewayProcess >> doCycle [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewayProcess >> enableNextCycle [
 	"Explicitly enable sending heartbeat messages.
 	Useful, if you want to close the Discord Gateway connection."
 	canDoNextCycle := true.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGatewayProcess >> initialize [
 	super initialize.
 	mutex := Mutex new.
 	canDoNextCycle := true.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGatewayProcess >> initializeProcess [
 	process := [ [ self canDoNextCycle ] whileTrue: [ self doCycle ] ]
 		forkAt: Processor userBackgroundPriority
 		named: self printProcessName
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayProcess >> isActive [
 	^ self isInactive not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayProcess >> isConnected [
 	"Return true if there is a connected websocket."
 	^ self websocket
@@ -63,7 +65,7 @@ DSGatewayProcess >> isConnected [
 		ifNil: false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayProcess >> isInactive [
 	^ mutex critical: [ 
 		process isNil or: [
@@ -71,18 +73,18 @@ DSGatewayProcess >> isInactive [
 				process isTerminating ] ] ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSGatewayProcess >> printProcessName [
 	^ String streamContents: [ :aStream |
 		self printProcessNameOn: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSGatewayProcess >> printProcessNameOn: aStream [
 	self subclassResponsibility 
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayProcess >> start [
 	"Start a process if not active yet."
 	^ mutex critical: [ 
@@ -91,7 +93,7 @@ DSGatewayProcess >> start [
 		process ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayProcess >> stop [
 	"Stop a process if not active yet."
 	^ mutex critical: [ 
@@ -101,19 +103,19 @@ DSGatewayProcess >> stop [
 		process ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewayProcess >> stopProcess [
 	"Stop (terminate) process if possible.
 	Subclasses can overwrite me."
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayProcess >> websocket [
 	<return: #DSGatewayWebSocket>
 	^ websocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayProcess >> websocket: aDSGatewayWebSocket [
 	websocket := aDSGatewayWebSocket
 ]

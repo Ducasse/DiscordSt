@@ -1,13 +1,15 @@
 Class {
-	#name : #DSGatewayReadingProcess,
-	#superclass : #DSGatewayProcess,
+	#name : 'DSGatewayReadingProcess',
+	#superclass : 'DSGatewayProcess',
 	#instVars : [
 		'receiver'
 	],
-	#category : 'Discord-Gateway-API'
+	#category : 'Discord-Gateway-API',
+	#package : 'Discord-Gateway',
+	#tag : 'API'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewayReadingProcess >> doCycle [
 	"Read Payload/Event.
 	It also receives heartbeat ACK code."
@@ -20,7 +22,7 @@ DSGatewayReadingProcess >> doCycle [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewayReadingProcess >> messageReceived: message [
 	"Inform receiver about received message.
 	The message is a raw message (string or bytes).
@@ -32,20 +34,20 @@ DSGatewayReadingProcess >> messageReceived: message [
 			on: UnhandledError, Halt fork: [ :ex | ex pass ] ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DSGatewayReadingProcess >> printProcessNameOn: aStream [
 	aStream
 		nextPutAll: self className;
 		nextPutAll: ' reading process'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayReadingProcess >> receiver [
 	<return: #DSGatewayMessageReceiver>
 	^ receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayReadingProcess >> receiver: aDSGatewayMessageReceiver [
 	receiver := aDSGatewayMessageReceiver
 ]

@@ -8,19 +8,21 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 It includes Hello Event: DSGatewayIdentityEvent as dataEvent.
 "
 Class {
-	#name : #DSGatewayIdentityPayload,
-	#superclass : #DSGatewayPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayIdentityPayload',
+	#superclass : 'DSGatewayPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayIdentityPayload class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonIdentityPayload.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityPayload class >> code [
 	^ 2
 ]

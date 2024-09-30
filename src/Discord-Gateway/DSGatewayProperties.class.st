@@ -3,7 +3,9 @@ I am an abstract class.
 I represent properties that are part of the Gateway communication.
 "
 Class {
-	#name : #DSGatewayProperties,
-	#superclass : #Object,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayProperties',
+	#superclass : 'Object',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }

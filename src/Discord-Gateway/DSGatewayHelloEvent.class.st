@@ -10,16 +10,18 @@ _trace	array of strings	used for debugging, array of servers connected to
 
 "
 Class {
-	#name : #DSGatewayHelloEvent,
-	#superclass : #DSGatewayEvent,
+	#name : 'DSGatewayHelloEvent',
+	#superclass : 'DSGatewayEvent',
 	#instVars : [
 		'heartbeatInterval',
 		'traces'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayHelloEvent class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
@@ -28,24 +30,24 @@ DSGatewayHelloEvent class >> basic [
 		on: DSGatewayModelJsonMapping jsonHelloEvent readStream.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayHelloEvent >> heartbeatInterval [
 	<return: #Integer>
 	^ heartbeatInterval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayHelloEvent >> heartbeatInterval: anObject [
 	heartbeatInterval := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayHelloEvent >> traces [
 	<return: #Array of: #String>
 	^ traces
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayHelloEvent >> traces: anObject [
 	traces := anObject
 ]

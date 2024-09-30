@@ -1,10 +1,12 @@
 Class {
-	#name : #DSGatewayCommand,
-	#superclass : #Object,
-	#category : 'Discord-Gateway-Commands'
+	#name : 'DSGatewayCommand',
+	#superclass : 'Object',
+	#category : 'Discord-Gateway-Commands',
+	#package : 'Discord-Gateway',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSGatewayCommand >> execute [
 	^ self subclassResponsibility
 ]

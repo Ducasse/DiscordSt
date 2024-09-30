@@ -12,8 +12,8 @@ presence	gateway status update object	presence structure for initial presence in
 
 "
 Class {
-	#name : #DSGatewayIdentityEvent,
-	#superclass : #DSGatewayEvent,
+	#name : 'DSGatewayIdentityEvent',
+	#superclass : 'DSGatewayEvent',
 	#instVars : [
 		'token',
 		'properties',
@@ -22,10 +22,12 @@ Class {
 		'shard',
 		'status'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayIdentityEvent class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
@@ -34,62 +36,62 @@ DSGatewayIdentityEvent class >> basic [
 		on: DSGatewayModelJsonMapping jsonIdentityEvent readStream.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> compress [
 	^ compress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> compress: anObject [
 	compress := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> largeThreshold [
 	^ largeThreshold
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> largeThreshold: anObject [
 	largeThreshold := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> properties [
 	^ properties
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> properties: anObject [
 	properties := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> shard [
 	^ shard
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> shard: anObject [
 	shard := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> status [
 	^ status
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> status: anObject [
 	status := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> token [
 	^ token
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityEvent >> token: anObject [
 	token := anObject
 ]

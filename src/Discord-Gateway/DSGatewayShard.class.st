@@ -6,31 +6,33 @@ I am part of Gateway Identity, DSGatewayIdentityEvent.
  
 "
 Class {
-	#name : #DSGatewayShard,
-	#superclass : #DSGatewayProperties,
+	#name : 'DSGatewayShard',
+	#superclass : 'DSGatewayProperties',
 	#instVars : [
 		'id',
 		'numberOfShards'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayShard >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayShard >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayShard >> numberOfShards [
 	^ numberOfShards
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayShard >> numberOfShards: anObject [
 	numberOfShards := anObject
 ]

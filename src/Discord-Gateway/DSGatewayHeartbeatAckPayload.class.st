@@ -7,24 +7,26 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 
 "
 Class {
-	#name : #DSGatewayHeartbeatAckPayload,
-	#superclass : #DSGatewayPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayHeartbeatAckPayload',
+	#superclass : 'DSGatewayPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayHeartbeatAckPayload class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonHeartbeatAckPayload.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayHeartbeatAckPayload class >> code [
 	^ 11
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayHeartbeatAckPayload >> accept: aVisitor [ 
 	^ aVisitor visitDSGatewayHeartbeatAckPayload: self
 ]

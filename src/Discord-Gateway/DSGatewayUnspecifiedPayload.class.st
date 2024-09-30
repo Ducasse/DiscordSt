@@ -11,16 +11,18 @@ t	string	the event name for this payload	Only for Opcode 0
 
 "
 Class {
-	#name : #DSGatewayUnspecifiedPayload,
-	#superclass : #Object,
+	#name : 'DSGatewayUnspecifiedPayload',
+	#superclass : 'Object',
 	#instVars : [
 		'code',
 		'eventName'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayUnspecifiedPayload class >> identityPayload [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
@@ -29,7 +31,7 @@ DSGatewayUnspecifiedPayload class >> identityPayload [
 		on: DSGatewayModelJsonMapping jsonIdentityPayload readStream.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayUnspecifiedPayload class >> readyPayload [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
@@ -38,22 +40,22 @@ DSGatewayUnspecifiedPayload class >> readyPayload [
 		on: DSGatewayModelJsonMapping jsonReadyPayload readStream.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnspecifiedPayload >> code [
 	^ code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnspecifiedPayload >> code: anObject [
 	code := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnspecifiedPayload >> eventName [
 	^ eventName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnspecifiedPayload >> eventName: anObject [
 	eventName := anObject
 ]

@@ -8,23 +8,25 @@ See https://discordapp.com/developers/docs/topics/gateway#gateways
 
 "
 Class {
-	#name : #DSGatewaySix,
-	#superclass : #DSGateway,
+	#name : 'DSGatewaySix',
+	#superclass : 'DSGateway',
 	#instVars : [
 		'heartbeatProcess',
 		'readingProcess',
 		'receiver'
 	],
-	#category : 'Discord-Gateway-API'
+	#category : 'Discord-Gateway-API',
+	#package : 'Discord-Gateway',
+	#tag : 'API'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewaySix >> announcer: anAnnouncer [
 	super announcer: anAnnouncer.
 	receiver announcer: anAnnouncer.
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewaySix >> connect [
 	"Initialize the connection with the Discord Gateway.
 	See https://discordapp.com/developers/docs/topics/gateway#connecting"
@@ -36,7 +38,7 @@ DSGatewaySix >> connect [
 	
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewaySix >> disconnect [
 	"Close the connection with the Discord Gateway.
 	Stop Heartbeat and Reading processes.
@@ -46,7 +48,7 @@ DSGatewaySix >> disconnect [
 	websocket close.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewaySix >> ensureConnectedWebSocket [
 	"Establish the WebSocket with a Discord Gateway. 
 	The api object knows the URL. I set
@@ -56,7 +58,7 @@ DSGatewaySix >> ensureConnectedWebSocket [
 	self websocket websocket: (ZnWebSocket to: self websocketUrl).
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 DSGatewaySix >> getWebsocketUrl [
 	"Returns an object with a single valid WSS URL, which the client can use as a basis for Connecting. 
 	Clients should cache this value and only call this endpoint to retrieve a new URL 
@@ -70,14 +72,14 @@ DSGatewaySix >> getWebsocketUrl [
 		websocketUrl
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DSGatewaySix >> heartbeatInterval [
 	"For testing purpose only."
-	<return: #Integer>
+	
 	^ heartbeatProcess heartbeatInterval
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGatewaySix >> initialize [
 	super initialize.
 	readingProcess := DSGatewayReadingProcess new.
@@ -93,28 +95,28 @@ DSGatewaySix >> initialize [
 		receiver: receiver.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DSGatewaySix >> sequenceNumber [
 	"For testing purpose only."
-	<return: #Integer>
+
 	^ heartbeatProcess sequenceNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewaySix >> session: aDSSession [
 	"Set session object that keeps email, password and token for the Discord communication."
 	super session: aDSSession.
 	receiver session: aDSSession.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DSGatewaySix >> sessionId [
 	"For testing purpose only"
-	<return: #String>
+
 	^ receiver sessionId 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DSGatewaySix >> startReadingProcesses [
 	"Start Reading processes.
 	Reading process reads all events and requests from the Gateway server."

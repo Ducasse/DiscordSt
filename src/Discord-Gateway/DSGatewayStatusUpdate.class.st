@@ -12,53 +12,55 @@ afk	bool	whether or not the client is afk (away from keyboad)
 
 "
 Class {
-	#name : #DSGatewayStatusUpdate,
-	#superclass : #DSGatewayProperties,
+	#name : 'DSGatewayStatusUpdate',
+	#superclass : 'DSGatewayProperties',
 	#instVars : [
 		'since',
 		'game',
 		'status',
 		'awayFromKeyboard'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> awayFromKeyboard [
 	^ awayFromKeyboard
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> awayFromKeyboard: anObject [
 	awayFromKeyboard := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> game [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> game: anObject [
 	game := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> since [
 	^ since
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> since: anObject [
 	since := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> status [
 	^ status
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayStatusUpdate >> status: anObject [
 	status := anObject
 ]

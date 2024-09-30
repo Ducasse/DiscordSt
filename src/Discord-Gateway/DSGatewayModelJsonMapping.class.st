@@ -2,43 +2,45 @@
 I keep Neo JSON mappings between Discord Gateway objects and their JSON representations.
 "
 Class {
-	#name : #DSGatewayModelJsonMapping,
-	#superclass : #Object,
-	#category : 'Discord-Gateway-Utility'
+	#name : 'DSGatewayModelJsonMapping',
+	#superclass : 'Object',
+	#category : 'Discord-Gateway-Utility',
+	#package : 'Discord-Gateway',
+	#tag : 'Utility'
 }
 
-{ #category : #'mapping - basic' }
+{ #category : 'mapping - basic' }
 DSGatewayModelJsonMapping class >> connectionStatusMappingFor: aNeoJSONMapper [
 	DSModelJsonMapping connectionStatusMappingFor: aNeoJSONMapper
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayModelJsonMapping class >> coreModelJsonMapping [
 	^ DSModelJsonMapping
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> dispatchReadyEventPayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayDispatchReadyPayload event: DSGatewayReadyEvent mappingFor: aNeoJSONMapper.
 	self readyEventMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - basic' }
+{ #category : 'mapping - basic' }
 DSGatewayModelJsonMapping class >> gameMappingFor: aNeoJSONMapper [
 	DSModelJsonMapping gameMappingFor: aNeoJSONMapper
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> heartbeatAckPayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayHeartbeatAckPayload event: nil mappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> heartbeatPayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayHeartbeatPayload event: nil mappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - event' }
+{ #category : 'mapping - event' }
 DSGatewayModelJsonMapping class >> helloEventMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayHelloEvent do: [ :mapping |
@@ -46,13 +48,13 @@ DSGatewayModelJsonMapping class >> helloEventMappingFor: aNeoJSONMapper [
 	      mapping mapAccessor: #traces to: #_trace ].
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> helloPayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayHelloPayload event: DSGatewayHelloEvent mappingFor: aNeoJSONMapper.
 	self helloEventMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - event' }
+{ #category : 'mapping - event' }
 DSGatewayModelJsonMapping class >> identityEventMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayIdentityEvent do: [ :mapping |
@@ -68,13 +70,13 @@ DSGatewayModelJsonMapping class >> identityEventMappingFor: aNeoJSONMapper [
 		statusUpdateMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> identityPayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayIdentityPayload event: DSGatewayIdentityEvent mappingFor: aNeoJSONMapper.
 	self identityEventMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - basic' }
+{ #category : 'mapping - basic' }
 DSGatewayModelJsonMapping class >> identityPropertiesMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayIdentityProperties do: [ :mapping |
@@ -85,126 +87,126 @@ DSGatewayModelJsonMapping class >> identityPropertiesMappingFor: aNeoJSONMapper 
 			mapping mapAccessor: #referringDomain to: #'$referring_domain' ].
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> invalidSessionPayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayInvalidSessionPayload event: nil mappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'json example - basic' }
+{ #category : 'json example - basic' }
 DSGatewayModelJsonMapping class >> jsonCollectionOfGuildsOne [
 	^ DSModelJsonMapping jsonCollectionOfGuildsOne
 ]
 
-{ #category : #'json example - basic' }
+{ #category : 'json example - basic' }
 DSGatewayModelJsonMapping class >> jsonGame [
 	^ DSModelJsonMapping jsonGame
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonHeartbeatAckPayload [
 	^ '{"op":11}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonHeartbeatPayload [
 	^ '{"op":1,"d":42}'
 ]
 
-{ #category : #'json example - event' }
+{ #category : 'json example - event' }
 DSGatewayModelJsonMapping class >> jsonHelloEvent [
 	^ '{"heartbeat_interval":41250,"_trace":["discord-gateway-prd-1-2"]}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonHelloPayload [
 	^ '{"op":10,"d":', self jsonHelloEvent, ',"s":1,"t":"name"}'
 ]
 
-{ #category : #'json example - event' }
+{ #category : 'json example - event' }
 DSGatewayModelJsonMapping class >> jsonIdentityEvent [
 	^ '{"token":"a secret token","properties":', self jsonIdentityProperties, ',"compress":true,"large_threshold":72,"shard":', 
 	self jsonShard, ',"presence":', self jsonStatusUpdate, '}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonIdentityPayload [
 	^ '{"op":2,"d":', self jsonIdentityEvent, '}'
 ]
 
-{ #category : #'json example - basic' }
+{ #category : 'json example - basic' }
 DSGatewayModelJsonMapping class >> jsonIdentityProperties [
 	^ '{"$os":"MacOSX","$browser":"DiscordSt (https://github.com/JurajKubelka/DiscordSt, 0.1.0-dev-60519)","$device":"Pharo6.0 of 13 May 2016 update 60519","$referrer":"","$referring_domain":""}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonInvalidSessionPayload [
 	^ '{"op":9,"d":false}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonMessageCreatePayload [
 	^ '{"op":0,"d":', self coreModelJsonMapping jsonMessage, ',"s":4,"t":"MESSAGE_CREATE"}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonMessageUpdatePayload [
 	^ '{"op":0,"d":', self coreModelJsonMapping jsonMessage, ',"s":5,"t":"MESSAGE_UPDATE"}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonPresenceUpdatePayload [
 	^ '{"op":0,"d":{"user":{"id":"286153065164304880"},"status":"idle","roles":[],"nick":null,"guild_id":"289187121854545132","game":null},"s":8,"t":"PRESENCE_UPDATE"}'
 ]
 
-{ #category : #'json example - event' }
+{ #category : 'json example - event' }
 DSGatewayModelJsonMapping class >> jsonReadyEvent [
 	^ '{"v":6,"user":', self jsonUser, ',"private_channels":[],"guilds":', self jsonCollectionOfGuildsOne, 
 	',"session_id":21,"_trace":["discord-gateway-prd-1-16","discord-sessions-prd-1-2"]}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonReadyPayload [
 	^ '{"op":0,"d":', self jsonReadyEvent, ',"s":2,"t":"READY"}'
 ]
 
-{ #category : #'json example - event' }
+{ #category : 'json example - event' }
 DSGatewayModelJsonMapping class >> jsonResumeEvent [
 	^ '{"token":"randomstring","session_id":"evenmorerandomstring","seq":1337}'
 ]
 
-{ #category : #'json example - payload' }
+{ #category : 'json example - payload' }
 DSGatewayModelJsonMapping class >> jsonResumePayload [
 	^ '{"op":6,"d":', self jsonResumeEvent, '}'
 ]
 
-{ #category : #'json example - basic' }
+{ #category : 'json example - basic' }
 DSGatewayModelJsonMapping class >> jsonShard [
 	^ '[1,10]'
 ]
 
-{ #category : #'json example - basic' }
+{ #category : 'json example - basic' }
 DSGatewayModelJsonMapping class >> jsonStatusUpdate [
 	^ '{"since":91879201,"game":', self jsonGame, ',"status":"invisible","afk":true}'
 ]
 
-{ #category : #'json example - basic' }
+{ #category : 'json example - basic' }
 DSGatewayModelJsonMapping class >> jsonUser [
 	^ DSModelJsonMapping jsonUser
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> messageCreatePayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayDispatchMessageCreatePayload event: DSMessage mappingFor: aNeoJSONMapper.
 	self coreModelJsonMapping messageMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> messageUpdatePayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayDispatchMessageUpdatePayload event: DSMessage mappingFor: aNeoJSONMapper.
 	self coreModelJsonMapping messageMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> payload: payloadSchema event: eventSchema mappingFor: aNeoJSONMapper [
 	"Configure Payload schema with a particular event schema.
 	The event schema can be nil."
@@ -222,7 +224,7 @@ DSGatewayModelJsonMapping class >> payload: payloadSchema event: eventSchema map
 			mapping mapAccessor: #eventName to: #t ].
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> payloadMappingFor: aNeoJSONMapper [ 
 	self 
 		helloPayloadMappingFor: aNeoJSONMapper;
@@ -238,13 +240,13 @@ DSGatewayModelJsonMapping class >> payloadMappingFor: aNeoJSONMapper [
 		unclassifiedPayloadMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> presenceUpdatePayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayDispatchPresenceUpdatePayload event: DSPresenceUpdate mappingFor: aNeoJSONMapper.
 	self helloEventMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayModelJsonMapping class >> read: jsonSchema withMapping: messageSymbol on: aReadStream [ 
 	"Read a JSON string using json schema and return an object.
 	The messageSymbol variable is a message to configure mapping between JSON and objects."
@@ -254,7 +256,7 @@ DSGatewayModelJsonMapping class >> read: jsonSchema withMapping: messageSymbol o
 	^ reader nextAs: jsonSchema
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayModelJsonMapping class >> readPayload: jsonString [ 
 	"Parse the json string that represents a Gateway payload.
 	It correctly parses the eventData according to the payload code."
@@ -265,7 +267,7 @@ DSGatewayModelJsonMapping class >> readPayload: jsonString [
 	^ self read: schema withMapping: #payloadMappingFor: on: jsonString readStream.
 ]
 
-{ #category : #'mapping - event' }
+{ #category : 'mapping - event' }
 DSGatewayModelJsonMapping class >> readyEventMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayReadyEvent do: [ :mapping |
@@ -281,7 +283,7 @@ DSGatewayModelJsonMapping class >> readyEventMappingFor: aNeoJSONMapper [
 		collectionOfGuildsMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - event' }
+{ #category : 'mapping - event' }
 DSGatewayModelJsonMapping class >> resumeEventMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayResumeEvent do: [ :mapping |
@@ -291,13 +293,13 @@ DSGatewayModelJsonMapping class >> resumeEventMappingFor: aNeoJSONMapper [
 
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> resumePayloadMappingFor: aNeoJSONMapper [
 	self payload: DSGatewayResumePayload event: DSGatewayResumeEvent mappingFor: aNeoJSONMapper.
 	self resumeEventMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - basic' }
+{ #category : 'mapping - basic' }
 DSGatewayModelJsonMapping class >> shardMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayShard customDo: [ :mapping |
@@ -310,7 +312,7 @@ DSGatewayModelJsonMapping class >> shardMappingFor: aNeoJSONMapper [
 					{ aShard id. aShard numberOfShards } ] ].
 ]
 
-{ #category : #'mapping - basic' }
+{ #category : 'mapping - basic' }
 DSGatewayModelJsonMapping class >> statusUpdateMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayStatusUpdate do: [ :mapping |
@@ -324,7 +326,7 @@ DSGatewayModelJsonMapping class >> statusUpdateMappingFor: aNeoJSONMapper [
 		connectionStatusMappingFor: aNeoJSONMapper.
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> unclassifiedPayloadMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: DSGatewayUnclassifiedPayload do: [ :mapping |
@@ -334,7 +336,7 @@ DSGatewayModelJsonMapping class >> unclassifiedPayloadMappingFor: aNeoJSONMapper
 			mapping mapAccessor: #eventName to: #t ].
 ]
 
-{ #category : #'mapping - basic' }
+{ #category : 'mapping - basic' }
 DSGatewayModelJsonMapping class >> unixTimeInMilliSecondsMappingFor: aNeoJSONMapper [
 	aNeoJSONMapper
 		for: #UnixTimeInMilliSeconds customDo: [ :mapping |
@@ -346,7 +348,7 @@ DSGatewayModelJsonMapping class >> unixTimeInMilliSecondsMappingFor: aNeoJSONMap
 						DateAndTime fromUnixTime: anInteger / 1000 ] ] ].
 ]
 
-{ #category : #'mapping - payload' }
+{ #category : 'mapping - payload' }
 DSGatewayModelJsonMapping class >> unspecifiedPayloadMappingFor: aNeoJSONMapper [ 
 	aNeoJSONMapper
 		for: DSGatewayUnspecifiedPayload do: [ :mapping |
@@ -354,7 +356,7 @@ DSGatewayModelJsonMapping class >> unspecifiedPayloadMappingFor: aNeoJSONMapper 
 			mapping mapAccessor: #eventName to: #t ].
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayModelJsonMapping class >> write: aDSObject as: schema mappedTo: mappingSymbol [ 
 	"Return a JSON string representation of the Discord object."
 	<return: #String>
@@ -366,7 +368,7 @@ DSGatewayModelJsonMapping class >> write: aDSObject as: schema mappedTo: mapping
 		writer nextPut: aDSObject as: schema ].
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayModelJsonMapping class >> write: aDSObject mappedTo: mappingSymbol [ 
 	"Return a JSON string representation of the Discord object."
 	<return: #String>
@@ -378,7 +380,7 @@ DSGatewayModelJsonMapping class >> write: aDSObject mappedTo: mappingSymbol [
 		writer nextPut: aDSObject ].
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGatewayModelJsonMapping class >> writePayload: aDSGatewayPayload [
 	"Return a JSON string representation of the Discord Gateway payload."
 	<return: #String>

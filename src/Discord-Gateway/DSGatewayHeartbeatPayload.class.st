@@ -8,19 +8,21 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 Event data includes the last received sequence number.
 "
 Class {
-	#name : #DSGatewayHeartbeatPayload,
-	#superclass : #DSGatewayPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayHeartbeatPayload',
+	#superclass : 'DSGatewayPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayHeartbeatPayload class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonHeartbeatPayload.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayHeartbeatPayload class >> code [
 	^ 1
 ]

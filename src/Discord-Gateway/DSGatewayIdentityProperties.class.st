@@ -9,8 +9,8 @@ $device	string	your library name
 
 "
 Class {
-	#name : #DSGatewayIdentityProperties,
-	#superclass : #DSGatewayProperties,
+	#name : 'DSGatewayIdentityProperties',
+	#superclass : 'DSGatewayProperties',
 	#instVars : [
 		'os',
 		'browser',
@@ -18,61 +18,63 @@ Class {
 		'referrer',
 		'referringDomain'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> browser [
 	"Return browser identification"
 	<return: #String>
 	^ browser ifNil: [ browser := DSConstants userAgent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> browser: anObject [
 	browser := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> device [
 	"Return device identification"
 	<return: #String>
 	^ device ifNil: [ device := DSConstants deviceVersion ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> device: anObject [
 	device := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> os [
 	"Return operating system identification"
 	<return: #String>
 	^ os ifNil: [ os := DSConstants osFamily ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> os: anObject [
 	os := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> referrer [
 	^ referrer ifNil: [ referrer := '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> referrer: anObject [
 	referrer := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> referringDomain [
 	^ referringDomain ifNil: [ referringDomain := '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayIdentityProperties >> referringDomain: anObject [
 	referringDomain := anObject
 ]

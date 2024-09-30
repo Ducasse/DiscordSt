@@ -7,24 +7,26 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 
 "
 Class {
-	#name : #DSGatewayInvalidSessionPayload,
-	#superclass : #DSGatewayPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayInvalidSessionPayload',
+	#superclass : 'DSGatewayPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayInvalidSessionPayload class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
 		readPayload: DSGatewayModelJsonMapping jsonInvalidSessionPayload.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayInvalidSessionPayload class >> code [
 	^ 9
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayInvalidSessionPayload >> accept: aVisitor [
 	^ aVisitor visitDSGatewayInvalidSessionPayload: self
 ]

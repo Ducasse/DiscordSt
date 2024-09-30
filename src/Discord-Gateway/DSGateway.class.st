@@ -7,8 +7,8 @@ See https://discordapp.com/developers/docs/topics/gateway#gateways
 
 "
 Class {
-	#name : #DSGateway,
-	#superclass : #Object,
+	#name : 'DSGateway',
+	#superclass : 'Object',
 	#traits : 'TAnnouncerSubscription',
 	#classTraits : 'TAnnouncerSubscription classTrait',
 	#instVars : [
@@ -18,96 +18,98 @@ Class {
 		'websocketUrl',
 		'websocket'
 	],
-	#category : 'Discord-Gateway-API'
+	#category : 'Discord-Gateway-API',
+	#package : 'Discord-Gateway',
+	#tag : 'API'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway class >> defaultClass [
 	"Return default class responsible for Discord WebSocket and API communication."
 	^ DSGatewaySix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> announcer [
 	"Return the actual Announcer."
 	<return: #Announcer>
 	^ announcer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> announcer: anAnnouncer [
 	"Set Announcer."
 	announcer := anAnnouncer
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGateway >> connect [
 	"Initialize the connection with the Discord Gateway.
 	See https://discordapp.com/developers/docs/topics/gateway#connecting"
 	self subclassResponsibility
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 DSGateway >> disconnect [
 	"Close the connection with the Discord Gateway.
 	See https://discordapp.com/developers/docs/topics/gateway#connecting"
 	self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGateway >> initialize [
 	super initialize.
 	announcer := self newAnnouncer.
 	websocket := self newGatewayWebsocket.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGateway >> isConnected [
 	^ self websocket isConnected
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGateway >> newAnnouncer [
 	^ Announcer new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGateway >> newGatewayWebsocket [
 	^ DSGatewayWebSocket new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> restApiUrl [
 	"Return a root Discord API URL."
 	<return: #ZnUrl>
 	^ restApiUrl ifNil: [ restApiUrl := DSConstants defaultRestApiSixUrl ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> restApiUrl: aZnUrl [ 
 	restApiUrl := aZnUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> session [
 	"Get session object that keeps email, password and token for the Discord communication."
 	<return: #DSSession>
 	^ session
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> session: aDSSession [
 	"Set session object that keeps email, password and token for the Discord communication."
 	session := aDSSession
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> websocket [
 	<return: #DSGatewayWebSocket>
 	^ websocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> websocketUrl [
 	"Returns an object with a single valid WSS URL, which the client can use as a basis for Connecting. 
 	Clients should cache this value and only call this endpoint to retrieve a new URL 
@@ -119,7 +121,7 @@ DSGateway >> websocketUrl [
 	^ websocketUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGateway >> websocketUrl: aZnUrl [
 	"Set an object with a single valid WSS URL, which the client can use as a basis for Connecting. 
 	Clients should cache this value and only call this endpoint to retrieve a new URL 

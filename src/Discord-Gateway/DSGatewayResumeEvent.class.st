@@ -10,17 +10,19 @@ seq	integer	last sequence number received
 
 "
 Class {
-	#name : #DSGatewayResumeEvent,
-	#superclass : #DSGatewayEvent,
+	#name : 'DSGatewayResumeEvent',
+	#superclass : 'DSGatewayEvent',
 	#instVars : [
 		'token',
 		'sessionId',
 		'sequenceNumber'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 DSGatewayResumeEvent class >> basic [
 	<gtExample>
 	^ DSGatewayModelJsonMapping 
@@ -29,32 +31,32 @@ DSGatewayResumeEvent class >> basic [
 		on: DSGatewayModelJsonMapping jsonResumeEvent readStream.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayResumeEvent >> sequenceNumber [
 	^ sequenceNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayResumeEvent >> sequenceNumber: anObject [
 	sequenceNumber := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayResumeEvent >> sessionId [
 	^ sessionId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayResumeEvent >> sessionId: anObject [
 	sessionId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayResumeEvent >> token [
 	^ token
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayResumeEvent >> token: anObject [
 	token := anObject
 ]

@@ -1,1 +1,1 @@
-Package { #name : #'Discord-Gateway' }
+Package { #name : 'Discord-Gateway' }

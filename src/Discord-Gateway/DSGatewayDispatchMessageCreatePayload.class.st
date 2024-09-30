@@ -6,17 +6,19 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 https://discordapp.com/developers/docs/topics/gateway#message-create
 "
 Class {
-	#name : #DSGatewayDispatchMessageCreatePayload,
-	#superclass : #DSGatewayDispatchPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayDispatchMessageCreatePayload',
+	#superclass : 'DSGatewayDispatchPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayDispatchMessageCreatePayload class >> eventName [
 	^ 'MESSAGE_CREATE'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayDispatchMessageCreatePayload >> accept: aVisitor [ 
 	^ aVisitor visitDSGatewayDispatchMessageCreatePayload: self
 ]

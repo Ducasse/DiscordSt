@@ -1,28 +1,30 @@
 Class {
-	#name : #DSGatewayUnclassifiedPayload,
-	#superclass : #DSGatewayPayload,
+	#name : 'DSGatewayUnclassifiedPayload',
+	#superclass : 'DSGatewayPayload',
 	#instVars : [
 		'code'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnclassifiedPayload class >> code [
 	^ Float infinity
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayUnclassifiedPayload >> accept: aVisitor [
 	^ aVisitor visitDSGatewayUnclassifiedPayload: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnclassifiedPayload >> code [
 	^ code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayUnclassifiedPayload >> code: anObject [
 	code := anObject
 ]

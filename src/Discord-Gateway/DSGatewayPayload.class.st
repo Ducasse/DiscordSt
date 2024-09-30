@@ -28,42 +28,44 @@ Code	Name	Client Action	Description
 
 "
 Class {
-	#name : #DSGatewayPayload,
-	#superclass : #Object,
+	#name : 'DSGatewayPayload',
+	#superclass : 'Object',
 	#instVars : [
 		'eventData',
 		'sequenceNumber',
 		'eventName'
 	],
-	#category : 'Discord-Gateway-Model'
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 DSGatewayPayload class >> allPayloads [
 	"Return all classes representing payloads."
 	<return: #Array of: #DSGatewayPayload>
 	^ self allSubclasses reject: #isAbstract
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload class >> code [
 	"Return a number, that represents the specific payload. See class comment for details."
 	<return: #Integer>
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayPayload class >> isAbstract [
 	^ self name = #DSGatewayPayload 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayPayload class >> represents: aDSGatewayUnspecifiedPayload [ 
 	"Return true if a class represents the given payload."
 	^ self code = aDSGatewayUnspecifiedPayload code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload class >> schemaFromUnspecifidPayload: aDSGatewayUnspecifiedPayload [ 
 	"Return a specific class that represent the given payload, using code and eventName."
 	<return: #DSGatewayPayload>
@@ -72,42 +74,42 @@ DSGatewayPayload class >> schemaFromUnspecifidPayload: aDSGatewayUnspecifiedPayl
 		ifNone: [ DSGatewayUnclassifiedPayload ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayPayload >> accept: aVisitor [ 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> code [
 	^ self class code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> eventData [
 	^ eventData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> eventData: anObject [
 	eventData := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> eventName [
 	^ eventName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> eventName: anObject [
 	eventName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> sequenceNumber [
 	^ sequenceNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayPayload >> sequenceNumber: anObject [
 	sequenceNumber := anObject
 ]

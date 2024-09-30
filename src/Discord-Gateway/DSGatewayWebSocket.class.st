@@ -1,15 +1,17 @@
 Class {
-	#name : #DSGatewayWebSocket,
-	#superclass : #Object,
+	#name : 'DSGatewayWebSocket',
+	#superclass : 'Object',
 	#instVars : [
 		'websocket',
 		'readMutex',
 		'writeMutex'
 	],
-	#category : 'Discord-Gateway-API'
+	#category : 'Discord-Gateway-API',
+	#package : 'Discord-Gateway',
+	#tag : 'API'
 }
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 DSGatewayWebSocket >> close [
 	"Close the connection"
 	
@@ -17,21 +19,21 @@ DSGatewayWebSocket >> close [
 		self websocket ifNotNil: [ :aWebSocket | aWebSocket isConnected ifTrue: [ aWebSocket close ] ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DSGatewayWebSocket >> initialize [
 	super initialize.
 	writeMutex := Mutex new.
 	readMutex := Mutex new.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayWebSocket >> isConnected [
 	^ self websocket 
 		ifNotNil: #isConnected
 		ifNil: false
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DSGatewayWebSocket >> readMessage [
 	"Read a message from the Discord Gateway server if possible."
 	^ readMutex critical: [ 
@@ -40,7 +42,7 @@ DSGatewayWebSocket >> readMessage [
 			ifNil: [ ZnWebSocketClosed signal ] ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DSGatewayWebSocket >> sendMessage: aString [ 
 	"Send message to the Discord Gateway server if possible."
 	^ writeMutex critical: [ 
@@ -49,12 +51,12 @@ DSGatewayWebSocket >> sendMessage: aString [
 			ifNil: [ ZnWebSocketClosed signal ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayWebSocket >> websocket [
 	^ websocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayWebSocket >> websocket: anObject [
 	websocket := anObject
 ]

@@ -1,14 +1,16 @@
 Class {
-	#name : #DSGatewayGetGatewaySixUrlCommand,
-	#superclass : #DSGatewayCommand,
+	#name : 'DSGatewayGetGatewaySixUrlCommand',
+	#superclass : 'DSGatewayCommand',
 	#instVars : [
 		'websocketUrl',
 		'restApiUrl'
 	],
-	#category : 'Discord-Gateway-Commands'
+	#category : 'Discord-Gateway-Commands',
+	#package : 'Discord-Gateway',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 DSGatewayGetGatewaySixUrlCommand >> execute [
 	| response |
 	response := DSUtility newZnClientWithUserAgent
@@ -26,7 +28,7 @@ DSGatewayGetGatewaySixUrlCommand >> execute [
 		yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayGetGatewaySixUrlCommand >> gatewayUrl [
 	"Return Gateway URL.
 	See https://discordapp.com/developers/docs/topics/gateway#get-gateway"
@@ -34,26 +36,26 @@ DSGatewayGetGatewaySixUrlCommand >> gatewayUrl [
 	^ self restApiUrl / 'gateway'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayGetGatewaySixUrlCommand >> restApiUrl [
 	"Return a root Discord REST API URL."
 	<return: #ZnUrl>	
 	^ restApiUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayGetGatewaySixUrlCommand >> restApiUrl: anObject [
 	restApiUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayGetGatewaySixUrlCommand >> websocketUrl [
 	"Return WebSocket URL that should be used connecting to Gateway."
 	<return: #ZnUrl>
 	^ websocketUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayGetGatewaySixUrlCommand >> websocketUrl: anObject [
 	websocketUrl := anObject
 ]

@@ -17,8 +17,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #DSGatewayMessageReceiver,
-	#superclass : #Object,
+	#name : 'DSGatewayMessageReceiver',
+	#superclass : 'Object',
 	#instVars : [
 		'announcer',
 		'session',
@@ -26,36 +26,38 @@ Class {
 		'heartbeatProcess',
 		'sessionId'
 	],
-	#category : 'Discord-Gateway-API'
+	#category : 'Discord-Gateway-API',
+	#package : 'Discord-Gateway',
+	#tag : 'API'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> announcer [
 	^ announcer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> announcer: anObject [
 	announcer := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayMessageReceiver >> hasSessionId [
 	^ self sessionId notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> heartbeatProcess [
 	<return: #DSGatewayHeartbeatProcess>
 	^ heartbeatProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> heartbeatProcess: anObject [
 	heartbeatProcess := anObject
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 DSGatewayMessageReceiver >> sendIdentifyCode [
 	"Send the OP 2 Identify message to a Discord Gateway."
 	| payload |
@@ -70,7 +72,7 @@ DSGatewayMessageReceiver >> sendIdentifyCode [
 	self sendMessage: payload.	
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 DSGatewayMessageReceiver >> sendIdentifyCodeAfterAWhile [
 	"It's also possible that your client cannot reconnect in time to resume, 
 	in which case the client will receive a OP 9 Invalid Session and 
@@ -80,14 +82,14 @@ DSGatewayMessageReceiver >> sendIdentifyCodeAfterAWhile [
 	self sendIdentifyCode.
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 DSGatewayMessageReceiver >> sendMessage: aGatewayPayload [
 	| jsonString |
 	jsonString := DSGatewayModelJsonMapping writePayload: aGatewayPayload.
 	self websocket sendMessage: jsonString.	
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 DSGatewayMessageReceiver >> sendResumeCode [
 	"Send the OP 6 Resume message to a Discord Gateway."
 	| payload |
@@ -101,40 +103,40 @@ DSGatewayMessageReceiver >> sendResumeCode [
 	self sendMessage: payload.	
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 DSGatewayMessageReceiver >> sequenceNumber [
 	<return: #Integer>
 	^ self heartbeatProcess sequenceNumber
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 DSGatewayMessageReceiver >> sequenceNumber: anInteger [ 
 	self heartbeatProcess sequenceNumber: anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> session [
 	<return: #DSSession>
 	^ session
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> session: aDSSession [
 	session := aDSSession
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 DSGatewayMessageReceiver >> sessionId [
 	<return: #String>
 	^ sessionId
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 DSGatewayMessageReceiver >> sessionId: aString [
 	sessionId := aString
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 DSGatewayMessageReceiver >> startHeartbeatProcessWithInterval: anInteger [
 	"Send the OP 2 Identify message to a Discord Gateway."
 	self heartbeatProcess 
@@ -142,12 +144,12 @@ DSGatewayMessageReceiver >> startHeartbeatProcessWithInterval: anInteger [
 		start.
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 DSGatewayMessageReceiver >> token [
 	^ self session token
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 DSGatewayMessageReceiver >> value: messageString [
 	"Receive a Discord Gateway message in a raw string format."
 	| payload |
@@ -157,35 +159,35 @@ DSGatewayMessageReceiver >> value: messageString [
 	
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayDispatchMessageCreatePayload: payload [
 	"Message Create event received. Let's inform about it."
 	self announcer announce: (DSGatewayMessageCreateAnnouncement payload: payload)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayDispatchMessageUpdatePayload: payload [ 
 	self announcer announce: (DSGatewayMessageUpdateAnnouncement payload: payload)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayDispatchPresenceUpdatePayload: payload [ 
 	self announcer announce: (DSGatewayPresenceUpdateAnnouncement payload: payload)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayDispatchReadyPayload: payload [ 
 	payload sequenceNumber ifNotNil: [ :sequence | self sequenceNumber: sequence ].
 	payload sessionId ifNotNil: [ :id | self sessionId: id ]. 
 	self announcer announce: (DSGatewayReadyAnnouncement new payload: payload; yourself)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayHeartbeatAckPayload: aDSGatewayHeartbeatAckPayload [ 
 	"nothing todo"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayHelloPayload: payload [
 	self hasSessionId
 		ifFalse: [ self sendIdentifyCode ]
@@ -193,7 +195,7 @@ DSGatewayMessageReceiver >> visitDSGatewayHelloPayload: payload [
 	self startHeartbeatProcessWithInterval: payload heartbeatInterval.
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayMessageReceiver >> visitDSGatewayInvalidSessionPayload: payload [ 
 	"Sent when a client attempts to resume, but the passed session ID is invalid or expired. 
 	The inner d key is a boolean that indicates whether or not the session may be resumable. 
@@ -205,18 +207,18 @@ DSGatewayMessageReceiver >> visitDSGatewayInvalidSessionPayload: payload [
 	self sendIdentifyCodeAfterAWhile
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DSGatewayMessageReceiver >> visitDSGatewayUnclassifiedPayload: payload [ 
 	self announcer announce: (DSGatewayUnclassifiedAnnouncement payload: payload)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> websocket [
 	<return: #DSGatewayWebSocket>
 	^ websocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayMessageReceiver >> websocket: aDSGatewayWebSocket [
 	websocket := aDSGatewayWebSocket
 ]

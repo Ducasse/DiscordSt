@@ -8,17 +8,19 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 https://discordapp.com/developers/docs/topics/gateway#presence-update
 "
 Class {
-	#name : #DSGatewayDispatchPresenceUpdatePayload,
-	#superclass : #DSGatewayDispatchPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayDispatchPresenceUpdatePayload',
+	#superclass : 'DSGatewayDispatchPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayDispatchPresenceUpdatePayload class >> eventName [
 	^ 'PRESENCE_UPDATE'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayDispatchPresenceUpdatePayload >> accept: aVisitor [ 
 	^ aVisitor visitDSGatewayDispatchPresenceUpdatePayload: self
 ]

@@ -6,17 +6,19 @@ See documentation at https://discordapp.com/developers/docs/topics/gateway#gatew
 https://discordapp.com/developers/docs/topics/gateway#message-update
 "
 Class {
-	#name : #DSGatewayDispatchMessageUpdatePayload,
-	#superclass : #DSGatewayDispatchPayload,
-	#category : 'Discord-Gateway-Model'
+	#name : 'DSGatewayDispatchMessageUpdatePayload',
+	#superclass : 'DSGatewayDispatchPayload',
+	#category : 'Discord-Gateway-Model',
+	#package : 'Discord-Gateway',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DSGatewayDispatchMessageUpdatePayload class >> eventName [
 	^ 'MESSAGE_UPDATE'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 DSGatewayDispatchMessageUpdatePayload >> accept: aVisitor [
 	^ aVisitor visitDSGatewayDispatchMessageUpdatePayload: self
 ]
