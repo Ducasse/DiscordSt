@@ -2,24 +2,26 @@
 A DSGatewayModelJsonMappingTest is a test class for testing the behavior of DSGatewayModelJsonMapping
 "
 Class {
-	#name : #DSGatewayModelJsonMappingTest,
-	#superclass : #TestCase,
-	#category : 'Discord-Gateway-Tests-Utility'
+	#name : 'DSGatewayModelJsonMappingTest',
+	#superclass : 'TestCase',
+	#category : 'Discord-Gateway-Tests-Utility',
+	#package : 'Discord-Gateway-Tests',
+	#tag : 'Utility'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSGatewayModelJsonMappingTest >> classToTest [
 	^ DSGatewayModelJsonMapping
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSGatewayModelJsonMappingTest >> read: jsonString as: schema mappedTo: mappingMessage [
 	"Return an object that is represented by the JSON string."
 	<return: #DSObject>
 	^ self classToTest read: schema withMapping: mappingMessage on: jsonString readStream
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testDispatchReadyEventPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonReadyPayload.
@@ -33,7 +35,7 @@ DSGatewayModelJsonMappingTest >> testDispatchReadyEventPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testHeartbeatAckPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonHeartbeatAckPayload.
@@ -47,7 +49,7 @@ DSGatewayModelJsonMappingTest >> testHeartbeatAckPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testHeartbeatPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonHeartbeatPayload.
@@ -59,7 +61,7 @@ DSGatewayModelJsonMappingTest >> testHeartbeatPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - event' }
+{ #category : 'tests - event' }
 DSGatewayModelJsonMappingTest >> testHelloEventMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonHelloEvent.
@@ -73,7 +75,7 @@ DSGatewayModelJsonMappingTest >> testHelloEventMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testHelloPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonHelloPayload.
@@ -87,7 +89,7 @@ DSGatewayModelJsonMappingTest >> testHelloPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - event' }
+{ #category : 'tests - event' }
 DSGatewayModelJsonMappingTest >> testIdentityEventMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonIdentityEvent.
@@ -103,7 +105,7 @@ DSGatewayModelJsonMappingTest >> testIdentityEventMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testIdentityPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonIdentityPayload.
@@ -117,7 +119,7 @@ DSGatewayModelJsonMappingTest >> testIdentityPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSGatewayModelJsonMappingTest >> testIdentityPropertiesMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonIdentityProperties.
@@ -132,7 +134,7 @@ DSGatewayModelJsonMappingTest >> testIdentityPropertiesMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testInvalidSessionPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonInvalidSessionPayload.
@@ -146,7 +148,7 @@ DSGatewayModelJsonMappingTest >> testInvalidSessionPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testMessageCreatePayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonMessageCreatePayload.
@@ -160,7 +162,7 @@ DSGatewayModelJsonMappingTest >> testMessageCreatePayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testMessageUpdatePayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonMessageUpdatePayload.
@@ -174,7 +176,7 @@ DSGatewayModelJsonMappingTest >> testMessageUpdatePayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testPresenceUpdatePayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonPresenceUpdatePayload.
@@ -190,7 +192,7 @@ DSGatewayModelJsonMappingTest >> testPresenceUpdatePayloadMappingFor [
 		equals: '{"op":0,"d":{"user":{"id":"286153065164304880","bot":false,"verified":false},"roles":[],"guild_id":"289187121854545132","status":"idle"},"s":8,"t":"PRESENCE_UPDATE"}'.
 ]
 
-{ #category : #'tests - event' }
+{ #category : 'tests - event' }
 DSGatewayModelJsonMappingTest >> testReadyEventMappingFor [
 	| result jsonString jsonResult |
 	jsonString := self classToTest jsonReadyEvent.
@@ -209,7 +211,7 @@ DSGatewayModelJsonMappingTest >> testReadyEventMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - event' }
+{ #category : 'tests - event' }
 DSGatewayModelJsonMappingTest >> testResumeEventMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonResumeEvent.
@@ -222,7 +224,7 @@ DSGatewayModelJsonMappingTest >> testResumeEventMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testResumePayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonResumePayload.
@@ -236,7 +238,7 @@ DSGatewayModelJsonMappingTest >> testResumePayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSGatewayModelJsonMappingTest >> testShardMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonShard.
@@ -248,7 +250,7 @@ DSGatewayModelJsonMappingTest >> testShardMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSGatewayModelJsonMappingTest >> testStatusUpdateMappingFor [
 	| result jsonResult jsonString |
 	jsonString := self classToTest jsonStatusUpdate.
@@ -262,7 +264,7 @@ DSGatewayModelJsonMappingTest >> testStatusUpdateMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - payload' }
+{ #category : 'tests - payload' }
 DSGatewayModelJsonMappingTest >> testUnclassifiedPayloadMappingFor [
 	| result jsonResult jsonString |
 	jsonString := '{"op":342,"d":42,"s":21,"t":"UNKNOWN"}'.
@@ -276,7 +278,7 @@ DSGatewayModelJsonMappingTest >> testUnclassifiedPayloadMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #'tests - basic' }
+{ #category : 'tests - basic' }
 DSGatewayModelJsonMappingTest >> testUnixTimeInMilliSecondsMappingFor [
 	| result jsonResult jsonString |
 	"'2017-11-09T11:41:09.769-03:00' asDateAndTime asUnixTime"
@@ -288,21 +290,21 @@ DSGatewayModelJsonMappingTest >> testUnixTimeInMilliSecondsMappingFor [
 	self assert: jsonResult equals: jsonString.
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSGatewayModelJsonMappingTest >> write: aDSObject as: schema mappedTo: mappingSymbol [ 
 	"Return a JSON string representation of the Discord object."
 	<return: #String>
 	^ self classToTest write: aDSObject as: schema mappedTo: mappingSymbol
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSGatewayModelJsonMappingTest >> write: aDSObject mappedTo: mappingSymbol [ 
 	"Return a JSON string representation of the Discord object."
 	<return: #String>
 	^ self classToTest write: aDSObject mappedTo: mappingSymbol
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 DSGatewayModelJsonMappingTest >> writePayload: aDSGatewayPayload [
 	"Return a JSON string representation of the Discord object."
 	<return: #String>

@@ -2,12 +2,14 @@
 A DSGatewayHeartbeatProcessTest is a test class for testing the behavior of DSGatewayHeartbeatProcess
 "
 Class {
-	#name : #DSGatewayHeartbeatProcessTest,
-	#superclass : #DSGatewayProcessTest,
-	#category : 'Discord-Gateway-Tests-API'
+	#name : 'DSGatewayHeartbeatProcessTest',
+	#superclass : 'DSGatewayProcessTest',
+	#category : 'Discord-Gateway-Tests-API',
+	#package : 'Discord-Gateway-Tests',
+	#tag : 'API'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 DSGatewayHeartbeatProcessTest >> assertDelay: integerInMilliseconds between: startDateAndTime and: stopDateAndTime [
 	"Assert that stopDateAndTime happens integerInMilliseconds milliseconds after startDateAndTime.	
 	Difference (diff) should be positive or zero.
@@ -20,12 +22,12 @@ DSGatewayHeartbeatProcessTest >> assertDelay: integerInMilliseconds between: sta
 		description: 'The difference is ', diff printString, ', but should be >= ', allowed printString.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGatewayHeartbeatProcessTest >> newGatewayProcess [
 	^ DSGatewayHeartbeatProcess new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testHeartbeatString [
 	"Heartbeat JSON object with default sequence number"
 	process := self newGatewayProcess.
@@ -33,7 +35,7 @@ DSGatewayHeartbeatProcessTest >> testHeartbeatString [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testHeartbeatString2 [
 	"Heartbeat JSON object with default sequence number"
 	process := self newGatewayProcess.
@@ -42,7 +44,7 @@ DSGatewayHeartbeatProcessTest >> testHeartbeatString2 [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testSendHeartbeat [
 	"Send one heartbeat message to a server"
 	self startZnServer.
@@ -59,7 +61,7 @@ DSGatewayHeartbeatProcessTest >> testSendHeartbeat [
 	self assert: self serverRequests size equals: 3.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testSequenceNumber [
 	"Set sequence number"
 	process := self newGatewayProcess.
@@ -69,7 +71,7 @@ DSGatewayHeartbeatProcessTest >> testSequenceNumber [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testStart [
 	"Do three heartbeat cycles and then close the connection"
 	self startZnServer.
@@ -95,7 +97,7 @@ DSGatewayHeartbeatProcessTest >> testStart [
 		equals: #( #readOne '{"op":1}' #readTwo '{"op":1}' #readThree '{"op":1}' #finished ).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testStartDelays [
 	"Check delays between three heartbeat cycles"
 	| heartbeatInterval |
@@ -125,20 +127,22 @@ DSGatewayHeartbeatProcessTest >> testStartDelays [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayHeartbeatProcessTest >> testStop [
 	"Do three heartbeat cycles and then close the connection"
+
 	| semaphore |
 	semaphore := Semaphore new.
 	self startZnServer.
-	self serverDelegate: (ZnWebSocketDelegate map: 'gateway' to: [ :socket |
-		self serverRequests add: #server.
-		self serverRequests add: socket readMessage.
-		self serverRequests add: #waiting.
-		self signalServerSemaphore.
-		self deny: (semaphore waitTimeoutMSecs: 100).
-		self serverRequests add: #finished.
-		self signalServerSemaphore. ]).
+	self serverDelegate:
+		(ZnWebSocketDelegate map: 'gateway' to: [ :socket |
+			 self serverRequests add: #server.
+			 self serverRequests add: socket readMessage.
+			 self serverRequests add: #waiting.
+			 self signalServerSemaphore.
+			 self deny: (semaphore waitTimeoutMilliseconds: 100).
+			 self serverRequests add: #finished.
+			 self signalServerSemaphore ]).
 	websocket := ZnWebSocket to: self gatewayConnectUrl.
 	process := self newGatewayProcess.
 	process websocket: websocket.
@@ -149,9 +153,8 @@ DSGatewayHeartbeatProcessTest >> testStop [
 	semaphore signal.
 	self assertServerSemaphore.
 	self assert: self serverRequests size equals: 4.
-	self 
-		assert: self serverRequests asArray 
+	self
+		assert: self serverRequests asArray
 		equals: #( #server '{"op":1}' #waiting #finished ).
-	self deny: process canDoNextCycle.
-
+	self deny: process canDoNextCycle
 ]

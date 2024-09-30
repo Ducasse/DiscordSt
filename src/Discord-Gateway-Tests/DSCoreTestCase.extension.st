@@ -1,6 +1,6 @@
-Extension { #name : #DSCoreTestCase }
+Extension { #name : 'DSCoreTestCase' }
 
-{ #category : #'*Discord-Gateway-Tests' }
+{ #category : '*Discord-Gateway-Tests' }
 DSCoreTestCase >> gatewayModelJsonMapping [
 	^ DSGatewayModelJsonMapping
 ]

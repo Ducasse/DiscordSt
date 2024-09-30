@@ -59,8 +59,11 @@ DSCoreTestCase >> appveyorMessageString [
 DSCoreTestCase >> assertServerSemaphore [
 	"Assert that semaphore is signalized in a specified time.
 	See the startZnServer method."
-	self 
-		deny: (server semaphore waitTimeoutMSecs: self serverSemaphoreTimeout)
+
+	self
+		deny:
+		(server semaphore waitTimeoutMilliseconds:
+			 self serverSemaphoreTimeout)
 		description: 'The server semaphore was not signalized in time'
 ]
 

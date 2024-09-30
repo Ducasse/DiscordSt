@@ -2,25 +2,27 @@
 A DSGatewayApiTest is a test class for testing the behavior of DSGatewayApi
 "
 Class {
-	#name : #DSGatewayTest,
-	#superclass : #DSGatewayTestCase,
+	#name : 'DSGatewayTest',
+	#superclass : 'DSGatewayTestCase',
 	#instVars : [
 		'api'
 	],
-	#category : 'Discord-Gateway-Tests-API'
+	#category : 'Discord-Gateway-Tests-API',
+	#package : 'Discord-Gateway-Tests',
+	#tag : 'API'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayTest class >> isAbstract [
 	^ self = DSGatewayTest 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGatewayTest >> newGateway [
 	^ self subclassResponsibility
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayTest >> testPrintString [
 	self assert: self newGateway printString isString.
 ]

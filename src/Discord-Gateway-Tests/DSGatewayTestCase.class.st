@@ -2,17 +2,19 @@
 A DSGatewayTestCase is an abstract test class for testing the behavior of the Discord Gateway.
 "
 Class {
-	#name : #DSGatewayTestCase,
-	#superclass : #DSCoreTestCase,
-	#category : 'Discord-Gateway-Tests-API'
+	#name : 'DSGatewayTestCase',
+	#superclass : 'DSCoreTestCase',
+	#category : 'Discord-Gateway-Tests-API',
+	#package : 'Discord-Gateway-Tests',
+	#tag : 'API'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayTestCase class >> isAbstract [
 	^ self = DSGatewayTestCase 
 ]
 
-{ #category : #mock }
+{ #category : 'mock' }
 DSGatewayTestCase >> gatewayConnectUrl [
 	"Return a Mock Gateway URL object used for the WebSocket connection.
 	It defines protocol version and used enconding system."
@@ -22,7 +24,7 @@ DSGatewayTestCase >> gatewayConnectUrl [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGatewayTestCase >> newGateway [
 	^ DSGateway defaultClass new
 ]

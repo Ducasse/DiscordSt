@@ -2,40 +2,42 @@
 A DSGatewayProcessTest is a test class for testing the behavior of DSGatewayProcess
 "
 Class {
-	#name : #DSGatewayProcessTest,
-	#superclass : #DSGatewayTestCase,
+	#name : 'DSGatewayProcessTest',
+	#superclass : 'DSGatewayTestCase',
 	#instVars : [
 		'process',
 		'websocket'
 	],
-	#category : 'Discord-Gateway-Tests-API'
+	#category : 'Discord-Gateway-Tests-API',
+	#package : 'Discord-Gateway-Tests',
+	#tag : 'API'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 DSGatewayProcessTest class >> isAbstract [
 	^ self = DSGatewayProcessTest 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGatewayProcessTest >> newGatewayProcess [
 	^ self subclassResponsibility 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DSGatewayProcessTest >> tearDown [
 	websocket ifNotNil: [ :aWebSocket | [ aWebSocket close ] 
 		on: ConnectionTimedOut, ConnectionClosed do: [ "ignore" ] ].
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testCanDoNextCycle [
 	"Heartbeat is not allowed by default, because of missing WebSocket"
 	process := self newGatewayProcess.
 	self deny: process canDoNextCycle
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testCanDoNextCycleFalse [
 	"Heartbeat is not allowed by default, because of disconnected WebSocket"
 	process := self newGatewayProcess.
@@ -43,7 +45,7 @@ DSGatewayProcessTest >> testCanDoNextCycleFalse [
 	self deny: process canDoNextCycle
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testCanDoNextCycleTrue [
 	"Heartbeat is allowed by default, because of connected WebSocket"
 	self startZnServer.
@@ -58,7 +60,7 @@ DSGatewayProcessTest >> testCanDoNextCycleTrue [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testDisableNextCycle [
 	"Heartbeat is not allowed explicitly"
 	self startZnServer.
@@ -72,7 +74,7 @@ DSGatewayProcessTest >> testDisableNextCycle [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testDisableNextCycleExplicitly [
 	"Next Cycle is not allowed explicitly"
 	process := self newGatewayProcess.
@@ -81,20 +83,20 @@ DSGatewayProcessTest >> testDisableNextCycleExplicitly [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testIsConnected [
 	process := self newGatewayProcess.
 	self deny: process isConnected.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testIsConnectedFalse [
 	process := self newGatewayProcess.
 	process websocket: ZnWebSocket new.
 	self deny: process isConnected.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testIsConnectedTrue [
 	self startZnServer.
 	self serverDelegate: (ZnWebSocketDelegate map: 'gateway' to: [ :socket |
@@ -107,25 +109,25 @@ DSGatewayProcessTest >> testIsConnectedTrue [
 	self assert: self serverRequests first equals: #server.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testPrintProcessName [
 	process := self newGatewayProcess.
 	self assert: process printProcessName isNotEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testPrintString [
 	process := self newGatewayProcess.
 	self assert: process printString isNotEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testStart [
 	"Subtest should define this test case."
 	^ self subclassResponsibility
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewayProcessTest >> testStop [
 	"Start a server, then stop it"
 	self subclassResponsibility

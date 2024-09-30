@@ -2,29 +2,31 @@
 A DSGatewayApiSixTest is a test class for testing the behavior of DSGatewayApiSix
 "
 Class {
-	#name : #DSGatewaySixTest,
-	#superclass : #DSGatewayTest,
-	#category : 'Discord-Gateway-Tests-API'
+	#name : 'DSGatewaySixTest',
+	#superclass : 'DSGatewayTest',
+	#category : 'Discord-Gateway-Tests-API',
+	#package : 'Discord-Gateway-Tests',
+	#tag : 'API'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DSGatewaySixTest >> classToTest [
 	^ DSGatewaySix
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DSGatewaySixTest >> newGateway [
 	^ self classToTest new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DSGatewaySixTest >> tearDown [
 	server ifNotNil: #stop.
 	api ifNotNil: [ :anApi | [ anApi websocket ifNotNil: #close ] on: ConnectionClosed, ConnectionTimedOut do: [ "ignore" ] ].
 	super tearDown.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewaySixTest >> testConnect [
 	"Connect using a gateway websocket URL"
 	self startZnServer.
@@ -63,7 +65,7 @@ DSGatewaySixTest >> testConnect [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DSGatewaySixTest >> testGetWebSocketUrl [
 	"Ask for a gateway websocket URL"
 	| url |
