@@ -38,7 +38,7 @@ Class {
 
 { #category : 'examples' }
 DSEmbed class >> all [
-	<gtExample>
+
 	^ self new
 		description: 'I am a description of the embed object.';
 		image: DSEmbedImage screenshot;
@@ -48,7 +48,7 @@ DSEmbed class >> all [
 
 { #category : 'examples' }
 DSEmbed class >> description [
-	<gtExample>
+	
 	^ self new
 		description: 'I am a description of the embed object.';
 		color: Color green;
@@ -57,7 +57,7 @@ DSEmbed class >> description [
 
 { #category : 'examples' }
 DSEmbed class >> screenshot [
-	<gtExample>
+	
 	^ self new
 		image: DSEmbedImage screenshot;
 		color: Color blue;

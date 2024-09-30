@@ -68,7 +68,7 @@ Class {
 
 { #category : 'examples' }
 DSMessage class >> content [
-	<gtExample>
+	
 	^ self empty 
 		content: 'Hello! I am a basic message content in [Pharo](http://pharo.org).';
 		yourself
@@ -81,7 +81,7 @@ DSMessage class >> defaultCollection [
 
 { #category : 'examples' }
 DSMessage class >> embedAll [
-	<gtExample>
+
 	^ self empty
 		embeds: (Array with: DSEmbed all);
 		yourself
@@ -97,7 +97,7 @@ DSMessage class >> embedDescription [
 
 { #category : 'examples' }
 DSMessage class >> embedScreenshot [
-	<gtExample>
+	
 	^ self empty
 		embeds: (Array with: DSEmbed screenshot);
 		yourself
@@ -105,7 +105,7 @@ DSMessage class >> embedScreenshot [
 
 { #category : 'examples' }
 DSMessage class >> empty [
-	<gtExample>
+	
 	^ self new
 		author: DSUser alice;
 		timestamp: '2017-09-05T16:09:15.123000+00:00';

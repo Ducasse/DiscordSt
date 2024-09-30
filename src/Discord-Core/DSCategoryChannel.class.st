@@ -22,7 +22,7 @@ Class {
 
 { #category : 'examples' }
 DSCategoryChannel class >> withTwoChannels [
-	<gtExample>
+	
 	^ DSModelJsonMapping 
 		read: #CollectionOfSortedChannels 
 		withMapping: #collectionOfSortedChannelsMappingFor: 

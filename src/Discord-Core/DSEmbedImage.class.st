@@ -39,7 +39,7 @@ Class {
 
 { #category : 'examples' }
 DSEmbedImage class >> screenshot [
-	<gtExample>
+	
 	^ self new
 		proxyUrl: 'https://github.com/JurajKubelka/DiscordSt/raw/master/assets/img/morph-screenshot.png';
 		url: 'https://github.com/JurajKubelka/DiscordSt/raw/master/assets/img/morph-screenshot.png';

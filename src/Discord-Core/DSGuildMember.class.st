@@ -30,8 +30,7 @@ Class {
 
 { #category : 'examples' }
 DSGuildMember class >> basic [
-	<gtExample>
-	<label: 'Guild Member'>
+	
 	^ self jsonMappingClass
 		read: DSGuildMember
 		withMapping: #guildMemberMappingFor:

@@ -34,7 +34,7 @@ Class {
 
 { #category : 'examples' }
 DSUser class >> alice [
-	<gtExample>
+	
 	^ self new
 		id: '308348260000056432';
 		discriminator: '3409';

@@ -19,8 +19,7 @@ Class {
 
 { #category : 'examples' }
 DSDirectMessageChannel class >> oneRecipient [
-	<gtExample>
-	<label: 'A direct message'>
+	
 	^ self jsonMappingClass 
 		read: self 
 		withMapping: #specifiedChannelMappingFor:

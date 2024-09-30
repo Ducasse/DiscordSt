@@ -47,8 +47,8 @@ Class {
 
 { #category : 'examples' }
 DSMockServer class >> basicUsage [
-	<gtExample>
-	<label: 'A commong usage example. The values of serverResponse and server collection can be then tested.'>
+	"A commong usage example. The values of serverResponse and server collection can be then tested."
+	
 	| server client serverResponse |
 	server := DSMockServer new.
 	server start.
