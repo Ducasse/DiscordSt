@@ -102,18 +102,6 @@ DSUser >> email: anObject [
 	email := anObject
 ]
 
-{ #category : 'gt-inspector-extension' }
-DSUser >> gtInspectorDirectChannels: composite [
-	<gtInspectorPresentationOrder: -1>
-	^ composite fastTree
-		title: [ 'Direct Channels' translated ];
-		display: [ self directChannels ];
-		when: [ self directChannels notEmpty ];
-		children: [ :item | item children ];
-		expandedUntil: 1;
-		yourself
-]
-
 { #category : 'testing' }
 DSUser >> hasAvatar [
 	"Return true if user has avatar."

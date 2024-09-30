@@ -72,31 +72,6 @@ DSEmbedImage >> extent [
 	^ self width @ self height
 ]
 
-{ #category : 'gt-inspector-extension' }
-DSEmbedImage >> gtInspectorActionDownloadData [
-	<gtInspectorAction>
-	^ GLMGenericAction new
-		action: [ :presentation | self data. presentation update ];
-		icon: (self iconNamed: #bottom);
-		condition: [ self hasData not ];
-		title: 'Download data'
-]
-
-{ #category : 'gt-inspector-extension' }
-DSEmbedImage >> gtInspectorImage: composite [
-	<gtInspectorPresentationOrder: 2>
-	^ composite morph
-		title: 'Image';
-		display: [ | aStream |
-				aStream := self data readStream.
-				ImageReadWriter formFromStream: aStream ];
-		when: [ self hasData and: [ 
-					[ ImageReadWriter formFromStream: self data readStream.
-					true ]
-					on: Error do: [ :exception | exception return: false ] ] ];
-		yourself	
-]
-
 { #category : 'testing' }
 DSEmbedImage >> hasData [
 	"Return true if the data are downloaded."

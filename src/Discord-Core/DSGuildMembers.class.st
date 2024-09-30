@@ -17,14 +17,3 @@ DSGuildMembers class >> basic [
 		withMapping: #collectionOfGuildMembersMappingFor:
 		on: self jsonMappingClass jsonCollectionOfGuildMembersOne readStream
 ]
-
-{ #category : 'gt-inspector-extension' }
-DSGuildMembers >> gtInspectorMembers: composite [
-	<gtInspectorPresentationOrder: -1>
-	^ composite fastTree
-		title: [ 'Members' translated ];
-		display: [ self ];
-		when: [ self notEmpty ];
-		children: [ :item | item children ];
-		yourself
-]

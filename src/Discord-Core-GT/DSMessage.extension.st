@@ -1,6 +1,36 @@
 Extension { #name : 'DSMessage' }
 
 { #category : '*Discord-Core-GT' }
+DSMessage >> gtAttachmentsFor: aView [
+	<gtView>
+	self hasAttachments ifFalse: [ ^ aView empty ].
+	^ aView list
+		title: 'Attachments';
+		priority: 3;
+		items: [ self attachments ]
+]
+
+{ #category : '*Discord-Core-GT' }
+DSMessage >> gtContentFor: aView [
+	<gtView>
+	(self hasContent or: [ self hasEmbeds ]) ifFalse: [ ^ aView empty ].
+	^ aView textEditor
+		title: 'Content';
+		priority: 1;
+		text: [ self printFullMessage ]
+]
+
+{ #category : '*Discord-Core-GT' }
+DSMessage >> gtImageFor: aView [
+	<gtView>
+	self hasImageAttachments ifFalse: [ ^ aView empty ].
+	^ aView explicit
+		title: 'Image';
+		priority: 2;
+		stencil: [ self imageAttachments first asForm asElement ]
+]
+
+{ #category : '*Discord-Core-GT' }
 DSMessage >> gtInspectorActionDownloadAllAttachments [
 	<gtInspectorAction>
 	^ GLMGenericAction new

@@ -193,29 +193,6 @@ DSGuild >> general [
 	^ self channelSatisfying: #isGeneral
 ]
 
-{ #category : 'gt-inspector-extension' }
-DSGuild >> gtInspectorChannels: composite [
-	<gtInspectorPresentationOrder: 1>
-	^ composite fastTree
-		title: [ 'Channels' translated ];
-		display: [ self channels ];
-		when: [ self hasChannels or: [ self isAuthenticated ] ];
-		children: [ :item | item children ];
-		expandedUntil: 1;
-		yourself
-]
-
-{ #category : 'gt-inspector-extension' }
-DSGuild >> gtInspectorMembers: composite [
-	<gtInspectorPresentationOrder: 2>
-	^ composite fastTree
-		title: [ 'Members' translated ];
-		display: [ self members ];
-		when: [ self hasMembers or: [ self isAuthenticated ] ];
-		children: [ :item | item members ];
-		yourself
-]
-
 { #category : 'testing' }
 DSGuild >> hasChannels [
 	"Return true if the currently logged user is the server owner;

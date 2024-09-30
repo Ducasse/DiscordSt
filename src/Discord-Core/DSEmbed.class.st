@@ -176,21 +176,6 @@ DSEmbed >> footerText: aString [
 	self ensureFooter text: aString
 ]
 
-{ #category : 'gt-inspector-extension' }
-DSEmbed >> gtChildren [
-	^ { self image. self thumbnail. self footer } reject: [ :each | each isNil ]  
-]
-
-{ #category : 'gt-inspector-extension' }
-DSEmbed >> gtInspectorImage: composite [
-	<gtInspectorPresentationOrder: 2>
-	^ composite morph
-		title: [ 'Image' translated ];
-		display: [ self image ifNotNil: #asForm ];
-		when: [ self hasImage and: [ self image hasKnownScheme ] ];
-		yourself
-]
-
 { #category : 'testing' }
 DSEmbed >> hasDescription [
 	"Return true if a description exists."
